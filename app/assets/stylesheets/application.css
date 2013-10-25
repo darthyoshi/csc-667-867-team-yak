@@ -8,6 +8,25 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require bootstrap
  *= require_self
  *= require_tree .
  */
+
+html, body {
+    background: #dddddd;
+}
+
+.navbar {
+    padding: 2em;
+    background: #d07030;
+}
+
+.sidebar {
+    background: #ff0000;
+}
+
+.footer {
+    padding: 1em;
+    background: #00cc00;
+}

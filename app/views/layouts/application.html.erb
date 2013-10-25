@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Csc667867TeamYak</title>
+  <title>ArtSale</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+    <header class='navbar page-header'>
+        header works!
+    </header>
 
-<%= yield %>
+    <div class='sidebar pull-left'>
+        sidebar works!
+    </div>
 
+    <div class='container hero-unit'>
+    <%= yield %>
+    </div>
+
+    <footer class='page-header footer'>
+        footer works!
+    </footer>
 </body>
 </html>
