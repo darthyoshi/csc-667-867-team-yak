@@ -7,20 +7,46 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <header class='navbar page-header'>
-        header works!
+    <header class='navbar'>
+        <div class='container-fluid'>
+            <div style='float: left'>
+                <a href='/'>
+                    <img src='logo.png' alt='ArtSale logo'/>
+                </a>
+            </div>
+
+            <div style='float: right'>
+                login goes here
+            </div>
+
+            <div style='text-align: center'>
+                search bar goes here
+            </div>
+        </div>
     </header>
 
-    <div class='sidebar pull-left'>
-        sidebar works!
+    <div class='container-fluid'>
+        <div class='sidebar'>
+            sidebar works!<br><br><br><br><br><br><br><br><br><br><br><br>adfs
+        </div>
+
+        <div class='content'>
+            <div class='hero-unit'>
+                <%= yield %>
+            </div>
+        </div>
     </div>
 
-    <div class='container hero-unit'>
-    <%= yield %>
-    </div>
+    <footer class='footer'>
+        <div style='float: left'>ArtSale</div>
 
-    <footer class='page-header footer'>
-        footer works!
+        <div style='float: right'>&copy; 2013 Team YAK</div>
+
+        <div style='clear: none; text-align: center'>
+            <a href='about'>About us</a> |
+            <a href='contact'>Contact</a> |
+            <a href='faq'>FAQ</a>
+        </div>
     </footer>
 </body>
 </html>
