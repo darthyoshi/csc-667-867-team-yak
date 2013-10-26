@@ -1,14 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Csc667867TeamYak</title>
+  <title>ArtSale</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+    <header class='navbar'>
+        <div class='container-fluid'>
+            <div style='float: left'>
+                <a href='/'>
+                    <img src='logo.png' alt='ArtSale logo'/>
+                </a>
+            </div>
 
-<%= yield %>
+            <div style='float: right'>
+                login goes here
+            </div>
 
+            <div style='text-align: center'>
+                search bar goes here
+            </div>
+        </div>
+    </header>
+
+    <div class='container-fluid'>
+        <div class='sidebar'>
+            sidebar works!<br><br><br><br><br><br><br><br><br><br><br><br>adfs
+        </div>
+
+        <div class='content'>
+            <div class='hero-unit'>
+                <%= yield %>
+            </div>
+        </div>
+    </div>
+
+    <footer class='footer'>
+        <div style='float: left'>ArtSale</div>
+
+        <div style='float: right'>&copy; 2013 Team YAK</div>
+
+        <div style='clear: none; text-align: center'>
+            <a href='about'>About us</a> |
+            <a href='contact'>Contact</a> |
+            <a href='faq'>FAQ</a>
+        </div>
+    </footer>
 </body>
 </html>
