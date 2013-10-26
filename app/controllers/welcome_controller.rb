@@ -1,11 +1,8 @@
 class WelcomeController < ApplicationController
   
   def index
+    @images = ArtPiece.find(:all) 
     if user_signed_in?
-      redirect_to :controller => 'dashboard', :action => 'index'
-      
-      
-      
     end
   end
   
