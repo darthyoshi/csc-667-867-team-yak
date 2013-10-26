@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: csc-667-867-team-yak_development
+  database: artsale
   pool: 5
   username: yak
   password:
@@ -46,7 +46,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: csc-667-867-team-yak_test
+  database: artsaletest
   pool: 5
   username: yak
   password:
@@ -54,7 +54,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: csc-667-867-team-yak_production
+  database: artsaleproduction
   pool: 5
   username: yak
   password:

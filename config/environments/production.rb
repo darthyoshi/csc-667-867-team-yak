@@ -3,6 +3,13 @@ Csc667867TeamYak::Application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
+  
+  
+  
+  #for Devise :host should be set to the actual host of your application
+  #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both thread web servers
