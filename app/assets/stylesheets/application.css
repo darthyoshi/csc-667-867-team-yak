@@ -25,6 +25,18 @@ html, body {
     border-bottom: 1px solid grey;
 }
 
+.navbar #logoText {
+	font-size: 40px;
+	font-weight: bold;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	color: SaddleBrown;
+}
+
+a:hover #logoText {
+	text-decoration: none;
+}
+
+
 .footer {
     background: #00cc00;
     padding-bottom: 9px;

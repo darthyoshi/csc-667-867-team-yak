@@ -10,21 +10,15 @@
     <header class='navbar'>
         <div class='container-fluid'>
             <div style='float: left'>
-                <a href='/'>
-                    <img src='logo.png' alt='ArtSale logo'/>
-                </a>
+                <a href='/'><span id="logoText">Art Sale</span></a>
             </div>
 	
             <div id="user_nav" style='float: right'>
 							<% if user_signed_in? %>
-								Signed in as <%= current_user.email %>. Not you?
+								Hi, <%= current_user.firstname + " " + current_user.lastname %>
 								<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 							<% else %>
 								<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
-							<% end %>
-
-							<% flash.each do |name, msg| %>
-								<%= content_tag :div, msg, :id => "flash_#{name}" %>
 							<% end %>
             </div>
 
