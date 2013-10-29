@@ -75,7 +75,7 @@ a:hover #logoText {
     margin-right: auto;
 }
 
-#search {
+.blank {
     color: rgba(100,100,100,0.5);
     font-style: italic;
 }
