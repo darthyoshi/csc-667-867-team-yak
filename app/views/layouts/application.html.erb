@@ -12,21 +12,24 @@
             <div style='float: left'>
                 <a href='/'><span id="logoText">Art Sale</span></a>
             </div>
-	
+
             <div id="user_nav" style='float: right'>
-							<% if user_signed_in? %>
-								Hi, <%= current_user.firstname + " " + current_user.lastname %> | 
-								<%= link_to "Your Account", :controller => "account" %> |
-								Open Shop |
-								Cart |
-								<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-							<% else %>
-								<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
-							<% end %>
+                <% if user_signed_in? %>
+                    Hi, <%= current_user.firstname + " " + current_user.lastname %> |
+                    <%= link_to "Your Account", :controller => "account" %> |
+                    Open Shop |
+                    Cart |
+                    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+                <% else %>
+                    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
+                <% end %>
             </div>
 
             <div style='text-align: center'>
-                search bar goes here
+                <form id='searchform'>
+                    <input type='text' id='search' style='width: 50%' value='Search by item name, item tag, seller name'></input>
+                    <input type='submit'></input>
+                </form>
             </div>
         </div>
     </header>
