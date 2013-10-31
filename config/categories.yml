@@ -1,0 +1,9 @@
+Photos:
+  url: "/cat/photos"
+  description: "Browse photographs"
+Sculptures:
+  url: "/cat/sculptures"
+  description: "Browse sculptures"
+Paintings:
+  url: "/cat/paintings"
+  description: "Browse paintings"
