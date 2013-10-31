@@ -1,7 +1,18 @@
 <!DOCTYPE html>
+<% title = ""
+
+CATEGORIES.each do |cat,details|
+  if details['url'] == request.fullpath && request.fullpath != "/"
+    title = details['description']
+  end
+end
+
+if request.fullpath == "/"
+  title = "ArtSale"
+end %>
 <html>
 <head>
-  <title>ArtSale</title>
+  <title><%= title %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -10,7 +21,7 @@
     <header class='navbar'>
         <div class='container-fluid'>
             <div style='float: left'>
-                <a href='/'><span id="logoText">Art Sale</span></a>
+                <a href='/'><span id="logoText">ArtSale</span></a>
             </div>
 
             <div id="user_nav" style='float: right'>
@@ -26,8 +37,8 @@
             </div>
 
             <div style='text-align: center'>
-                <form id='searchform'>
-                    <input type='text' class='blank' id='search' style='width: 50%' value='Search by item name, item tag, seller name'>
+                <form id='searchform' action='search' method='get'>
+                    <input type='text' class='blank' id='search' style='width: 50%' value='Search: item name, item description, item tag, seller name'>
                     <input type='submit'>
                 </form>
             </div>
@@ -35,8 +46,28 @@
     </header>
 
     <div class='container-fluid'>
-        <div class='sidebar'>
-            sidebar works!<br><br><br><br><br><br><br><br><br><br><br><br>adfs
+        <ol class='breadcrumb'>
+        <%
+        %>
+            <li class='active'><%= if title == "ArtSale" then "Home" else title end %></li>
+        </ol>
+
+        <div class="sidebar panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    Categories
+                </h4>
+            </div>
+
+            <div class="panel-body">
+                <list>
+                <% CATEGORIES.each do |cat,details| %>
+                    <li>
+                        <%= link_to cat, details['url'] %>
+                    </li>
+                <% end %>
+                </list>
+            </div>
         </div>
 
         <div class='content'>
