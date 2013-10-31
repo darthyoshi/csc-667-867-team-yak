@@ -9,7 +9,7 @@ $(document).on('focus', '#search', ( ->
         $('#search').removeClass("blank")
 ));
 
-#
+#restores default message if search bar is blank
 $(document).on('blur', '#search', ( ->
     if $('#search').val() is ''
         $('#search').val("Search by item name, item tag, seller name")
