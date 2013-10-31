@@ -1,8 +1,14 @@
 Csc667867TeamYak::Application.routes.draw do
+
+  resources :arttags
+
+  resources :artworks
+
   root to: 'welcome#index'
   get "account/index"
   devise_for :users
   resources :art_pieces
+  resources :art_tags
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
