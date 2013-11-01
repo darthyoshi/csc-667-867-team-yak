@@ -1,5 +1,9 @@
 Csc667867TeamYak::Application.routes.draw do
 
+  resources :reviews
+
+  resources :sellers
+
   resources :arttags
 
   resources :artworks

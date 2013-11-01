@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131031180801) do
+ActiveRecord::Schema.define(version: 20131101043422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,51 @@ ActiveRecord::Schema.define(version: 20131031180801) do
     t.datetime "updated_at"
   end
 
+  create_table "ordereditems", force: true do |t|
+    t.integer  "artwork_id"
+    t.integer  "order_id"
+    t.integer  "quantity"
+    t.decimal  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "order_date"
+    t.text     "shipping_address"
+    t.decimal  "shipping_cost"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reviews", force: true do |t|
+    t.integer  "stars"
+    t.integer  "user_id"
+    t.integer  "seller_id"
+    t.text     "review_text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "review_date"
+  end
+
+  create_table "sellers", force: true do |t|
+    t.string   "displayed_name"
+    t.integer  "user_id"
+    t.text     "seller_description"
+    t.string   "seller_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "seller_date"
+  end
+
+  create_table "shoppingcart", force: true do |t|
+    t.integer  "quantity"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -53,6 +98,8 @@ ActiveRecord::Schema.define(version: 20131031180801) do
     t.datetime "updated_at"
     t.string   "firstname"
     t.string   "lastname"
+    t.string   "shipping_address"
+    t.datetime "date_joined"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

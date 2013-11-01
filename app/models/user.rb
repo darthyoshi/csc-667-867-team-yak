@@ -5,4 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   #attr_accessible :firstname, :lastname, :email, :password, :password_confirmation, :remember_me
+  has_one :seller
+  
+  has_many :reviews
+  has_many :sellers, :through => :reviews
+  
+  has_many :orders
 end

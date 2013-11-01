@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  shipping_address: MyText
+  shipping_cost: 
+
+two:
+  shipping_address: MyText
+  shipping_cost: 
