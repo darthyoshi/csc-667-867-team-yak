@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131101043422) do
+ActiveRecord::Schema.define(version: 20131103003826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,13 +36,22 @@ ActiveRecord::Schema.define(version: 20131101043422) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "seller_id"
   end
 
+  add_index "artworks", ["seller_id"], name: "index_artworks_on_seller_id", using: :btree
+
   create_table "ordereditems", force: true do |t|
-    t.integer  "artwork_id"
     t.integer  "order_id"
+    t.integer  "sold_artwork_id"
     t.integer  "quantity"
     t.decimal  "price"
+    t.string   "category"
+    t.string   "title"
+    t.string   "imagepath"
+    t.text     "description"
+    t.string   "seller_name"
+    t.string   "seller_email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -76,9 +85,10 @@ ActiveRecord::Schema.define(version: 20131101043422) do
     t.datetime "seller_date"
   end
 
-  create_table "shoppingcart", force: true do |t|
+  create_table "shoppingcartitems", force: true do |t|
     t.integer  "quantity"
     t.integer  "user_id"
+    t.integer  "artwork_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
