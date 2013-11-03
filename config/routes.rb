@@ -1,5 +1,9 @@
 Csc667867TeamYak::Application.routes.draw do
 
+  get "faq" => "faq#show"
+  get "contact" => "contact#show"
+  get "about" => "about#show"
+  get "category/:cat" => "category#show"
   resources :reviews
 
   resources :sellers

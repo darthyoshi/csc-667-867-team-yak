@@ -1,9 +1,9 @@
 Photos:
-  url: "/cat/photos"
-  description: "Browse photographs"
+  url: "/category/photos"
+  description: "Photographs"
 Sculptures:
-  url: "/cat/sculptures"
-  description: "Browse sculptures"
+  url: "/category/sculptures"
+  description: "Sculptures"
 Paintings:
-  url: "/cat/paintings"
-  description: "Browse paintings"
+  url: "/category/paintings"
+  description: "Paintings"

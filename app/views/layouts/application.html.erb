@@ -1,15 +1,36 @@
 <!DOCTYPE html>
-<% title = ""
+<%
+title = ""
+desc = ""
+found = false
 
-CATEGORIES.each do |cat,details|
-  if details['url'] == request.fullpath && request.fullpath != "/"
-    title = details['description']
+if request.fullpath == "/"
+  title = "ArtSale Home"
+  found = true
+end
+
+unless found
+  CATEGORIES.each do |cat,details|
+    if details['url'] == request.fullpath
+      desc = details['description']
+      title = "Browse by " + desc
+      found = true
+      break
+    end
   end
 end
 
-if request.fullpath == "/"
-  title = "ArtSale"
-end %>
+unless found
+  FOOTER.each do |cat,details|
+    if details['url'] == request.fullpath
+      title = details['description']
+      desc = title
+      found = true
+      break
+    end
+  end
+end
+%>
 <html>
 <head>
   <title><%= title %></title>
@@ -46,12 +67,6 @@ end %>
     </header>
 
     <div class='container-fluid'>
-        <ol class='breadcrumb'>
-        <%
-        %>
-            <li class='active'><%= if title == "ArtSale" then "Home" else title end %></li>
-        </ol>
-
         <div class="sidebar panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
@@ -69,9 +84,26 @@ end %>
                 </list>
             </div>
         </div>
-
+        
         <div class='content'>
+                <ol class='breadcrumb'>
+                <% if title == "ArtSale Home" %>
+                    <li class='active'>
+                        Home
+                    </li>
+                <% else %>
+                    <li>
+                        <a href='/'>Home</a>
+                    </li>
+                    <span class='divide'>></span>
+                    <li class='active'>
+                        <%= desc %>
+                    </li>
+                <% end %>
+                </ol>
+
             <div class='hero-unit'>
+
                 <%= yield %>
             </div>
         </div>
@@ -83,9 +115,10 @@ end %>
         <div style='float: right'>&copy; 2013 Team YAK</div>
 
         <div style='clear: none; text-align: center'>
-            <a href='about'>About us</a> |
-            <a href='contact'>Contact</a> |
-            <a href='faq'>FAQ</a>
+            |
+            <% FOOTER.each do |cat,details| %>
+                <%= link_to details['description'], details['url'] %> |
+            <% end %>
         </div>
     </footer>
 </body>
