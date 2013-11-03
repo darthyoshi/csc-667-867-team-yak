@@ -1,4 +1,4 @@
-class Ordereditem < ActiveRecord::Migration
+class CreateOrdereditem < ActiveRecord::Migration
   def change
     create_table :ordereditems do |t|
           t.belongs_to :artwork
