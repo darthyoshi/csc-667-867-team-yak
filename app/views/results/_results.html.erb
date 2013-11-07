@@ -2,11 +2,11 @@
 <% @artworks.each do |artwork| %>
 <div class='listing'>
     <img src=<%= artwork.imagepath %>>
-    <div style='text-align: center'>
-        <a href='#'>
+
+    <div><a href='#'>
             <%= artwork.title %>
-        </a>
-    </div>
+    </a></div>
+
     <p>
         Quantity available: <%= artwork.quantity %>
         Price: $<%= number_with_precision(artwork.price, :precision => 2) %>
