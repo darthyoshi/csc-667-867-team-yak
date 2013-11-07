@@ -1,0 +1,26 @@
+<% @artworks.each do |artwork| %>
+<div class='listing'>
+    <img src=<%= artwork.imagepath %>>
+    <div style='text-align: center'>
+        <a href='#'>
+            <%= artwork.title %>
+        </a>
+    </div>
+    <p>
+        Quantity available: <%= artwork.quantity %>
+        Price: $<%= number_with_precision(artwork.price, :precision => 2) %>
+    </p>
+    <p><%= artwork.description %></p>
+
+    <span style='font-size: 0.5em'>Tags: add tags here with links to tag search</span>
+</div>
+<hr>
+<% end %>
+
+<ul class="pager">
+  <li><a href="#">&laquo;</a></li>
+  <li><a href="#" classinactive'>Previous</a></li>
+  <li><a href='#'>...</a></li>
+  <li><a href="#">Next</a></li>
+  <li><a href="#">&raquo;</a></li>
+</ul>

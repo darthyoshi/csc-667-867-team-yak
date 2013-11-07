@@ -1,0 +1,22 @@
+// Place all the styles related to the category controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.listing {
+    background: #abcdef;
+}
+
+.listing img {
+    border: solid black 1px;
+    width: 150px;
+    height: 100px;
+    background: white;
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 15px;
+}
+
+html, hr {
+    clear: both;;
+    border-bottom-color: black;
+}

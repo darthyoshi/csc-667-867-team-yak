@@ -13,7 +13,7 @@ unless found
   CATEGORIES.each do |cat,details|
     if details['url'] == request.fullpath
       desc = details['description']
-      title = "Browse by " + desc
+      title = "Browse by category: " + desc
       found = true
       break
     end
@@ -29,6 +29,11 @@ unless found
       break
     end
   end
+end
+
+if request.fullpath.include? 'search'
+    title = "Search"
+    desc = title
 end
 %>
 <html>
@@ -58,8 +63,8 @@ end
             </div>
 
             <div style='text-align: center'>
-                <form id='searchform' action='search' method='get'>
-                    <input type='text' class='blank' id='search' style='width: 50%' value='Search: item name, item description, item tag, seller name'>
+                <form id='searchform' action='/search' method='get'>
+                    <input type='text' class='blank' id='search' name='search' style='width: 50%' value='Search: item name, item description, item tag, seller name'>
                     <input type='submit'>
                 </form>
             </div>
@@ -84,7 +89,7 @@ end
                 </list>
             </div>
         </div>
-        
+
         <div class='content'>
                 <ol class='breadcrumb'>
                 <% if title == "ArtSale Home" %>
