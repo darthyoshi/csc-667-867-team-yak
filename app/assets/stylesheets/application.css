@@ -32,11 +32,6 @@ html, body {
     color: SaddleBrown;
 }
 
-a:hover #logoText {
-    text-decoration: none;
-}
-
-
 .footer {
     background: #00cc00;
     padding-bottom: 9px;
@@ -63,6 +58,7 @@ a:hover #logoText {
 
 .hero-unit {
     overflow: auto;
+    padding-top: 30px;
 }
 
 .footer {
@@ -78,4 +74,8 @@ a:hover #logoText {
 .blank {
     color: rgba(100,100,100,0.5);
     font-style: italic;
+}
+
+.breadcrumb {
+    overflow: auto;
 }

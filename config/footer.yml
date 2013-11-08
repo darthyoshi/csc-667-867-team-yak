@@ -1,0 +1,9 @@
+about:
+  url: "/about"
+  description: "About Us"
+contact:
+  url: "/contact"
+  description: "Contact Us"
+faq:
+  url: "/faq"
+  description: "FAQ"

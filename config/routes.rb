@@ -2,7 +2,11 @@ Csc667867TeamYak::Application.routes.draw do
 
   root to: 'welcome#index'
   get "account/index"
-
+  get "/search" => 'results#search'
+  get "/category/:cat" => 'results#category'
+  get "faq" => "faq#show"
+  get "contact" => "contact#show"
+  get "about" => "about#show"
   devise_for :users
   resources :reviews
   resources :sellers
@@ -51,7 +55,7 @@ Csc667867TeamYak::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

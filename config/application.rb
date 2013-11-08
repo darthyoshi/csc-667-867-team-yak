@@ -8,6 +8,8 @@ Bundler.require(:default, Rails.env)
 
 CATEGORIES = YAML.load(File.read(File.expand_path('config/categories.yml')))
 CATEGORIES.symbolize_keys!
+FOOTER = YAML.load(File.read(File.expand_path('config/footer.yml')))
+FOOTER.symbolize_keys!
 
 module Csc667867TeamYak
   class Application < Rails::Application
