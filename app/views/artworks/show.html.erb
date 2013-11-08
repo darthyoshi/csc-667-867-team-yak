@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h1>Admin. Show artwork</h1>
+<h2>Admin. Show artwork</h2>
 
 <%= image_tag(@artwork.imagepath, :border=>0) %>
 
@@ -30,7 +30,7 @@
   <strong>Description:</strong>
   <%= @artwork.description %>
 </p>
-
+<p>Tags:</p>
 <% unless @my_arttags.nil? %>
 	<% @my_arttags.each do |arttag| %>
 		<%= label_tag 'arttag', arttag.tagname %><br>

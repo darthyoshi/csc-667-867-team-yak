@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+	<div class="artwork_image">
+		<%= image_tag(@artwork.imagepath, :border=>0) unless @artwork.nil? %>
+	</div>
+
   <div class="field">
     <%= f.label :category %><br>		
 		<%= select("artwork", "category", [["Painting","painting"], ["Sculpture","sculpture"], ["Photography","photography"]]) %>
@@ -30,7 +34,7 @@
   </div>
   <div class="field">
     <%= f.label :imagepath %><br>
-    <%= f.text_field :imagepath %>
+    <%= f.text_field :imagepath, disabled: true %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
