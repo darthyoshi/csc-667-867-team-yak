@@ -1,0 +1,32 @@
+<p>
+  <strong><%= @artwork.title %></strong>
+</p>
+
+<%= image_tag(@artwork.imagepath) %>
+
+<p>
+  <strong>
+  <%= @artwork.category %>
+</strong>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @artwork.price %>
+</p>
+
+<p>
+  <strong>Only <%= @artwork.quantity %> available</strong>
+</p>
+<p>
+  <%= @artwork.description %>
+</p>
+
+<% unless @my_arttags.nil? %>
+	<% @my_arttags.each do |arttag| %>
+		<%= label_tag 'arttag', arttag.tagname %><br>
+	<% end %>
+<% end %>
+
+<%= link_to 'Back', welcome_path %>
+

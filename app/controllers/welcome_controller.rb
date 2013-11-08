@@ -7,6 +7,10 @@ class WelcomeController < ApplicationController
     @artworks = Artwork.paginate(:page => params[:page], :per_page => 10)
   end
   
+  def show
+    @artwork = Artwork.find(params[:id])
+  end
+  
   def add_to_cart
   end
   

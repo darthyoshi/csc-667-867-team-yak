@@ -1,6 +1,7 @@
 Csc667867TeamYak::Application.routes.draw do
 
   root to: 'welcome#index', :as => 'welcome'
+  get "welcome/show"
   get "account/index"
   get "/search" => 'results#search'
   get "/category/:cat" => 'results#category'

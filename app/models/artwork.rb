@@ -7,4 +7,11 @@ class Artwork < ActiveRecord::Base
   belongs_to :seller
   
   default_scope :order => 'title'
+  
+  #validates :title, :description, :imagepath, :quantity, :price, :category, :seller_id, :presence => true
+  #validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
+  #validates :imagepath, :format => {
+  #  :with => %r{\.(git|jpg|png)$}i,
+  #  :message => 'must be a URL for gif, jpg or png image.'
+  #}
 end
