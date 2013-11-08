@@ -1,3 +1,5 @@
-<h1>Welcome page</h1>
-<p>
-<%= image_tag('Paintings/Abstract/2.jpg', :border=>0) %>
+
+<% @artworks.each do |artwork| %>
+	<h4><%= artwork.title %></h4>
+	<%= image_tag(artwork.imagepath, :border=>0) %><br>
+<% end %>

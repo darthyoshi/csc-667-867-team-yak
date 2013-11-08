@@ -1,19 +1,20 @@
 Csc667867TeamYak::Application.routes.draw do
 
-  root to: 'welcome#index'
+  root to: 'welcome#index', :as => 'welcome'
   get "account/index"
   get "/search" => 'results#search'
   get "/category/:cat" => 'results#category'
   get "faq" => "faq#show"
   get "contact" => "contact#show"
   get "about" => "about#show"
+  get "admin" => "admin#index"
+  get "public" => "public#list"
   devise_for :users
   resources :reviews
   resources :sellers
   resources :arttags
   resources :artworks
   resources :orders
-  get "admin" => "admin#index"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
