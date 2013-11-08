@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  shipping_address: MyText
-  shipping_cost: 
+  order_date: 2013-11-07 19:59:14
+  shipping_address: MyString
+  shipping_cos: 
 
 two:
-  shipping_address: MyText
-  shipping_cost: 
+  order_date: 2013-11-07 19:59:14
+  shipping_address: MyString
+  shipping_cos: 

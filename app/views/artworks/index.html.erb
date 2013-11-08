@@ -1,4 +1,4 @@
-<h1>Listing artworks</h1>
+<h2>Listing artworks</h2>
 
 <table>
   <thead>
@@ -6,8 +6,7 @@
       <th>Category</th>
       <th>Title</th>
       <th>Price</th>
-      <th>Quantity</th>
-      <th>Imagepath</th>
+      <th>Quant</th>
       <th>Description</th>
       <th></th>
       <th></th>
@@ -22,7 +21,6 @@
         <td><%= artwork.title %></td>
         <td><%= artwork.price %></td>
         <td><%= artwork.quantity %></td>
-        <td><%= artwork.imagepath %></td>
         <td><%= artwork.description %></td>
         <td><%= link_to 'Show', artwork %></td>
         <td><%= link_to 'Edit', edit_artwork_path(artwork) %></td>
@@ -35,3 +33,6 @@
 <br>
 
 <%= link_to 'New Artwork', new_artwork_path %>
+<%= link_to 'Back to Admin', admin_path %>
+
+<%= will_paginate @artworks %>

@@ -18,7 +18,7 @@ class ArtworksControllerTest < ActionController::TestCase
 
   test "should create artwork" do
     assert_difference('Artwork.count') do
-      post :create, artwork: { category: @artwork.category, destription: @artwork.destription, imagepath: @artwork.imagepath, price: @artwork.price, quantity: @artwork.quantity, title: @artwork.title }
+      post :create, artwork: { category: @artwork.category, description: @artwork.description, imagepath: @artwork.imagepath, price: @artwork.price, quantity: @artwork.quantity, title: @artwork.title }
     end
 
     assert_redirected_to artwork_path(assigns(:artwork))
@@ -35,7 +35,7 @@ class ArtworksControllerTest < ActionController::TestCase
   end
 
   test "should update artwork" do
-    patch :update, id: @artwork, artwork: { category: @artwork.category, destription: @artwork.destription, imagepath: @artwork.imagepath, price: @artwork.price, quantity: @artwork.quantity, title: @artwork.title }
+    patch :update, id: @artwork, artwork: { category: @artwork.category, description: @artwork.description, imagepath: @artwork.imagepath, price: @artwork.price, quantity: @artwork.quantity, title: @artwork.title }
     assert_redirected_to artwork_path(assigns(:artwork))
   end
 

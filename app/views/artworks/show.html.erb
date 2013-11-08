@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag(@artwork.imagepath, :border=>0) %>
+
 <p>
   <strong>Category:</strong>
   <%= @artwork.category %>
@@ -23,12 +25,18 @@
 <p>
   <strong>Imagepath:</strong>
   <%= @artwork.imagepath %>
-</p>
-
 <p>
   <strong>Description:</strong>
   <%= @artwork.description %>
 </p>
 
+<% unless @my_arttags.nil? %>
+	<% @my_arttags.each do |arttag| %>
+		<%= label_tag 'arttag', arttag.tagname %><br>
+	<% end %>
+<% end %>
+
+
 <%= link_to 'Edit', edit_artwork_path(@artwork) %> |
 <%= link_to 'Back', artworks_path %>
+

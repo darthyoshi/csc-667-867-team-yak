@@ -6,7 +6,7 @@ class CreateArtworks < ActiveRecord::Migration
       t.decimal :price
       t.integer :quantity
       t.string :imagepath
-      t.text :destription
+      t.text :description
 
       t.timestamps
     end

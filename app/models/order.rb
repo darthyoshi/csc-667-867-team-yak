@@ -1,4 +1,4 @@
 class Order < ActiveRecord::Base
   has_many :orderitems
-  belongs_to :users
+  belongs_to :user
 end
