@@ -2,7 +2,9 @@
   <strong><%= @artwork.title %></strong>
 </p>
 
-<%= image_tag(@artwork.imagepath) %>
+<div style='float: left; margin-right: 20px'>
+<%= image_tag(@artwork.imagepath, :border=>0) %>
+</div>
 
 <p>
   <strong>
@@ -12,7 +14,7 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @artwork.price %>
+  <%= number_to_currency(@artwork.price) %>
 </p>
 
 <p>
@@ -22,11 +24,14 @@
   <%= @artwork.description %>
 </p>
 
+<p><strong>Tags</strong></p>
+
 <% unless @my_arttags.nil? %>
 	<% @my_arttags.each do |arttag| %>
 		<%= label_tag 'arttag', arttag.tagname %><br>
 	<% end %>
 <% end %>
 
+<div style='clear:both'>
 <%= link_to 'Back', welcome_path %>
-
+</div>

@@ -31,9 +31,15 @@ unless found
   end
 end
 
-if request.fullpath.include? 'search'
-    title = "Search"
-    desc = title
+unless found
+  BREADCRUMBS.each do |cat,details|
+    if request.fullpath.include? details['url'] 
+      title = details['description']
+      desc = title
+      found = true
+      break
+    end
+  end
 end
 %>
 <html>

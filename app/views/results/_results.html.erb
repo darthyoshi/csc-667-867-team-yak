@@ -9,7 +9,7 @@
 
     <p>
         Quantity available: <%= artwork.quantity %>
-        Price: $<%= number_with_precision(artwork.price, :precision => 2) %>
+        Price: <%= number_to_currency(artwork.price) %>
     </p>
     <p><%= artwork.description %></p>
 
@@ -24,12 +24,8 @@ if @artworks.count == 0
     Sorry, no results found.
 </div>
 <hr>
+
 <% end %>
 
-<ul class="pager">
-  <li><a href="#">&laquo;</a></li>
-  <li><a href="#" classinactive'>Previous</a></li>
-  <li><a href='#'>...</a></li>
-  <li><a href="#">Next</a></li>
-  <li><a href="#">&raquo;</a></li>
-</ul>
+<%= will_paginate @artworks %>
+

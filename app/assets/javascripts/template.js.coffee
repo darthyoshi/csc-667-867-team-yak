@@ -15,3 +15,7 @@ $(document).on('blur', '#search', ( ->
         $('#search').val("Search by item name, item tag, seller name")
         $('#search').addClass("blank")
 ));
+
+$(document).on('click', '.disabled, .active', ( ->
+    return false
+));
