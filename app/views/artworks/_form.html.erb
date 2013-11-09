@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :category %>		
-		<%= select("artwork", "category", [["Painting","painting"], ["Sculpture","sculpture"], ["Photography","photography"]]) %>
+		<%= select("artwork", "category", artwork_categories) %>
   </div>
 	
   <div class="field">
@@ -30,7 +30,7 @@
   </div>
   <div class="field">
     <%= f.label :imagepath %>
-    <%= f.text_field :imagepath, disabled: true %>
+    <%= f.text_field :imagepath %>
   </div>
   <div class="field">
     <%= f.label :description %>

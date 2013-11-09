@@ -24,7 +24,6 @@ Artwork.create!([
   { :category => "painting", :title => "Abstract Painting 12", :price => 614.0, :quantity => 3, :imagepath => "Paintings/Abstract/12.jpg", :description => "Mysterious Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => 2 },
   { :category => "painting", :title => "Abstract Painting 13", :price => 4929.0, :quantity => 3, :imagepath => "Paintings/Abstract/13.jpg", :description => "Yielding Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => 3 },
   { :category => "painting", :title => "Abstract Painting 14", :price => 193.0, :quantity => 3, :imagepath => "Paintings/Abstract/14.jpg", :description => "Nebulous Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => 3 },
-  { :category => "painting", :title => "Abstract Painting 15", :price => 4186.0, :quantity => 2, :imagepath => "Paintings/Abstract/15.jpg", :description => "Living Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => 3 },
   { :category => "painting", :title => "Abstract Painting 16", :price => 2725.0, :quantity => 3, :imagepath => "Paintings/Abstract/16.jpg", :description => "Thick Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => nil },
   { :category => "painting", :title => "Abstract Painting 17", :price => 7046.0, :quantity => 2, :imagepath => "Paintings/Abstract/17.jpg", :description => "Guiltless Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => nil },
   { :category => "painting", :title => "Abstract Painting 18", :price => 7346.0, :quantity => 3, :imagepath => "Paintings/Abstract/18.jpg", :description => "Cold Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => nil },
@@ -807,13 +806,6 @@ Order.create!([
 Review.create!([
   { :stars => 3, :user_id => 1, :seller_id => 2, :review_text => "This s a test review for the artwork by seller #2.", :created_at => "2013-11-05 20:46:45", :updated_at => "2013-11-05 20:46:45", :review_date => nil },
   { :stars => 5, :user_id => 2, :seller_id => 3, :review_text => "Review for the artwork created by the seller#3", :created_at => "2013-11-05 20:49:20", :updated_at => "2013-11-05 20:49:20", :review_date => nil }
-])
-
-
-
-Seller.create!([
-  { :displayed_name => "John", :user_id => 1, :seller_description => "art seller1", :seller_email => "john@email.com", :created_at => nil, :updated_at => nil, :seller_date => nil },
-  { :displayed_name => "Doug Turpintine", :user_id => 2, :seller_description => "Abstract art seller with a flare for landscape motivs", :seller_email => "bob@coolartstudio.com", :created_at => nil, :updated_at => nil, :seller_date => nil }
 ])
 
 

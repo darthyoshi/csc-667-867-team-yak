@@ -11,21 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131103003826) do
+ActiveRecord::Schema.define(version: 20131109040047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "art_pieces", force: true do |t|
-    t.string   "category"
-    t.string   "title"
-    t.float    "price"
-    t.integer  "quantity"
-    t.string   "image_path"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "arttags", force: true do |t|
     t.string   "tagname"
@@ -87,12 +76,11 @@ ActiveRecord::Schema.define(version: 20131103003826) do
   end
 
   create_table "sellers", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "seller_date"
     t.string   "displayed_name"
     t.text     "seller_description"
     t.string   "seller_email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "seller_date"
   end
 
   create_table "shoppingcartitems", force: true do |t|
