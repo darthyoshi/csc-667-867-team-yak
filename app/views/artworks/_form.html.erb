@@ -11,33 +11,29 @@
     </div>
   <% end %>
 
-	<div class="artwork_image">
-		<%= image_tag(@artwork.imagepath, :border=>0) unless @artwork.nil? %>
-	</div>
-
   <div class="field">
-    <%= f.label :category %><br>		
+    <%= f.label :category %>		
 		<%= select("artwork", "category", [["Painting","painting"], ["Sculpture","sculpture"], ["Photography","photography"]]) %>
   </div>
-
+	
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :price %><br>
+    <%= f.label :price %>
     <%= f.text_field :price %>
   </div>
   <div class="field">
-    <%= f.label :quantity %><br>
+    <%= f.label :quantity %>
     <%= f.number_field :quantity %>
   </div>
   <div class="field">
-    <%= f.label :imagepath %><br>
+    <%= f.label :imagepath %>
     <%= f.text_field :imagepath, disabled: true %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
 

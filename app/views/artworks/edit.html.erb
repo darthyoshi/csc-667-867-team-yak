@@ -1,7 +1,19 @@
 <h2>Admin. Manage artwork</h2>
 
+
+
+<div id="wrap">
+<div id="left_col">
+	
 <%= render 'form' %>
 
-<%= link_to 'Show', @artwork %> |
-<%= link_to 'Back', artworks_path %>
+</div>
+<div id="right_col">
 
+
+<%= image_tag(@artwork.imagepath, :border=>0) %><br>
+<%= link_to 'Preview', @artwork %> |
+<%= link_to 'List of artworks', artworks_path %>
+
+</div>
+</div>

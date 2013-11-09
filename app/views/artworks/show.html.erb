@@ -15,7 +15,7 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @artwork.price %>
+  <%= number_to_currency(@artwork.price) %>
 </p>
 
 <p>
@@ -24,20 +24,16 @@
 </p>
 
 <p>
-  <strong>Imagepath:</strong>
-  <%= @artwork.imagepath %>
-<p>
-  <strong>Description:</strong>
   <%= @artwork.description %>
 </p>
-<p>Tags:</p>
+
 <% unless @my_arttags.nil? %>
 	<% @my_arttags.each do |arttag| %>
-		<%= label_tag 'arttag', arttag.tagname %><br>
+		<%= label_tag 'arttag', arttag.tagname %>
 	<% end %>
 <% end %>
 
 
 <%= link_to 'Edit', edit_artwork_path(@artwork) %> |
-<%= link_to 'Back', artworks_path %>
+<%= link_to 'List of artworks', artworks_path %>
 

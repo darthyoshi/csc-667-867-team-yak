@@ -6,8 +6,6 @@ class Artwork < ActiveRecord::Base
   has_and_belongs_to_many :arttags 
   belongs_to :seller
   
-  default_scope :order => 'title'
-  
   #validates :title, :description, :imagepath, :quantity, :price, :category, :seller_id, :presence => true
   #validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
   #validates :imagepath, :format => {

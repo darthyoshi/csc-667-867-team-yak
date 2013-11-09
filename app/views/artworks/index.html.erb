@@ -22,9 +22,9 @@
         <td><%= artwork.price %></td>
         <td><%= artwork.quantity %></td>
         <td><%= artwork.description %></td>
-        <td><%= link_to 'Show', artwork %></td>
-        <td><%= link_to 'Edit', edit_artwork_path(artwork) %></td>
-        <td><%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Preview', artwork %> | </td>
+        <td><%= link_to 'Edit', edit_artwork_path(artwork) %> | </td>
+        <td><%= link_to 'Delete', artwork, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
