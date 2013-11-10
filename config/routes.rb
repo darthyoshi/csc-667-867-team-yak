@@ -5,6 +5,8 @@ Csc667867TeamYak::Application.routes.draw do
   get "shoppingcartitems/create"
   get "shoppingcartitems/delete"
   get "shoppingcartitems/destroy"
+  get "/mycart" => "shoppingcartitems#mycart"
+  
   root to: 'welcome#index', :as => 'welcome'
   get "/show" => "welcome#show"
   get "/account" => 'account#index'

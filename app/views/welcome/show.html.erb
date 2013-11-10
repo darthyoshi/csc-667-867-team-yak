@@ -35,3 +35,5 @@
 <div style='clear:both'>
 <%= link_to 'Back', welcome_path %>
 </div>
+
+<%= button_to 'Add to Cart', shoppingcartitems_path(:shoppingcartitem => {:user_id => current_user.id, :artwork_id => @artwork.id, :quantity => 1}) %>

@@ -7,6 +7,16 @@ class ShoppingcartitemsController < ApplicationController
     @shoppingcartitems = Shoppingcartitem.all
   end
 
+  # GET /mycart
+  # GET /mycart.json
+  def mycart
+    # This first line is more Ruby-like but is also more ambiguous than the
+    # explicit use of user_id (in the second line); it is also more database
+    # implementation specific
+    #@myitems = Shoppingcartitem.where(user: current_user)
+    @myitems = Shoppingcartitem.where(user_id: current_user.id)
+  end
+
 #----------------------------------------------------------------------------
   # GET /shoppingcartitems/1
   # GET /shoppingcartitems/1.json
@@ -35,7 +45,7 @@ class ShoppingcartitemsController < ApplicationController
 
     respond_to do |format|
       if @shoppingcartitem.save
-        format.html { redirect_to @shoppingcartitem, notice: 'Shoppingcartitem was successfully created.' }
+        format.html { redirect_to '/mycart' }
         format.json { render action: 'show', status: :created, location: @shoppingcartitem }
       else
         format.html { render action: 'new' }
@@ -79,7 +89,7 @@ class ShoppingcartitemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shoppingcartitem_params
-      #params.require(:shoppingcartitem).permit(:artwork_id, :user_id, :quantity)
-      params.require(:shoppingcartitem).permit( :quantity)
+      params.require(:shoppingcartitem).permit(:artwork_id, :user_id, :quantity)
+      #params.require(:shoppingcartitem).permit( :quantity)
     end
 end

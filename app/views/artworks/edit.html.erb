@@ -1,81 +1,77 @@
 <h2>Admin. Edit artwork</h2>
 
 <style type="text/css">
-#outerContainer {
-	position:relative;
+#threeColumnTable {
 	width:100%;
-	height:100%;
-	margin:0;
 }
-#adminContainer {
-	position:relative;
-	height:100%;
-	width:100%;
-	margin:0;
+#threeColumnTable td {
+	vertical-align:top;
 }
-#lcont, #mcont, #rcont {
-	width:33%;
-	position:relative;
-	float:left;
-	min-height:100%;
-	overflow:hidden;
+#lcol, #rcol {
+	width: 40%;
 }
-#lcont {background-color:red;}
-#mcont {background-color:green;}
-#rcont {background-color:blue;}
-#bcont {background-color:yellow;
-	clear:both;
-	width:100%;
-	}
+#mcol {
+	width: 20%;
+}
 </style>
+
 <%= form_for(@artwork) do |f| %>
-<div id="outerContainer">
-<div id="adminContainer">
-	<div id="lcont">
-		<div class="field">
-	    <%= f.label :category %>		
-			<%= select("artwork", "category", artwork_categories) %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :title %>
-	    <%= f.text_field :title %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :price %>
-	    <%= f.text_field :price %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :quantity %>
-	    <%= f.number_field :quantity %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :imagepath %>
-	    <%= f.text_field :imagepath %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :description %>
-	    <%= f.text_area :description %>
-	  </div>
-	</div>
-	<div id="mcont">
-		<div class="field">
-			<p><label for="artwork_arttag">List of tags:</label><br>		
-			<% @all_arttags.each do |arttag| %>
-				<%= check_box_tag('arttag_list[]', arttag.id, @artwork.arttags.collect { |obj| obj.id}.include?(arttag.id)) %><%= arttag.tagname %><br>
-			<% end %>
-			</p>
-		</div>
-	</div>
-	<div id="rcont">
-		<%= image_tag(@artwork.imagepath, :border=>0) %>
-	</div>
-	<div id="bcont">
-	  <div class="actions">
-	    <%= f.submit %><br/>
-	  </div>
-	</div>
-</div>
-</div>
+<table id="threeColumnTable" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td id="lcol">
+			<div class="field">
+		    <%= f.label :category %>		
+				<%= select("artwork", "category", artwork_categories) %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :title %>
+		    <%= f.text_field :title %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :price %>
+		    <%= f.text_field :price %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :quantity %>
+		    <%= f.number_field :quantity %>
+		  </div>
+		</td>
+
+		<td id="mcol">
+			<div class="field">
+				<p><label for="artwork_arttag">List of tags:</label><br>		
+				<% @all_arttags.each do |arttag| %>
+					<%= check_box_tag('arttag_list[]', arttag.id, @artwork.arttags.collect { |obj| obj.id}.include?(arttag.id)) %><%= arttag.tagname %><br>
+				<% end %>
+				</p>
+			</div>
+		</td>
+
+		<td id="rcol">
+			<%= image_tag(@artwork.imagepath, :border=>0) %>
+		  <div class="field">
+		    <%= f.label :imagepath %>
+		    <%= f.text_field :imagepath %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :description %>
+		    <%= f.text_area :description %>
+		  </div>
+		</td>
+	</tr>
+
+	<tr>
+		<td colspan="3">
+		  <div class="actions">
+		    <%= f.submit %><br/>
+		  </div>
+		</td>
+	</tr>
+</table>
+	
+
+
+
 <% end %>
 
 <!--
