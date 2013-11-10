@@ -1,0 +1,6 @@
+search:
+  url: "/search"
+  description: "Search"
+show:
+  url: "/show"
+  description: "Viewing Item"

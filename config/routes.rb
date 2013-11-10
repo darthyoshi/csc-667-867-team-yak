@@ -6,15 +6,15 @@ Csc667867TeamYak::Application.routes.draw do
   get "shoppingcartitems/delete"
   get "shoppingcartitems/destroy"
   root to: 'welcome#index', :as => 'welcome'
-  get "welcome/show"
-  get "account/index"
-  get "/search" => 'results#search'
-  get "/category/:cat" => 'results#category'
-  get "faq" => "faq#show"
-  get "contact" => "contact#show"
-  get "about" => "about#show"
-  get "admin" => "admin#index"
-  get "public" => "public#list"
+  get "/show" => "welcome#show"
+  get "/account" => 'account#index'
+  get "/search/(:page)" => 'results#search'
+  get "/category/:cat/(:page)" => 'results#category'
+  get "/faq" => "faq#show"
+  get "/contact" => "contact#show"
+  get "/about" => "about#show"
+  get "/admin" => "admin#index"
+  get "/public" => "public#list"
   devise_for :users
   resources :reviews  
   resources :arttags

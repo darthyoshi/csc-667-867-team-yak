@@ -1,12 +1,15 @@
-<h2>Admin. List of artworks</h2>
+<h2>Admin. Artworks</h2>
 
-<table>
+<%= link_to 'New Artwork', new_artwork_path %>
+<div style='float:right'><%= link_to 'Back to Admin', admin_path %></div>
+
+<table class='table'>
   <thead>
     <tr>
       <th>Category</th>
       <th>Title</th>
       <th>Price</th>
-      <th>Quant</th>
+      <th>Quantity</th>
       <th>Description</th>
       <th></th>
       <th></th>
@@ -19,20 +22,19 @@
       <tr>
         <td><%= artwork.category %></td>
         <td><%= artwork.title %></td>
-        <td> | <%= number_to_currency(artwork.price) %></td>
-        <td> |  <%= artwork.quantity %> | </td>
+        <td><%= number_to_currency(artwork.price) %></td>
+        <td><%= artwork.quantity %></td>
         <td><%= artwork.description %></td>
-        <td><%= link_to 'Preview', artwork %> | </td>
-        <td><%= link_to 'Edit', edit_artwork_path(artwork) %> | </td>
+        <td><%= link_to 'Preview', artwork %></td>
+        <td><%= link_to 'Edit', edit_artwork_path(artwork) %></td>
         <td><%= link_to 'Delete', artwork, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'New Artwork', new_artwork_path %> | 
+<%= link_to 'New Artwork', new_artwork_path %>
+<div style='float:right'>
 <%= link_to 'Back to Admin', admin_path %>
-
+</div>
 <%= will_paginate @artworks %>
