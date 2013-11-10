@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<h2>Admin. View seller info</h2>
+
+<p>
+  <strong>Opened shop at:</strong>
+  <%= @seller.seller_date.localtime.to_s(:long) %>
+</p>
+<p>
+  <strong>User id:</strong>
+  <%= @user.id %>
+</p> 
+<p>
+  <strong>User name:</strong>
+  <%= userfullname(@user) %>
+</p>
+<p>
+  <strong>Displayed seller's name:</strong>
+  <%= @seller.displayed_name %>
+</p>
+<p>
+	<strong>Description:</strong>
+  <%= @seller.seller_description %>
+</p>
+<p>
+  <strong>Seller's email:</strong>
+  <%= @seller.seller_email %>
+</p>
+<%= link_to 'Edit', edit_seller_path(@seller) %> |
+<%= link_to 'Sellers', sellers_path %>

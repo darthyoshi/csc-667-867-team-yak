@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  displayed_name: 
-  description: 
+  seller_date: 2013-11-09 14:55:51
+  displayed_name: MyString
+  seller_description: MyText
   seller_email: MyString
 
 two:
-  displayed_name: 
-  description: 
+  seller_date: 2013-11-09 14:55:51
+  displayed_name: MyString
+  seller_description: MyText
   seller_email: MyString

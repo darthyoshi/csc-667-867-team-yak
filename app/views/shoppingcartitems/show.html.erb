@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<h2>Admin. View shoppingcartitem info</h2>
+<p>
+  <strong>Artwork id:</strong>
+  <%= @shoppingcartitem.artwork_id %>
+</p>
+<p>
+<strong>Artwork title:</strong>
+	<%= @artwork.title %>
+</p>
+
+<p>
+  <strong>User id:</strong>
+  <%= @shoppingcartitem.user_id %>
+</p>
+<p>
+	<strong>User name:</strong>
+	<%= @user.firstname + ' ' + @user.lastname %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @shoppingcartitem.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_shoppingcartitem_path(@shoppingcartitem) %> |
+<%= link_to 'Shoppingcartitems', shoppingcartitems_path %>
