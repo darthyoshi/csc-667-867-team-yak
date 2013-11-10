@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
-    @userfullname = @order.user.firstname + " " + @order.user.lastname
+    @user = @order.user
   end
 
 #----------------------------------------------------------------------------

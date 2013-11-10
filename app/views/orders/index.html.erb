@@ -3,6 +3,7 @@
 <table>
   <thead>
     <tr>
+			<th>Order id</th>
       <th>Order date</th>
       <th>Shipping address</th>
       <th>Shipping cost</th>
@@ -15,12 +16,13 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.order_date %></td>
-        <td><%= order.shipping_address %></td>
-        <td><%= order.shipping_cost %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	      <td><%= order.id %></td>
+        <td> | <%= order.order_date.localtime.to_s(:long) %></td>
+        <td> | <%= order.shipping_address %></td>
+        <td> | <%= number_to_currency(order.shipping_cost) %></td>
+        <td><%= link_to 'Preview', order %> | </td>
+        <td><%= link_to 'Edit', edit_order_path(order) %> | </td>
+        <td><%= link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,6 +30,6 @@
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<%= link_to 'New Order', new_order_path %> | 
 <%= link_to 'Back to Admin', admin_path %>
 

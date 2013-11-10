@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   #attr_accessible :firstname, :lastname, :email, :password, :password_confirmation, :remember_me
-  belongs_to :seller
+  has_one :seller
   
   has_many :shoppingcartitems, :dependent => :destroy
   accepts_nested_attributes_for :shoppingcartitems, :allow_destroy => true

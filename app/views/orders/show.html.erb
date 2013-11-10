@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
-
+<h2>Admin. Show order</h2>
 <p>
   <strong>Order date:</strong>
-  <%= @order.order_date %>
+  <%= @order.order_date.localtime.to_s(:long) %>
 </p>
 
 <p>
@@ -12,14 +12,14 @@
 
 <p>
   <strong>Shipping cost:</strong>
-  <%= @order.shipping_cost %>
+  <%= number_to_currency(@order.shipping_cost) %>
 </p>
 
 <p>
 	<strong>User name:</strong>
-  <%= @userfullname %>
+  <%= userfullname(@user) %>
 </p>
 
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Orders', orders_path %>

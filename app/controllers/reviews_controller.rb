@@ -7,20 +7,24 @@ class ReviewsController < ApplicationController
     @reviews = Review.all
   end
 
+#----------------------------------------------------------------------------
   # GET /reviews/1
   # GET /reviews/1.json
   def show
   end
 
+#----------------------------------------------------------------------------
   # GET /reviews/new
   def new
     @review = Review.new
   end
 
+#----------------------------------------------------------------------------
   # GET /reviews/1/edit
   def edit
   end
 
+#----------------------------------------------------------------------------
   # POST /reviews
   # POST /reviews.json
   def create
@@ -37,6 +41,7 @@ class ReviewsController < ApplicationController
     end
   end
 
+#----------------------------------------------------------------------------
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
@@ -51,6 +56,7 @@ class ReviewsController < ApplicationController
     end
   end
 
+#----------------------------------------------------------------------------
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
@@ -61,6 +67,7 @@ class ReviewsController < ApplicationController
     end
   end
 
+#----------------------------------------------------------------------------
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review

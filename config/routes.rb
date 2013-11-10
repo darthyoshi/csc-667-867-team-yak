@@ -1,5 +1,10 @@
 Csc667867TeamYak::Application.routes.draw do
 
+  get "shoppingcartitems/index"
+  get "shoppingcartitems/update"
+  get "shoppingcartitems/create"
+  get "shoppingcartitems/delete"
+  get "shoppingcartitems/destroy"
   root to: 'welcome#index', :as => 'welcome'
   get "welcome/show"
   get "account/index"
@@ -11,11 +16,12 @@ Csc667867TeamYak::Application.routes.draw do
   get "admin" => "admin#index"
   get "public" => "public#list"
   devise_for :users
-  resources :reviews
-  resources :sellers
+  resources :reviews  
   resources :arttags
   resources :artworks
   resources :orders
+  resources :shoppingcartitems
+  resources :sellers
 
 
   # The priority is based upon order of creation: first created -> highest priority.

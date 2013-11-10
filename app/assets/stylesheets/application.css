@@ -58,7 +58,7 @@ html, body {
 
 .hero-unit {
     overflow: auto;
-    padding-top: 30px;
+    padding: 5px;
 }
 
 .footer {

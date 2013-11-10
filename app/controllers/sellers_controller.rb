@@ -7,20 +7,29 @@ class SellersController < ApplicationController
     @sellers = Seller.all
   end
 
+#----------------------------------------------------------------------------
   # GET /sellers/1
   # GET /sellers/1.json
   def show
+    @seller = Seller.find(params[:id])
+    @user = @seller.user
   end
 
+#----------------------------------------------------------------------------
   # GET /sellers/new
   def new
-    @seller = Seller.new
+    # This action brings up a form but we don't need that
+    #@seller = Seller.new
   end
 
+#----------------------------------------------------------------------------
   # GET /sellers/1/edit
   def edit
+    @seller = Seller.find(params[:id])
+    @user = @seller.user
   end
 
+#----------------------------------------------------------------------------
   # POST /sellers
   # POST /sellers.json
   def create
@@ -37,6 +46,7 @@ class SellersController < ApplicationController
     end
   end
 
+#----------------------------------------------------------------------------
   # PATCH/PUT /sellers/1
   # PATCH/PUT /sellers/1.json
   def update
@@ -51,6 +61,7 @@ class SellersController < ApplicationController
     end
   end
 
+#----------------------------------------------------------------------------
   # DELETE /sellers/1
   # DELETE /sellers/1.json
   def destroy
@@ -61,6 +72,7 @@ class SellersController < ApplicationController
     end
   end
 
+#----------------------------------------------------------------------------
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_seller
@@ -69,6 +81,6 @@ class SellersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def seller_params
-      params.require(:seller).permit(:displayed_name, :description, :seller_email)
+      params.require(:seller).permit(:user_id, :seller_date, :displayed_name, :seller_description, :seller_email)
     end
 end

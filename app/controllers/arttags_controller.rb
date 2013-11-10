@@ -7,20 +7,24 @@ class ArttagsController < ApplicationController
     @arttags = Arttag.all
   end
 
+#----------------------------------------------------------------------------
   # GET /arttags/1
   # GET /arttags/1.json
   def show
   end
 
+#----------------------------------------------------------------------------
   # GET /arttags/new
   def new
     @arttag = Arttag.new
   end
 
+#----------------------------------------------------------------------------
   # GET /arttags/1/edit
   def edit
   end
 
+#----------------------------------------------------------------------------
   # POST /arttags
   # POST /arttags.json
   def create
@@ -37,6 +41,7 @@ class ArttagsController < ApplicationController
     end
   end
 
+#----------------------------------------------------------------------------
   # PATCH/PUT /arttags/1
   # PATCH/PUT /arttags/1.json
   def update
@@ -51,6 +56,7 @@ class ArttagsController < ApplicationController
     end
   end
 
+#----------------------------------------------------------------------------
   # DELETE /arttags/1
   # DELETE /arttags/1.json
   def destroy
@@ -61,6 +67,7 @@ class ArttagsController < ApplicationController
     end
   end
 
+#----------------------------------------------------------------------------
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_arttag
