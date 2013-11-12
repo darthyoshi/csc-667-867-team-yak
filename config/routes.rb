@@ -1,14 +1,8 @@
 Csc667867TeamYak::Application.routes.draw do
 
-  get "shoppingcartitems/index"
-  get "shoppingcartitems/update"
-  get "shoppingcartitems/create"
-  get "shoppingcartitems/delete"
-  get "shoppingcartitems/destroy"
-  get "/mycart" => "shoppingcartitems#mycart"
-  
   root to: 'welcome#index', :as => 'welcome'
-  get "/show" => "welcome#show"
+  get "/mycart" => "shoppingcartitems#mycart"
+  get "welcome/about"
   get "/account" => 'account#index'
   get "/search/(:page)" => 'results#search'
   get "/category/:cat/(:page)" => 'results#category'
@@ -16,14 +10,32 @@ Csc667867TeamYak::Application.routes.draw do
   get "/contact" => "contact#show"
   get "/about" => "about#show"
   get "/admin" => "admin#index"
-  get "/public" => "public#list"
-  devise_for :users
-  resources :reviews  
-  resources :arttags
+  get "/yourshop" => "sellers#yourshop"
+  get "/edityourshop" => "sellers#edityourshop"
+  devise_for :users  
   resources :artworks
-  resources :orders
+  resources :arttag
   resources :shoppingcartitems
-  resources :sellers
+  resources :ordereditems
+  
+  # nested resources
+  resources :orders do
+    resources :ordereditems 
+  end
+  
+  # namespaced resources
+  namespace :admin do
+    resources :orders
+    resources :artworks
+    resources :shoppingcartitems
+    resources :sellers
+    resources :reviews
+  end
+  
+  
+ 
+ 
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

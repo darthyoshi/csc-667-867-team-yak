@@ -1,32 +1,19 @@
 class SellersController < ApplicationController
-  before_action :set_seller, only: [:show, :edit, :update, :destroy]
-
-  # GET /sellers
-  # GET /sellers.json
-  def index
-    @sellers = Seller.all
-  end
+  before_action :set_seller, only: [:update, :destroy]
 
 #----------------------------------------------------------------------------
-  # GET /sellers/1
-  # GET /sellers/1.json
-  def show
-    @seller = Seller.find(params[:id])
+ def yourshop
+   @seller = Seller.where(["user_id = ?", current_user.id]).first
+   @user = @seller.user
+   @artworks = @seller.artworks
+   #@reviews = @seller.reviews
+ end
+
+#----------------------------------------------------------------------------
+  def edityourshop
+    @seller = Seller.where(["user_id = ?", current_user.id]).first
     @user = @seller.user
-  end
-
-#----------------------------------------------------------------------------
-  # GET /sellers/new
-  def new
-    # This action brings up a form but we don't need that
-    #@seller = Seller.new
-  end
-
-#----------------------------------------------------------------------------
-  # GET /sellers/1/edit
-  def edit
-    @seller = Seller.find(params[:id])
-    @user = @seller.user
+    @artworks = @seller.artworks
   end
 
 #----------------------------------------------------------------------------
@@ -38,7 +25,7 @@ class SellersController < ApplicationController
     respond_to do |format|
       if @seller.save
         format.html { redirect_to @seller, notice: 'Seller was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @seller }
+        format.json { render action: 'myselleraccount', status: :created, location: @seller }
       else
         format.html { render action: 'new' }
         format.json { render json: @seller.errors, status: :unprocessable_entity }

@@ -1,47 +1,32 @@
 class ArtworksController < ApplicationController
-  before_action :set_artwork, only: [:show, :edit, :update, :destroy]
+  # this sets up the @artwork variable for show and destroy actions
+  before_action :set_artwork, only: [:show, :destroy]
 
   # GET /artworks
   # GET /artworks.json
   def index
-    #@artworks = Artwork.all
-    
     @artworks = Artwork.paginate(:page => params[:page], :per_page => 50)
   end
 #----------------------------------------------------------------------------
   # GET /artworks/1
   # GET /artworks/1.json
   def show
-    @artwork = Artwork.find(params[:id])
+    #@artwork = Artwork.find(params[:id]) #@artwork variable is set up above
     @my_arttags = @artwork.arttags
   end
-#----------------------------------------------------------------------------
-  # GET /artworks/new
-  def new
-    @artwork = Artwork.new 
-    @all_arttags = Arttag.all #immediately queries the database, returns an Array
-  end
-#----------------------------------------------------------------------------
-  # GET /artworks/1/edit
-  def edit
-    @artwork = Artwork.find(params[:id])
-    @all_arttags = Arttag.all
-  end
+  
 #----------------------------------------------------------------------------
   # POST /artworks
   # POST /artworks.json
   def create
     @artwork = Artwork.new(artwork_params)
-    # old way:
-    # @artwork = Artwork.new(params[:artwork])
     params[:arttag_list].each do |tag|
       arttag = Arttag.find(tag)
       unless @artwork.arttags.include?(arttag)
         @artwork.arttags << arttag
       end
     end
-    #
-    #
+
     respond_to do |format|
       if @artwork.save
         format.html { redirect_to @artwork, notice: 'Artwork was successfully created.' }
@@ -52,40 +37,7 @@ class ArtworksController < ApplicationController
       end
     end
   end
-#----------------------------------------------------------------------------
-  # PATCH/PUT /artworks/1
-  # PATCH/PUT /artworks/1.json
-  def update
-    @artwork = Artwork.find(params[:id])
-    @all_arttags = Arttag.all
-    checked_arttags = []
-    
-    checked_params = params[:arttag_list] || [] #we can't loop over nil
-    checked_params.each do |tag|
-      arttag = Arttag.find(tag)
-      unless @artwork.arttags.include?(arttag)
-        @artwork.arttags << arttag
-      end
-      checked_arttags << arttag
-    end
-    missing_arttags = @all_arttags - checked_arttags
-    missing_arttags.each do |tag|
-      if @artwork.arttags.include?(tag)
-        @artwork.arttags.delete(tag)
-      end
-    end
-    
-    
-    respond_to do |format|
-      if @artwork.update(artwork_params)
-        format.html { redirect_to @artwork, notice: 'Artwork was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @artwork.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+
 #----------------------------------------------------------------------------
   # DELETE /artworks/1
   # DELETE /artworks/1.json

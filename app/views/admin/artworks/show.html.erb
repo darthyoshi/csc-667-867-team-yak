@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+<h2>Admin. Show artwork</h2>
+
+<div style='float: left; margin-right: 20px'>
+<%= image_tag(@artwork.imagepath, :border=>0) %>
+</div>
+
+<p>
+  <strong>Category:</strong>
+  <%= @artwork.category %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @artwork.title %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= number_to_currency(@artwork.price) %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @artwork.quantity %>
+</p>
+
+<p>
+  <%= @artwork.description %>
+</p>
+
+<p><strong>Tags</strong></p>
+
+<% unless @my_arttags.nil? %>
+	<% @my_arttags.each do |arttag| %>
+		<%= label_tag 'arttag', arttag.tagname %>
+	<% end %>
+<% end %>
+
+<div style='clear:both'>  
+	
+	<% @myreviews.each do |review| %>
+		Stars: 
+		<%= showstars(review.stars) %><br>
+		On: 
+		<%= review.review_date.localtime.to_s(:long) %><br>
+		Reviewed by: 
+		<%= userfullnamebyid(review.user_id) %><br>
+		Review: 
+		<%= review.review_text %>
+	<% end %>
+	<br>
+	
+<%= link_to 'Edit', edit_admin_artwork_path(@artwork) %> |
+<%= link_to 'Artworks', admin_artworks_path %>
+</div>
+

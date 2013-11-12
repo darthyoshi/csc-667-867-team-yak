@@ -1,0 +1,57 @@
+<%= form_for(@ordereditem) do |f| %>
+  <% if @ordereditem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ordereditem.errors.count, "error") %> prohibited this ordereditem from being saved:</h2>
+
+      <ul>
+      <% @ordereditem.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :order_id %><br>
+    <%= f.number_field :order_id %>
+  </div>
+  <div class="field">
+    <%= f.label :sold_artwork_id %><br>
+    <%= f.number_field :sold_artwork_id %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :imagepath %><br>
+    <%= f.text_field :imagepath %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :seller_name %><br>
+    <%= f.text_field :seller_name %>
+  </div>
+  <div class="field">
+    <%= f.label :seller_email %><br>
+    <%= f.text_field :seller_email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

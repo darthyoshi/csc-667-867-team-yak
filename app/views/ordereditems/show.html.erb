@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @ordereditem.order_id %>
+</p>
+
+<p>
+  <strong>Sold artwork:</strong>
+  <%= @ordereditem.sold_artwork_id %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @ordereditem.quantity %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @ordereditem.price %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @ordereditem.category %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @ordereditem.title %>
+</p>
+
+<p>
+  <strong>Imagepath:</strong>
+  <%= @ordereditem.imagepath %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @ordereditem.description %>
+</p>
+
+<p>
+  <strong>Seller name:</strong>
+  <%= @ordereditem.seller_name %>
+</p>
+
+<p>
+  <strong>Seller email:</strong>
+  <%= @ordereditem.seller_email %>
+</p>
+
+<%= link_to 'Edit', edit_ordereditem_path(@ordereditem) %> |
+<%= link_to 'Back', ordereditems_path %>

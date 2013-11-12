@@ -1,18 +1,15 @@
-<p id="notice"><%= notice %></p>
-<h2>Admin. Show artwork</h2>
+<p>
+  <strong><%= @artwork.title %></strong>
+</p>
 
 <div style='float: left; margin-right: 20px'>
 <%= image_tag(@artwork.imagepath, :border=>0) %>
 </div>
 
 <p>
-  <strong>Category:</strong>
+  <strong>
   <%= @artwork.category %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @artwork.title %>
+</strong>
 </p>
 
 <p>
@@ -21,10 +18,8 @@
 </p>
 
 <p>
-  <strong>Quantity:</strong>
-  <%= @artwork.quantity %>
+  <strong>Only <%= @artwork.quantity %> available</strong>
 </p>
-
 <p>
   <%= @artwork.description %>
 </p>
@@ -38,7 +33,10 @@
 <% end %>
 
 <div style='clear:both'>
-<%= link_to 'Edit', edit_artwork_path(@artwork) %> |
-<%= link_to 'Artworks', artworks_path %>
+<%= link_to 'Back to Artworks', artworks_path %>
 </div>
+
+<%= button_to 'Add to Cart', shoppingcartitems_path(:shoppingcartitem => {:user_id => current_user.id, :artwork_id => @artwork.id, :quantity => 1}) %>
+
+
 
