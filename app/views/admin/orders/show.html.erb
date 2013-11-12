@@ -33,6 +33,10 @@
   <%= number_to_currency(@order.shipping_cost) %>
 </p>
 
+<% if @order.ordereditems.length == 0 %>
+<h3>Empty order</h3>
+<% else %>
+
 
 <table id="order-table" border="0">
   <thead>
@@ -59,6 +63,7 @@
     <tr><td colspan="4"></td></tr>
   </tbody>
 </table>
+<% end %>
 
 <%= link_to 'Edit', edit_admin_order_path(@order) %> |
 <%= link_to 'Orders', admin_orders_path %>
