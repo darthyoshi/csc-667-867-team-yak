@@ -7,8 +7,16 @@ class WelcomeController < ApplicationController
       @text = 'User is not sined in.'
     end
     
-    #@artworks = Artwork.all
     @artworks = Artwork.paginate(:page => params[:page], :per_page => 8)
+  end
+  
+  def about
+  end
+  
+  def contact
+  end
+  
+  def faq
   end
 
   #----------------------------------------------------------------------------  

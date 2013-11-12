@@ -2,13 +2,15 @@ Csc667867TeamYak::Application.routes.draw do
 
   root to: 'welcome#index', :as => 'welcome'
   get "/mycart" => "shoppingcartitems#mycart"
-  get "welcome/about"
   get "/account" => 'account#index'
   get "/search/(:page)" => 'results#search'
   get "/category/:cat/(:page)" => 'results#category'
-  get "/faq" => "faq#show"
-  get "/contact" => "contact#show"
-  get "/about" => "about#show"
+  #get "/faq" => "faq#show"
+  #get "/contact" => "contact#show"
+  #get "/about" => "about#show"
+  get "/about" => "welcome#about"
+  get "/contact" => "welcome#contact"
+  get "/faq" => "welcome#faq"
   get "/admin" => "admin#index"
   get "/yourshop" => "sellers#yourshop"
   get "/edityourshop" => "sellers#edityourshop"

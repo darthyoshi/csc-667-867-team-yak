@@ -61,7 +61,7 @@ end
 									<% seller = Seller.where(["user_id = ?", current_user.id]).first %>
 									<% if !seller.nil? %>
 										Hi, <%= userfullname(current_user) %> |
-	                  <%= link_to "Your Account", :controller => "/account" %> |
+	                  <%= link_to "Your Account", "/account" %> |
 	                  <%= link_to "Your Shop", "/yourshop" %> | 
 	                  <%= link_to "Cart", "/mycart" %> |
 	                  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
