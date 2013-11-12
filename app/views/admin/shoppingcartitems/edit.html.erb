@@ -14,14 +14,16 @@
     </div>
   <% end %>
 
+<div class="field">
+	<%= label_tag 'User info: ' %>
+	<%= text_field_tag 'username', userfullname(@shoppingcartitem.user), disabled: true %>
+	<%= text_field_tag 'useremail', @shoppingcartitem.user.email, disabled: true %>
+	
+</div>
   <div class="field">
     <%= f.label :artwork_id %>
     <%= f.number_field :artwork_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
-  </div>
+</div>
   <div class="field">
     <%= f.label :quantity %>
     <%= f.number_field :quantity %>

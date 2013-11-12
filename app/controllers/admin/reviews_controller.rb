@@ -12,7 +12,6 @@ class Admin::ReviewsController < ApplicationController
   # GET /reviews/1.json
   def show
     #we can get all information about review here
-    
   end
 
 #----------------------------------------------------------------------------

@@ -1,6 +1,36 @@
 <h2>Admin. Edit order</h2>
 
-<%= render 'form' %>
+<%= form_for([:admin, @order]) do |f| %>
+
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :order_date %>
+		<%= text_field_tag 'date', @order.order_date.localtime.to_s(:long), disabled: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :shipping_address %>
+    <%= f.text_field :shipping_address %>
+  </div>
+  <div class="field">
+    <%= f.label :shipping_cost %>
+    <%= f.text_field :shipping_cost %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'View', admin_order_path(@order) %> |
 <%= link_to 'Orders', admin_orders_path %>
