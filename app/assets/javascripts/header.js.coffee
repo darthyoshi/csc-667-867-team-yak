@@ -34,12 +34,13 @@ $(document).ready ->
     })
 
 #show modal window for registration
-$(document).on('click', '#register', ( ->
+$(document).on('click', '.register', ( ->
     $('#dialogue1').dialog('open')
     return false
 ));
 
 #show modal window for login
-$(document).on('click', '#signin', ( ->
+$(document).on('click', '.signin', ( ->
     $('#dialogue2').dialog('open')
+    return false
 ));
