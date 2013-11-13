@@ -1,20 +1,26 @@
 class WelcomeController < ApplicationController
   
   def index
-    # if user_signed_in?
+    if user_signed_in?
+      @text = 'User is signed in.'
+    else
+      @text = 'User is not sined in.'
+    end
     
-    #@artworks = Artwork.all
     @artworks = Artwork.paginate(:page => params[:page], :per_page => 8)
   end
-#----------------------------------------------------------------------------  
-  def show
-    @artwork = Artwork.find(params[:id])
+  
+  def about
   end
-#----------------------------------------------------------------------------  
-  def add_to_cart
+  
+  def contact
   end
-#----------------------------------------------------------------------------  
-  def show_cart
+  
+  def faq
   end
+
+  #----------------------------------------------------------------------------  
+  def about
+  end  
   
 end

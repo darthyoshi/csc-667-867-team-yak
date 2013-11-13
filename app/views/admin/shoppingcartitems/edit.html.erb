@@ -1,0 +1,37 @@
+<h2>Admin. Edit shoppingcartitem</h2>
+
+<%= form_for([:admin, @shoppingcartitem]) do |f| %>
+
+  <% if @shoppingcartitem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@shoppingcartitem.errors.count, "error") %> prohibited this shoppingcartitem from being saved:</h2>
+
+      <ul>
+      <% @shoppingcartitem.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="field">
+	<%= label_tag 'User info: ' %>
+	<%= text_field_tag 'username', userfullname(@shoppingcartitem.user), disabled: true %>
+	<%= text_field_tag 'useremail', @shoppingcartitem.user.email, disabled: true %>
+	
+</div>
+  <div class="field">
+    <%= f.label :artwork_id %>
+    <%= f.number_field :artwork_id %>
+</div>
+  <div class="field">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'View', admin_shoppingcartitem_path(@shoppingcartitem) %> |
+<%= link_to 'Shoppingcartitems', admin_shoppingcartitems_path %>

@@ -8,8 +8,18 @@ class Notification < ActionMailer::Base
   # You never call the Notification#welcome method directly. In fact, 
   # Notification#welcome is not even available, since it's an instance method, 
   # and you never instantiate a Notification object directly.
-  def new_review
+  
+  def new_review_posted(user, sent_at=Time.now)
+    @user = user
+    @subject = 'A Friendly Welcome'
+    @recipients = user.email
+    @from = 'admin@artsale.com'
+    @sent_on = sent_at
     @greeting = "Hi"
+    @body = {
+      :user => user,
+      :sent_on => sent_at
+    }
 
     mail to: "to@example.org"
   end
@@ -18,7 +28,7 @@ class Notification < ActionMailer::Base
   def welcome(user, sent_at=Time.now)
 	  @subject = 'A Friendly Welcome'
     @recipients = user.email
-    @from = 'admin@mysite.com'
+    @from = 'admin@artsale.com'
     @sent_on = sent_at
     # mailer views do not have access to the instance variables of the mailer. 
     # To set instance variables for mailers, you pass a hash of those variables 

@@ -1,0 +1,46 @@
+<h2>Admin. Editing review</h2>
+
+<%= form_for([:admin, @review]) do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :stars %>
+		<%= text_field_tag 'stars', @review.stars, disabled: true %>
+  </div>
+  <div class="field">
+		<%= label_tag 'User info: ' %>
+		<%= text_field_tag 'userid', @review.user.id, disabled: true %>
+		<%= text_field_tag 'username', userfullname(@review.user), disabled: true %>
+  </div>
+  <div class="field">
+		<%= label_tag 'Artwork info: ' %>
+		<%= text_field_tag 'artworkid', @review.artwork.id, disabled: true %>
+		<%= text_field_tag 'artworkcategory', @review.artwork.category, disabled: true %>
+		<%= text_field_tag 'artworktitle', @review.artwork.title, disabled: true %>
+		<%= text_field_tag 'artworkprice', number_to_currency(@review.artwork.price), disabled: true %>
+  </div>
+  <div class="field">
+    <%= f.label :review_text %>
+    <%= f.text_area :review_text %>
+  </div>
+  <div class="field">
+		<%= label_tag "Posted at:" %>
+		<%= text_field_tag 'date', @review.review_date.localtime.to_s(:long), disabled: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'View', admin_review_path(@review) %> |
+<%= link_to 'Reviews', admin_reviews_path %>

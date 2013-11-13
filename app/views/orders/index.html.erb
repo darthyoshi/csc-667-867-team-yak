@@ -1,4 +1,4 @@
-<h2>Admin. Orders</h2>
+<h2>My orders</h2>
 
 <table>
   <thead>
@@ -14,22 +14,18 @@
   </thead>
 
   <tbody>
-    <% @orders.each do |order| %>
+    <% @myorders.each do |order| %>
       <tr>
 	      <td><%= order.id %></td>
         <td> | <%= order.order_date.localtime.to_s(:long) %></td>
         <td> | <%= order.shipping_address %></td>
         <td> | <%= number_to_currency(order.shipping_cost) %></td>
-        <td><%= link_to 'Preview', order %> | </td>
-        <td><%= link_to 'Edit', edit_order_path(order) %> | </td>
-        <td><%= link_to 'Delete', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'See details', order_path(order) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'New Order', new_order_path %> | 
-<%= link_to 'Back to Admin', admin_path %>
+<%= link_to 'Your Account', account_path %><br>
+<%= link_to 'Browse Artworks', artworks_path %>
 

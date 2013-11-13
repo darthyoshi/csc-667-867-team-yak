@@ -29,7 +29,6 @@ class ArttagsController < ApplicationController
   # POST /arttags.json
   def create
     @arttag = Arttag.new(arttag_params)
-
     respond_to do |format|
       if @arttag.save
         format.html { redirect_to @arttag, notice: 'Arttag was successfully created.' }

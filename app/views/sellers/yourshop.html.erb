@@ -1,0 +1,70 @@
+<style>
+#cart-table td {
+	border-top: 1px solid #DDD;
+}
+#cart-table th {
+	font-size:11px;
+}
+#cart-table {
+	width:100%;
+}
+.cart-item-col {
+	width:70%;
+}
+</style>
+
+
+<p id="notice"><%= notice %></p>
+<h2>Your shop</h2>
+
+<p>
+  <strong>Displayed seller's name:</strong>
+  <%= @seller.displayed_name %>
+</p>
+<p>
+  <strong>User name:</strong>
+  <%= userfullname(@user) %>
+</p>
+<p>
+  <strong>Opened your shop at:</strong>
+  <%= @seller.seller_date.localtime.to_s(:long) %>
+</p>
+<p>
+<p>
+	<strong>Your description:</strong>
+  <%= @seller.seller_description %>
+</p>
+<p>
+  <strong>Your seller's email:</strong>
+  <%= @seller.seller_email %>
+</p>
+
+
+
+<table id="cart-table" border="0">
+  <thead>
+    <tr>
+      <th class="cart-item-col">Item</th>
+      <th class="cart-price-col">Price</th>
+      <th class="cart-quantity-col">Quantity</th>
+      <th class="cart-delete-col"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @artworks.each do |item| %>
+      <tr>
+        <td class="cart-item-col">
+				<%= item.title %><br>
+				<%= image_tag(item.imagepath, border:'0', height:'100', width:'100') %>
+				</td>
+        <td class="cart-price-col"><%= number_to_currency(item.price) %></td>
+        <td class="cart-quantity-col"><%= item.quantity %></td>
+      </tr>
+    <% end %>
+    <tr><td colspan="4"></td></tr>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Edit your shop', "/edityourshop" %>
+

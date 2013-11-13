@@ -1,40 +1,13 @@
 class ShoppingcartitemsController < ApplicationController
-  before_action :set_shoppingcartitem, only: [:show, :edit, :update, :destroy]
-
-  # GET /shoppingcartitems
-  # GET /shoppingcartitems.json
-  def index
-    @shoppingcartitems = Shoppingcartitem.all
-  end
-
+  before_action :set_shoppingcartitem, only: [:destroy]
+  
+#----------------------------------------------------------------------------
   # GET /mycart
   # GET /mycart.json
   def mycart
-    # This first line is more Ruby-like but is also more ambiguous than the
-    # explicit use of user_id (in the second line); it is also more database
-    # implementation specific
+    # Both ways work:
     #@myitems = Shoppingcartitem.where(user: current_user)
     @myitems = Shoppingcartitem.where(user_id: current_user.id)
-  end
-
-#----------------------------------------------------------------------------
-  # GET /shoppingcartitems/1
-  # GET /shoppingcartitems/1.json
-  def show
-    @shoppingcartitem = Shoppingcartitem.find(params[:id])
-    @user = User.find(@shoppingcartitem.user_id)
-    @artwork = Artwork.find(@shoppingcartitem.artwork_id)
-  end
-
-#----------------------------------------------------------------------------
-  # GET /shoppingcartitems/new
-  def new
-    @shoppingcartitem = Shoppingcartitem.new
-  end
-
-#----------------------------------------------------------------------------
-  # GET /shoppingcartitems/1/edit
-  def edit
   end
 
 #----------------------------------------------------------------------------
@@ -55,27 +28,12 @@ class ShoppingcartitemsController < ApplicationController
   end
 
 #----------------------------------------------------------------------------
-  # PATCH/PUT /shoppingcartitems/1
-  # PATCH/PUT /shoppingcartitems/1.json
-  def update
-    respond_to do |format|
-      if @shoppingcartitem.update(shoppingcartitem_params)
-        format.html { redirect_to @shoppingcartitem, notice: 'Shoppingcartitem was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @shoppingcartitem.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-#----------------------------------------------------------------------------
   # DELETE /shoppingcartitems/1
   # DELETE /shoppingcartitems/1.json
   def destroy
     @shoppingcartitem.destroy
     respond_to do |format|
-      format.html { redirect_to shoppingcartitems_url }
+      format.html { redirect_to '/mycart' }
       format.json { head :no_content }
     end
   end
@@ -90,6 +48,5 @@ class ShoppingcartitemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def shoppingcartitem_params
       params.require(:shoppingcartitem).permit(:artwork_id, :user_id, :quantity)
-      #params.require(:shoppingcartitem).permit( :quantity)
     end
 end

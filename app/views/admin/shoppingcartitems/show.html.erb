@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<h2>Admin. hoppingcartitem info</h2>
+
+<%= image_tag(@artwork.imagepath, :border=>0) %>
+<p>
+  <strong>Artwork id:</strong>
+  <%= @shoppingcartitem.artwork_id %>
+</p>
+<p>
+<strong>Artwork title:</strong>
+	<%= @artwork.title %>
+</p>
+
+<p>
+  <strong>User id:</strong>
+  <%= @shoppingcartitem.user_id %>
+</p>
+<p>
+	<strong>User name:</strong>
+	<%= userfullname(@user) %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @shoppingcartitem.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_admin_shoppingcartitem_path(@shoppingcartitem) %> |
+<%= link_to 'Shoppingcartitems', admin_shoppingcartitems_path %>
+
+
+

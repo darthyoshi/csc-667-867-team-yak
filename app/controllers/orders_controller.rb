@@ -1,17 +1,17 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show]
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @myorders = Order.where(user_id: current_user.id)
   end
 
 #----------------------------------------------------------------------------
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @order = Order.find(params[:id])
+    #@order = Order.find(params[:id]) #@order is already set up above
     @user = @order.user
   end
 
@@ -22,17 +22,32 @@ class OrdersController < ApplicationController
   end
 
 #----------------------------------------------------------------------------
-  # GET /orders/1/edit
-  def edit
-    @order = Order.find(params[:id])
-  end
-
-#----------------------------------------------------------------------------
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
-
+    @order = Order.new
+    @order.user_id = current_user.id
+    @order.order_date = Time.now
+    @order.shipping_address = current_user.shipping_address
+    
+    @order.save
+    items = Shoppingcartitem.where(user_id: current_user.id)
+    items.each do |item|
+      orditem = Ordereditem.new
+      aw = item.artwork
+      orditem.order_id = @order.id
+      orditem.sold_artwork_id = item.artwork_id
+      orditem.quantity = item.quantity
+      orditem.price = aw.price
+      orditem.category = aw.category
+      orditem.title = aw.title
+      orditem.imagepath = aw.imagepath
+      orditem.description = aw.description
+      orditem.seller_name = aw.seller.displayed_name
+      orditem.seller_email = aw.seller.seller_email
+      orditem.save
+    end
+    
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -41,34 +56,6 @@ class OrdersController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-#----------------------------------------------------------------------------
-  # PATCH/PUT /orders/1
-  # PATCH/PUT /orders/1.json
-  def update
-    @username = @order.user.firstname
-    
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-#----------------------------------------------------------------------------
-  # DELETE /orders/1
-  # DELETE /orders/1.json
-  def destroy
-    @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url }
-      format.json { head :no_content }
     end
   end
 

@@ -1,0 +1,45 @@
+<h1>My ordereditems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order</th>
+      <th>Sold artwork</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Title</th>
+      <th>Imagepath</th>
+      <th>Description</th>
+      <th>Seller name</th>
+      <th>Seller email</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ordereditems.each do |ordereditem| %>
+      <tr>
+        <td><%= ordereditem.order_id %></td>
+        <td><%= ordereditem.sold_artwork_id %></td>
+        <td><%= ordereditem.quantity %></td>
+        <td><%= ordereditem.price %></td>
+        <td><%= ordereditem.category %></td>
+        <td><%= ordereditem.title %></td>
+        <td><%= ordereditem.imagepath %></td>
+        <td><%= ordereditem.description %></td>
+        <td><%= ordereditem.seller_name %></td>
+        <td><%= ordereditem.seller_email %></td>
+        <td><%= link_to 'Show', ordereditem %></td>
+        <td><%= link_to 'Edit', edit_ordereditem_path(ordereditem) %></td>
+        <td><%= link_to 'Destroy', ordereditem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ordereditem', new_ordereditem_path %>

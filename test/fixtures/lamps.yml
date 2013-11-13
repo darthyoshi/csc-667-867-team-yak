@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  stars: 1
+  user_id: 1
+  artwork_id: 1
+  review_text: MyText
+  review_date: 2013-11-12 00:17:22
+
+two:
+  stars: 1
+  user_id: 1
+  artwork_id: 1
+  review_text: MyText
+  review_date: 2013-11-12 00:17:22
