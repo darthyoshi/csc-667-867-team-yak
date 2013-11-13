@@ -1,13 +1,13 @@
 class Artwork < ActiveRecord::Base
-  # Rails4 uses Strong Parameters,
-  # protecting attributes is now done in the Controller
-  # No need to set attr_accessible in the model anymore.
   
   has_and_belongs_to_many :arttags 
   belongs_to :seller
   #both lines are needed:
   has_many :reviews
   has_many :users, :through => :reviews
+
+  #the following line allows to using Artwork.find(id).reviewers
+  has_many  :reviewers, :through => :reviews, :source => :user
   
   #validates :title, :description, :imagepath, :quantity, :price, :category, :seller_id, :presence => true
   #validates :price, :numericality => {:greater_than_or_equal_to => 0.01}

@@ -19,12 +19,12 @@ Arttag.create!([
 
 
 Artwork.create!([
-  { :category => "painting", :title => "Abstract Painting 10", :price => 8025.0, :quantity => 3, :imagepath => "Paintings/Abstract/10.jpg", :description => "Wiry Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => 2 },
-  { :category => "painting", :title => "Abstract Painting 11", :price => 1235.0, :quantity => 2, :imagepath => "Paintings/Abstract/11.jpg", :description => "Subdued Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => 2 },
+  { :category => "painting", :title => "Abstract Painting 10", :price => 8025.0, :quantity => 3, :imagepath => "Paintings/Abstract/10.jpg", :description => "Wiry Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => 1 },
+  { :category => "painting", :title => "Abstract Painting 11", :price => 1235.0, :quantity => 2, :imagepath => "Paintings/Abstract/11.jpg", :description => "Subdued Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => 1 },
   { :category => "painting", :title => "Abstract Painting 12", :price => 614.0, :quantity => 3, :imagepath => "Paintings/Abstract/12.jpg", :description => "Mysterious Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => 2 },
-  { :category => "painting", :title => "Abstract Painting 13", :price => 4929.0, :quantity => 3, :imagepath => "Paintings/Abstract/13.jpg", :description => "Yielding Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => 3 },
-  { :category => "painting", :title => "Abstract Painting 14", :price => 193.0, :quantity => 3, :imagepath => "Paintings/Abstract/14.jpg", :description => "Nebulous Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => 3 },
-  { :category => "painting", :title => "Abstract Painting 16", :price => 2725.0, :quantity => 3, :imagepath => "Paintings/Abstract/16.jpg", :description => "Thick Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => nil },
+  { :category => "painting", :title => "Abstract Painting 13", :price => 4929.0, :quantity => 3, :imagepath => "Paintings/Abstract/13.jpg", :description => "Yielding Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => 2 },
+  { :category => "painting", :title => "Abstract Painting 14", :price => 193.0, :quantity => 3, :imagepath => "Paintings/Abstract/14.jpg", :description => "Nebulous Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => 2 },
+  { :category => "painting", :title => "Abstract Painting 16", :price => 2725.0, :quantity => 3, :imagepath => "Paintings/Abstract/16.jpg", :description => "Thick Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => 1 },
   { :category => "painting", :title => "Abstract Painting 17", :price => 7046.0, :quantity => 2, :imagepath => "Paintings/Abstract/17.jpg", :description => "Guiltless Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => nil },
   { :category => "painting", :title => "Abstract Painting 18", :price => 7346.0, :quantity => 3, :imagepath => "Paintings/Abstract/18.jpg", :description => "Cold Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => nil },
   { :category => "painting", :title => "Abstract Painting 19", :price => 7678.0, :quantity => 3, :imagepath => "Paintings/Abstract/19.jpg", :description => "Quaint Abstract Painting.", :created_at => nil, :updated_at => nil, :seller_id => nil },
@@ -796,25 +796,53 @@ Artwork.create!([
 
 
 Order.create!([
-  { :user_id => 1, :order_date => "2013-05-10 02:00:00", :shipping_address => "111 Main St, SF", :shipping_cost => 500.0, :created_at => "2013-11-08 04:49:00", :updated_at => "2013-11-08 04:49:00" },
-  { :user_id => 5, :order_date => "2013-03-01 06:45:00", :shipping_address => "123 Lincoln Av, Redwood city, CA 94061", :shipping_cost => 100.0, :created_at => "2013-11-08 04:51:03", :updated_at => "2013-11-08 04:51:03" },
-  { :user_id => 7, :order_date => "2013-08-20 02:30:00", :shipping_address => "345 Newland St, Apt 17, San Mateo, CA 94004", :shipping_cost => 550.0, :created_at => "2013-11-08 04:52:16", :updated_at => "2013-11-08 04:52:16" }
+  { :user_id => 1, :order_date => "2013-05-10 02:00:00", :shipping_address => "111 Main St, SF", :shipping_cost => 50.0, :created_at => "2013-11-08 04:49:00", :updated_at => "2013-11-10 04:07:45" },
+  { :user_id => 7, :order_date => "2013-08-20 02:30:00", :shipping_address => "345 Newland St, Apt 17, San Mateo, CA 94004", :shipping_cost => 550.0, :created_at => "2013-11-08 04:52:16", :updated_at => "2013-11-08 04:52:16" },
+  { :user_id => 1, :order_date => "2013-11-11 08:11:48", :shipping_address => nil, :shipping_cost => nil, :created_at => "2013-11-11 08:11:48", :updated_at => "2013-11-11 08:11:48" },
+  { :user_id => 6, :order_date => "2013-11-12 08:49:01", :shipping_address => nil, :shipping_cost => nil, :created_at => "2013-11-12 08:49:01", :updated_at => "2013-11-12 08:49:01" }
+])
+
+
+
+Ordereditem.create!([
+  { :order_id => 6, :sold_artwork_id => 264, :quantity => 1, :price => 8025.0, :category => "painting", :title => "Abstract Painting 10", :imagepath => "Paintings/Abstract/10.jpg", :description => "Wiry Abstract Painting.", :seller_name => "FoxArtist", :seller_email => "foxartist@fox.com", :created_at => "2013-11-11 08:11:48", :updated_at => "2013-11-11 08:11:48" },
+  { :order_id => 6, :sold_artwork_id => 264, :quantity => 1, :price => 8025.0, :category => "painting", :title => "Abstract Painting 10", :imagepath => "Paintings/Abstract/10.jpg", :description => "Wiry Abstract Painting.", :seller_name => "FoxArtist", :seller_email => "foxartist@fox.com", :created_at => "2013-11-11 08:11:48", :updated_at => "2013-11-11 08:11:48" },
+  { :order_id => 6, :sold_artwork_id => 265, :quantity => 1, :price => 1235.0, :category => "painting", :title => "Abstract Painting 11", :imagepath => "Paintings/Abstract/11.jpg", :description => "Subdued Abstract Painting.", :seller_name => "FoxArtist", :seller_email => "foxartist@fox.com", :created_at => "2013-11-11 08:11:48", :updated_at => "2013-11-11 08:11:48" },
+  { :order_id => 6, :sold_artwork_id => 266, :quantity => 1, :price => 614.0, :category => "painting", :title => "Abstract Painting 12", :imagepath => "Paintings/Abstract/12.jpg", :description => "Mysterious Abstract Painting.", :seller_name => "Tomas Arts", :seller_email => "ta@artshow.com", :created_at => "2013-11-11 08:11:48", :updated_at => "2013-11-11 08:11:48" },
+  { :order_id => 7, :sold_artwork_id => 264, :quantity => 1, :price => 8025.0, :category => "painting", :title => "Abstract Painting 10", :imagepath => "Paintings/Abstract/10.jpg", :description => "Wiry Abstract Painting.", :seller_name => "FoxArtist", :seller_email => "foxartist@fox.com", :created_at => "2013-11-12 08:49:02", :updated_at => "2013-11-12 08:49:02" }
 ])
 
 
 
 Review.create!([
-  { :stars => 3, :user_id => 1, :seller_id => 2, :review_text => "This s a test review for the artwork by seller #2.", :created_at => "2013-11-05 20:46:45", :updated_at => "2013-11-05 20:46:45", :review_date => nil },
-  { :stars => 5, :user_id => 2, :seller_id => 3, :review_text => "Review for the artwork created by the seller#3", :created_at => "2013-11-05 20:49:20", :updated_at => "2013-11-05 20:49:20", :review_date => nil }
+  { :stars => 3, :user_id => 1, :artwork_id => 264, :review_text => "This s a test review for the artwork by seller #2.", :created_at => "2013-11-05 20:46:45", :updated_at => "2013-11-05 20:46:45", :review_date => "2013-11-05 00:00:00" },
+  { :stars => 5, :user_id => 5, :artwork_id => 270, :review_text => "I really liked this piece of art.", :created_at => "2013-11-05 20:49:20", :updated_at => "2013-11-05 20:49:20", :review_date => "2013-11-05 00:00:00" },
+  { :stars => 4, :user_id => 1, :artwork_id => 266, :review_text => "Test review from me", :created_at => nil, :updated_at => nil, :review_date => "2013-11-11 00:00:00" }
+])
+
+
+
+Seller.create!([
+  { :user_id => 6, :seller_date => "2013-10-09 23:05:00", :displayed_name => "FoxArtist", :seller_description => "Some nice description for our first seller.", :seller_email => "foxartist@fox.com" },
+  { :user_id => 7, :seller_date => "2013-10-10 00:00:00", :displayed_name => "Tomas Arts", :seller_description => "Crazy artist on the go*", :seller_email => "ta@artshow.com" }
+])
+
+
+
+Shoppingcartitem.create!([
+  { :quantity => 1, :user_id => 6, :artwork_id => 264, :created_at => "2013-11-10 07:50:10", :updated_at => "2013-11-10 07:50:10" },
+  { :quantity => 1, :user_id => 1, :artwork_id => 428, :created_at => "2013-11-11 23:03:32", :updated_at => "2013-11-11 23:03:32" },
+  { :quantity => 1, :user_id => 1, :artwork_id => 318, :created_at => "2013-11-12 18:35:17", :updated_at => "2013-11-12 18:35:17" }
 ])
 
 
 
 User.create!([
-  { :email => "iouliab@ix.netcom.com", :encrypted_password => "$2a$10$8O6ql4JIWralWSHmTEeXP.BEhVaC34eQDRJpGd.XEpvkFoTYq4KvS", :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 12, :current_sign_in_at => "2013-11-08 04:55:03", :last_sign_in_at => "2013-10-27 04:02:56", :current_sign_in_ip => "127.0.0.1", :last_sign_in_ip => "127.0.0.1", :created_at => "2013-10-26 03:02:36", :updated_at => "2013-11-08 04:55:03", :firstname => "Yulia", :lastname => "Falls", :shipping_address => nil, :date_joined => nil },
+  { :email => "iouliab@ix.netcom.com", :encrypted_password => "$2a$10$8O6ql4JIWralWSHmTEeXP.BEhVaC34eQDRJpGd.XEpvkFoTYq4KvS", :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 18, :current_sign_in_at => "2013-11-12 18:34:22", :last_sign_in_at => "2013-11-12 09:31:13", :current_sign_in_ip => "127.0.0.1", :last_sign_in_ip => "127.0.0.1", :created_at => "2013-10-26 03:02:36", :updated_at => "2013-11-12 18:34:22", :firstname => "Yulia", :lastname => "Falls", :shipping_address => nil, :date_joined => nil },
   { :email => "inna@abc.com", :encrypted_password => "$2a$10$/t1/husuS8FWfrUmEpzmbeyEt0JDT5dWTlB1daUmhsvbZPQ9xKK.q", :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 1, :current_sign_in_at => "2013-11-08 04:58:00", :last_sign_in_at => "2013-11-08 04:58:00", :current_sign_in_ip => "127.0.0.1", :last_sign_in_ip => "127.0.0.1", :created_at => "2013-11-08 04:58:00", :updated_at => "2013-11-08 04:58:00", :firstname => "Inna", :lastname => "Belochapka", :shipping_address => nil, :date_joined => nil },
-  { :email => "fox@fox.com", :encrypted_password => "$2a$10$GwgunuLu4My9BNso.qChje77hlfu1KuALUvRpIdTes0LH319NVCTO", :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 1, :current_sign_in_at => "2013-11-08 04:59:01", :last_sign_in_at => "2013-11-08 04:59:01", :current_sign_in_ip => "127.0.0.1", :last_sign_in_ip => "127.0.0.1", :created_at => "2013-11-08 04:59:01", :updated_at => "2013-11-08 04:59:01", :firstname => "Antony", :lastname => "Fox", :shipping_address => nil, :date_joined => nil },
-  { :email => "tom@tom.com", :encrypted_password => "$2a$10$kbBdi.lg3hpYzKujZWGybewZEy846DHYYvHbG25sbKNMasBtczGNO", :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 1, :current_sign_in_at => "2013-11-08 05:00:08", :last_sign_in_at => "2013-11-08 05:00:08", :current_sign_in_ip => "127.0.0.1", :last_sign_in_ip => "127.0.0.1", :created_at => "2013-11-08 05:00:08", :updated_at => "2013-11-08 05:00:08", :firstname => "Tomas", :lastname => "Linn", :shipping_address => nil, :date_joined => nil }
+  { :email => "fox@fox.com", :encrypted_password => "$2a$10$GwgunuLu4My9BNso.qChje77hlfu1KuALUvRpIdTes0LH319NVCTO", :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 4, :current_sign_in_at => "2013-11-12 06:30:33", :last_sign_in_at => "2013-11-12 06:24:58", :current_sign_in_ip => "127.0.0.1", :last_sign_in_ip => "127.0.0.1", :created_at => "2013-11-08 04:59:01", :updated_at => "2013-11-12 06:30:33", :firstname => "Antony", :lastname => "Fox", :shipping_address => nil, :date_joined => nil },
+  { :email => "tom@tom.com", :encrypted_password => "$2a$10$kbBdi.lg3hpYzKujZWGybewZEy846DHYYvHbG25sbKNMasBtczGNO", :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 1, :current_sign_in_at => "2013-11-08 05:00:08", :last_sign_in_at => "2013-11-08 05:00:08", :current_sign_in_ip => "127.0.0.1", :last_sign_in_ip => "127.0.0.1", :created_at => "2013-11-08 05:00:08", :updated_at => "2013-11-08 05:00:08", :firstname => "Tomas", :lastname => "Linn", :shipping_address => nil, :date_joined => nil },
+  { :email => "33@blob.com", :encrypted_password => "$2a$10$Y9dswT6fWgrjwIrHjhm9fe1UbsnmCx2twx6BhpwnAJtTFTwI9Pibm", :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 1, :current_sign_in_at => "2013-11-12 23:18:25", :last_sign_in_at => "2013-11-12 23:18:25", :current_sign_in_ip => "127.0.0.1", :last_sign_in_ip => "127.0.0.1", :created_at => "2013-11-12 23:18:24", :updated_at => "2013-11-12 23:18:25", :firstname => "(Lenin#*)", :lastname => "Ulyanov", :shipping_address => nil, :date_joined => nil }
 ])
 
 
