@@ -8,8 +8,8 @@
 
 .listing img {
     border: solid black 1px;
-    width: 150px;
-    height: 100px;
+    max-width: 150px;
+    min-height: 100px;
     background: white;
     float: left;
     margin-right: 1em;
@@ -19,4 +19,9 @@
 html, hr {
     clear: both;;
     border-bottom-color: black;
+}
+
+.pagination {
+    text-align: center;
+    margin: 10px 0;
 }
