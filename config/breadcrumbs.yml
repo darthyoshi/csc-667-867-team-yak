@@ -7,3 +7,6 @@ show:
 artworks:
   url: "/artworks"
   description: "Browse Artworks"
+cart:
+  url: "/yourcart"
+  description: "Your Cart"
