@@ -11,7 +11,7 @@ end
 
 unless found
   CATEGORIES.each do |cat,details|
-    if details['url'] == request.fullpath
+    if request.fullpath.include? details['url']
       desc = details['description']
       title = "Browse by category: " + desc
       found = true
@@ -22,7 +22,7 @@ end
 
 unless found
   FOOTER.each do |cat,details|
-    if details['url'] == request.fullpath
+    if request.fullpath.include? details['url']
       title = details['description']
       desc = title
       found = true
@@ -33,7 +33,7 @@ end
 
 unless found
   BREADCRUMBS.each do |cat,details|
-    if request.fullpath.include? details['url'] 
+    if request.fullpath.include? details['url']
       title = details['description']
       desc = title
       found = true
@@ -59,32 +59,28 @@ end
 
             <div id="user_nav" style='float: right'>
                 <% if user_signed_in? %>
-									<% seller = Seller.where(["user_id = ?", current_user.id]).first %>
-
-									<% if current_user.admin? %>
-									<%= link_to "Manage Accounts", "/admin" %>
-									<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-									
-									<% elsif !seller.nil? %>
-										Hi, <%= link_to userfullname(current_user), "/account" %> |
-	                  <%= link_to "Your Shop", "/yourshop" %> | 
-	                  <%= link_to "Cart", "/yourcart" %> |
-	                  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-	
-									<% elsif %>
-										Hi, <%= link_to userfullname(current_user), "/account" %> |
-					          <%= link_to "Open Shop", "/openshop" %> |
-					          <%= link_to "Cart", "/yourcart" %> |
-					          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-					 				<% end %>
-					
+                    <%= render 'session/logoutform' %>
                 <% else %>
-                    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
-               
- 								<% end %>
+                    <button class='signin'>
+                        Sign in
+                    </button>
 
-							
-									
+                    <br>
+
+                    <a class='register' href=''>
+                        Sign up
+                    </a>
+
+<!--registration modal window-->
+<div id='dialogue1' title='Register'>
+    <%= render 'session/registerform' %>
+</div>
+
+<!--login modal window-->
+<div id='dialogue2' title='Sign in'>
+    <%= render 'session/loginform' %>
+</div>
+                <% end %>
             </div>
 
             <div style='text-align: center'>

@@ -28,6 +28,8 @@ gem 'therubyracer', platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+gem 'jquery-ui-rails'
+
 # Development/Production parity when delivering assets
 gem 'rails_12factor', group: :production
 

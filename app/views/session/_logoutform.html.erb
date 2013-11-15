@@ -1,0 +1,15 @@
+<!-- This form assumes the user is signed in -->
+<% if current_user.admin? %>
+	<%= link_to "Manage Accounts", "/admin" %>
+<% else %>
+Hi, <%= link_to userfullname(current_user), "/account" %>
+<br />
+	<% seller = Seller.where(["user_id = ?", current_user.id]).first %>
+	<% if !seller.nil? %>
+    	<%= link_to "Your Shop", "/yourshop" %> |
+	<% else %>
+		<%= link_to "Open Shop", "/openshop" %> |	
+	<% end %>
+  <%= link_to "Cart", "/yourcart" %> |
+<% end %>
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>

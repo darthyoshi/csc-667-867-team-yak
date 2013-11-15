@@ -16,6 +16,31 @@ $(document).on('blur', '#search', ( ->
         $('#search').addClass("blank")
 ));
 
-$(document).on('click', '.disabled, .active', ( ->
+#hides modal windows
+$(document).ready ->
+    $('#dialogue1').dialog({
+        autoOpen: false;
+        closeOnEscape: true;
+        draggable: false;
+        modal: true;
+        resizable: false;
+    })
+    $('#dialogue2').dialog({
+        autoOpen: false;
+        closeOnEscape: true;
+        draggable: false;
+        modal: true;
+        resizable: false;
+    })
+
+#show modal window for registration
+$(document).on('click', '.register', ( ->
+    $('#dialogue1').dialog('open')
+    return false
+));
+
+#show modal window for login
+$(document).on('click', '.signin', ( ->
+    $('#dialogue2').dialog('open')
     return false
 ));

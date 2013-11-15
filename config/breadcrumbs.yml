@@ -4,3 +4,6 @@ search:
 show:
   url: "/show"
   description: "Viewing Item"
+artworks:
+  url: "/artworks"
+  description: "Browse Artworks"

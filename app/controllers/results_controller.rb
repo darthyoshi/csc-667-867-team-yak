@@ -19,7 +19,7 @@ class ResultsController < ApplicationController
     page = if params[:page].nil? then 1 else params[:page] end
     @artworks = Artwork.where("category = ?", params[:cat]).paginate(:page => page, :per_page => 10)
     CATEGORIES.each do |cat,details|
-      if details['url'] == request.fullpath
+      if request.fullpath.include? details['url']
         @title = details['description']
         break
       end

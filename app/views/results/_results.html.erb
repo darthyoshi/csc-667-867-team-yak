@@ -1,11 +1,14 @@
+<%= will_paginate @artworks %>
+
 <hr>
+
 <% @artworks.each do |artwork| %>
 <div class='listing'>
-    <img src=<%= artwork.imagepath %>>
+    <%= link_to image_tag(artwork.imagepath), {:controller => 'artworks', :action => 'show', :id => artwork.id} %>
 
-    <div><a href='#'>
-            <%= artwork.title %>
-    </a></div>
+    <div>
+        <%= link_to artwork.title,{:controller => 'artworks', :action => 'show', :id => artwork.id} %>
+    </div>
 
     <p>
         Quantity available: <%= artwork.quantity %>
