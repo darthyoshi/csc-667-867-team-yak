@@ -18,16 +18,13 @@
 <h2>Admin. View order info</h2>
 <p>
   <strong>Order date:</strong>
-  <%= @order.order_date.localtime.to_s(:long) %>
+  <%= @order.order_date.localtime.to_s(:short) %>
 </p>
 <p>
 	<strong>User name:</strong>
   <%= userfullname(@user) %>
 </p>
-<p>
-  <strong>Shipping address:</strong>
-  <%= @order.shipping_address %>
-</p>
+
 <p>
   <strong>Shipping cost:</strong>
   <%= number_to_currency(@order.shipping_cost) %>

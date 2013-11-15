@@ -2,11 +2,9 @@ class ShoppingcartitemsController < ApplicationController
   before_action :set_shoppingcartitem, only: [:destroy]
   
 #----------------------------------------------------------------------------
-  # GET /mycart
-  # GET /mycart.json
-  def mycart
-    # Both ways work:
-    #@myitems = Shoppingcartitem.where(user: current_user)
+  # GET /yourcart
+  # GET /yourcart.json
+  def yourcart
     @myitems = Shoppingcartitem.where(user_id: current_user.id)
   end
 
@@ -18,7 +16,7 @@ class ShoppingcartitemsController < ApplicationController
 
     respond_to do |format|
       if @shoppingcartitem.save
-        format.html { redirect_to '/mycart' }
+        format.html { redirect_to '/yourcart' }
         format.json { render action: 'show', status: :created, location: @shoppingcartitem }
       else
         format.html { render action: 'new' }
@@ -33,7 +31,7 @@ class ShoppingcartitemsController < ApplicationController
   def destroy
     @shoppingcartitem.destroy
     respond_to do |format|
-      format.html { redirect_to '/mycart' }
+      format.html { redirect_to '/yourcart' }
       format.json { head :no_content }
     end
   end

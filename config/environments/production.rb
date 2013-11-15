@@ -7,7 +7,7 @@ Csc667867TeamYak::Application.configure do
   
   
   #for Devise :host should be set to the actual host of your application
-  #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'artsale.herokuapp.com' }
 
 
 

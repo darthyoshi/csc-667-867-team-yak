@@ -1,13 +1,28 @@
 class Artwork < ActiveRecord::Base
   
-  has_and_belongs_to_many :arttags 
+  has_many :taggings
+  has_many :arttags, :through => :taggings
+  
   belongs_to :seller
-  #both lines are needed:
+
   has_many :reviews
   has_many :users, :through => :reviews
 
   #the following line allows to using Artwork.find(id).reviewers
   has_many  :reviewers, :through => :reviews, :source => :user
+  
+  # to make this work: Artwork.paint.count
+  scope :paint, -> { where(category: 'painting') }
+  scope :sculpt, -> { where(category: 'sculpture') }
+  
+  # to make this work: Artwork.available.count
+  scope :available, -> { where("quantity > 0") }
+  
+  # to make this work: Artwork.created_before(Time.zone.now)
+  def self.created_before(time)
+      where("created_at < ?", time)
+  end
+
   
   #validates :title, :description, :imagepath, :quantity, :price, :category, :seller_id, :presence => true
   #validates :price, :numericality => {:greater_than_or_equal_to => 0.01}

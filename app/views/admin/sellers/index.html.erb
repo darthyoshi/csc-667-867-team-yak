@@ -16,7 +16,7 @@
   <tbody>
     <% @sellers.each do |seller| %>
       <tr>
-        <td><%= seller.seller_date.localtime.to_s(:long) %></td>
+        <td><%= seller.seller_date.localtime.to_s(:short) %></td>
 
         <td><%= seller.displayed_name %></td>
         <td><%= seller.seller_description %></td>

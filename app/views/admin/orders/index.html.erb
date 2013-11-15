@@ -5,7 +5,6 @@
     <tr>
 			<th>Order id</th>
       <th>Order date</th>
-      <th>Shipping address</th>
       <th>Shipping cost</th>
       <th></th>
       <th></th>
@@ -17,8 +16,7 @@
     <% @orders.each do |order| %>
       <tr>
 	      <td><%= order.id %></td>
-        <td> | <%= order.order_date.localtime.to_s(:long) %></td>
-        <td> | <%= order.shipping_address %></td>
+        <td> | <%= order.order_date.localtime.to_s(:short) %></td>
         <td> | <%= number_to_currency(order.shipping_cost) %></td>
         <td><%= link_to 'View', admin_order_path(order) %> | </td>
         <td><%= link_to 'Edit', edit_admin_order_path(order) %> | </td>

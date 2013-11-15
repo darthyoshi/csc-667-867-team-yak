@@ -42,6 +42,7 @@ unless found
   end
 end
 %>
+
 <html>
 <head>
   <title><%= title %></title>
@@ -59,22 +60,31 @@ end
             <div id="user_nav" style='float: right'>
                 <% if user_signed_in? %>
 									<% seller = Seller.where(["user_id = ?", current_user.id]).first %>
-									<% if !seller.nil? %>
-										Hi, <%= userfullname(current_user) %> |
-	                  <%= link_to "Your Account", "/account" %> |
+
+									<% if current_user.admin? %>
+									<%= link_to "Manage Accounts", "/admin" %>
+									<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+									
+									<% elsif !seller.nil? %>
+										Hi, <%= link_to userfullname(current_user), "/account" %> |
 	                  <%= link_to "Your Shop", "/yourshop" %> | 
-	                  <%= link_to "Cart", "/mycart" %> |
+	                  <%= link_to "Cart", "/yourcart" %> |
 	                  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-									<% else %>
-		                Hi, <%= userfullname(current_user) %> |
-					          <%= link_to "Your Account", :controller => "/account" %> |
-					          Open Shop |
-					          <%= link_to "Cart", "/mycart" %> |
+	
+									<% elsif %>
+										Hi, <%= link_to userfullname(current_user), "/account" %> |
+					          <%= link_to "Open Shop", "/openshop" %> |
+					          <%= link_to "Cart", "/yourcart" %> |
 					          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 					 				<% end %>
+					
                 <% else %>
                     <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
-                <% end %>
+               
+ 								<% end %>
+
+							
+									
             </div>
 
             <div style='text-align: center'>
@@ -86,6 +96,11 @@ end
         </div>
     </header>
 
+		<div>				
+    <p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+		</div>
+		
     <div class='container-fluid'>
         <div class="sidebar panel panel-default">
             <div class="panel-heading">
@@ -104,7 +119,6 @@ end
                 </list>
             </div>
         </div>
-
         <div class='content'>
                 <ol class='breadcrumb'>
                 <% if title == "ArtSale Home" %>
@@ -121,11 +135,11 @@ end
                     </li>
                 <% end %>
                 </ol>
+	            </div>
 
             <div class='hero-unit'>
 
                 <%= yield %>
-            </div>
         </div>
     </div>
 

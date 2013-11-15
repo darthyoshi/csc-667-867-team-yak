@@ -1,3 +1,4 @@
 class Arttag < ActiveRecord::Base
-  has_and_belongs_to_many :artworks
+  has_many :taggings
+  has_many :artworks, :through => :taggings
 end

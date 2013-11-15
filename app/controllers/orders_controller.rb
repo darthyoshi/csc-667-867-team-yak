@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show]
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @order.ordereditems.build
   end
 
 #----------------------------------------------------------------------------
@@ -28,7 +29,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.user_id = current_user.id
     @order.order_date = Time.now
-    @order.shipping_address = current_user.shipping_address
+    @shipping_address = current_user.shipping_address #just for display
     
     @order.save
     items = Shoppingcartitem.where(user_id: current_user.id)
@@ -58,7 +59,33 @@ class OrdersController < ApplicationController
       end
     end
   end
+ 
+  #----------------------------------------------------------------------------
+  # PATCH/PUT /orders/1
+  # PATCH/PUT /orders/1.json
+  def update
+    #@username = @order.user.firstname
 
+    respond_to do |format|
+      if @order.update(order_params)
+        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+  end  
+#----------------------------------------------------------------------------
+  # DELETE /orders/1
+  # DELETE /orders/1.json
+  def destroy
+    @order.destroy
+    respond_to do |format|
+      format.html { redirect_to orders_url }
+      format.json { head :no_content }
+    end
+  end
 #----------------------------------------------------------------------------
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -68,6 +95,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:order_date, :shipping_address, :shipping_cost)
+      params.require(:order).permit(:id, :order_date, :shipping_cost, ordereditems_attributes: [:id, :order_id, :sold_artwork_id, :quantity, :price, :category, :title, :imagepath, :description, :seller_name, :seller_email])
     end
 end

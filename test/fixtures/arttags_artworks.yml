@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  artwork_id: 1
+  arttag_id: 1
+
+two:
+  artwork_id: 1
+  arttag_id: 1

@@ -1,5 +1,6 @@
 <h2>Admin. Edit order</h2>
 
+
 <%= form_for([:admin, @order]) do |f| %>
 
   <% if @order.errors.any? %>
@@ -16,7 +17,7 @@
 
   <div class="field">
     <%= f.label :order_date %>
-		<%= text_field_tag 'date', @order.order_date.localtime.to_s(:long), disabled: true %>
+		<%= text_field_tag 'date', @order.order_date.localtime.to_s(:short), disabled: true %>
   </div>
 
   <div class="field">

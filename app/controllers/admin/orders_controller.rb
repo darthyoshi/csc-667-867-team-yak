@@ -53,7 +53,7 @@ class Admin::OrdersController < ApplicationController
     
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to admin_order_url, notice: 'Order was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -68,7 +68,7 @@ class Admin::OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url }
+      format.html { redirect_to admin_orders_url }
       format.json { head :no_content }
     end
   end
@@ -82,6 +82,6 @@ class Admin::OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:order_date, :shipping_address, :shipping_cost)
+      params.require(:order).permit(:user_id, :order_date, :shipping_cost)
     end
 end

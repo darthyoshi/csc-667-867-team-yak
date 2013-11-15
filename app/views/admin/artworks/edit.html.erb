@@ -15,58 +15,62 @@
 }
 </style>
 
-<%= form_for(@artwork) do |f| %>
+
+
+<%= form_for [:admin, @artwork], :url => admin_artwork_path do |f| %>
+
 <table id="threeColumnTable" border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td id="lcol">
-			<div class="field">
-		    <%= f.label :category %>		
-				<%= select("artwork", "category", artwork_categories) %>
-		  </div>
-		  <div class="field">
-		    <%= f.label :title %>
-		    <%= f.text_field :title %>
-		  </div>
-		  <div class="field">
-		    <%= f.label :price %>
-		    <%= f.text_field :price %>
-		  </div>
-		  <div class="field">
-		    <%= f.label :quantity %>
-		    <%= f.number_field :quantity %>
-		  </div>
-		</td>
+        <tr>
+           <td id="lcol">
+                 <div class="field">
+             <%= f.label :category %>                
+                <%= select("artwork", "category", artwork_categories) %>
+           </div>
+           <div class="field">
+             <%= f.label :title %>
+             <%= f.text_field :title %>
+           </div>
+           <div class="field">
+             <%= f.label :price %>
+             <%= f.text_field :price %>
+           </div>
+           <div class="field">
+             <%= f.label :quantity %>
+             <%= f.number_field :quantity %>
+           </div>
+         </td>
 
-		<td id="mcol">
-			<div class="field">
-				<p><label for="artwork_arttag">List of tags:</label><br>		
-				<% @all_arttags.each do |arttag| %>
-					<%= check_box_tag('arttag_list[]', arttag.id, @artwork.arttags.collect { |obj| obj.id}.include?(arttag.id)) %><%= arttag.tagname %><br>
-				<% end %>
-				</p>
-			</div>
-		</td>
+         <td id="mcol">
+            <div class="field">
+               <p><label for="artwork_arttag">List of tags:</label><br>                
+               <% @all_arttags.each do |arttag| %>
+                <%= check_box_tag('arttag_list[]', arttag.id, @artwork.arttags.collect { |obj| obj.id}.include?(arttag.id)) %>
+								<%= arttag.tagname %><br>
+               <% end %>
+               </p>
+            </div>
+         </td>
 
-		<td id="rcol">
-			<%= image_tag(@artwork.imagepath, :border=>0) %>
-		  <div class="field">
-		    <%= f.label :imagepath %>
-		    <%= f.text_field :imagepath %>
-		  </div>
-		  <div class="field">
-		    <%= f.label :description %>
-		    <%= f.text_area :description %>
-		  </div>
-		</td>
-	</tr>
+        <td id="rcol">
+          <%= image_tag(@artwork.imagepath, :border=>0) %>
+          <div class="field">
+            <%= f.label :imagepath %>
+            <%= f.text_field :imagepath %>
+          </div>
+          <div class="field">
+            <%= f.label :description %>
+            <%= f.text_area :description %>
+          </div>
+        </td>
+    </tr>
 
-	<tr>
-		<td colspan="3">
-		  <div class="actions">
-		    <%= f.submit %><br/>
-		  </div>
-		</td>
-	</tr>
+    <tr>
+            <td colspan="3">
+              <div class="actions">
+                <%= f.submit %><br/>
+              </div>
+            </td>
+    </tr>
 </table>
 
 <%= link_to 'Preview', admin_artwork_path(@artwork) %> |

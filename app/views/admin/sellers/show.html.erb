@@ -18,7 +18,7 @@
 <h2>Admin. View seller info</h2>
 
 <p>
-  <strong>Opened shop at:</strong>
+  <strong>Opened at:</strong>
   <%= @seller.seller_date.localtime.to_s(:long) %>
 </p>
 <p>
@@ -73,7 +73,7 @@
 	Stars: 
 	<%= showstars(review.stars) %><br>
 	On: 
-	<%= review.review_date.localtime.to_s(:long) %><br>
+	<%= review.review_date.localtime.to_s(:short) %><br>
 	Reviewed by: 
 	<%= userfullnamebyid(review.user_id) %><br>
 	Review: 

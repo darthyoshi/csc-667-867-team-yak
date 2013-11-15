@@ -1,7 +1,7 @@
 Csc667867TeamYak::Application.routes.draw do
 
   root to: 'welcome#index', :as => 'welcome'
-  get "/mycart" => "shoppingcartitems#mycart"
+  get "/yourcart" => "shoppingcartitems#yourcart"
   get "/account" => 'account#index'
   get "/search/(:page)" => 'results#search'
   get "/category/:cat/(:page)" => 'results#category'
@@ -10,12 +10,16 @@ Csc667867TeamYak::Application.routes.draw do
   get "/faq" => "welcome#faq"
   get "/admin" => "admin#index"
   get "/yourshop" => "sellers#yourshop"
+  get "/openshop" => "sellers#openshop"
   get "/edityourshop" => "sellers#edityourshop"
+  get "/admin/users" => "admin#listusers"
+
+# 7 resources: index, show, new, create, edit, update, destroy
   devise_for :users  
   resources :artworks
-  resources :arttag
+  resources :arttags
   resources :shoppingcartitems
-  resources :ordereditems
+  resources :ordereditems # remove when done?
   
   # nested resources
   resources :orders do

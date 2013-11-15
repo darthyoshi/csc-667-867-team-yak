@@ -4,8 +4,6 @@ class Admin::ArtworksController < ApplicationController
   # GET /artworks
   # GET /artworks.json
   def index
-    #@artworks = Artwork.all
-    
     @artworks = Artwork.paginate(:page => params[:page], :per_page => 50)
   end
 #----------------------------------------------------------------------------
@@ -14,7 +12,7 @@ class Admin::ArtworksController < ApplicationController
   def show
     @artwork = Artwork.find(params[:id])
     @my_arttags = @artwork.arttags
-    
+    # do I need that?
     @myreviews = @artwork.reviews
   end
 #----------------------------------------------------------------------------
@@ -76,7 +74,7 @@ class Admin::ArtworksController < ApplicationController
     
     respond_to do |format|
       if @artwork.update(artwork_params)
-        format.html { redirect_to @artwork, notice: 'Artwork was successfully updated.' }
+        format.html { redirect_to admin_artwork_url, notice: 'Artwork was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

@@ -38,8 +38,10 @@
   </div>
 
 	<div class="field">
-		<p><label for="artwork_arttag">List of tags:</label><br>		
-		<% @all_arttags.each do |arttag| %>
+		
+		<p><label for="artwork_arttag">List of tags:</label><br>
+			
+			<%= f.fields_for(:arttags) do |arttag| %>
 			<%= check_box_tag('arttag_list[]', arttag.id, @artwork.arttags.collect { |obj| obj.id}.include?(arttag.id)) %><%= arttag.tagname %><br>
 		<% end %>
 		</p>

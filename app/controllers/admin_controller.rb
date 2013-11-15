@@ -4,4 +4,8 @@ class AdminController < ApplicationController
     # we need this controller because we have admin menu
   end
   
+  def listusers
+    @users = User.all
+  end
+  
 end

@@ -1,11 +1,11 @@
 <h2>Admin. All artworks</h2>
 
-<%= link_to 'New Artwork', new_admin_artwork_path %>
-<div style='float:right'><%= link_to 'Back to Admin', admin_path %></div>
+<div style='float:left'><%= link_to 'Back to Admin', admin_path %></div>
 
 <table class='table'>
   <thead>
     <tr>
+			<th>ID</th>
       <th>Category</th>
       <th>Title</th>
       <th>Price</th>
@@ -20,6 +20,7 @@
   <tbody>
     <% @artworks.each do |artwork| %>
       <tr>
+				<td><%= artwork.id %></td>
         <td><%= artwork.category %></td>
         <td><%= artwork.title %></td>
         <td><%= number_to_currency(artwork.price) %></td>
@@ -27,14 +28,12 @@
         <td><%= artwork.description %></td>
         <td><%= link_to 'Preview', admin_artwork_path(artwork) %></td>
         <td><%= link_to 'Edit', edit_admin_artwork_path(artwork) %></td>
-        <td><%= link_to 'Delete', admin_artwork_path(artwork), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>            
-<%= link_to 'New Artwork', new_admin_artwork_path %>
-<div style='float:right'>
+<div style='float:left'>
 <%= link_to 'Back to Admin', admin_path %>
 </div>
 <%= will_paginate @artworks %>

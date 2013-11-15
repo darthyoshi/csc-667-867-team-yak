@@ -54,7 +54,7 @@ class Admin::SellersController < ApplicationController
   def update
     respond_to do |format|
       if @seller.update(seller_params)
-        format.html { redirect_to @seller, notice: 'Seller was successfully updated.' }
+        format.html { redirect_to admin_seller_url, notice: 'Seller was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

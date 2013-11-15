@@ -17,6 +17,11 @@ class SellersController < ApplicationController
   end
 
 #----------------------------------------------------------------------------
+  def openshop
+    #this will call create seller 
+  end
+
+#----------------------------------------------------------------------------
   # POST /sellers
   # POST /sellers.json
   def create

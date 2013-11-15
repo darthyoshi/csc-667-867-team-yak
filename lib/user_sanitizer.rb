@@ -8,4 +8,7 @@ class User::ParameterSanitizer < Devise::ParameterSanitizer
         default_params.permit(:firstname, :lastname, :email, :password, :password_confirmation, :current_password, :remember_me)
     end
     
+    def sign_in
+      default_params.permit(:name, :email, :password, :remember_me)
+    end
 end

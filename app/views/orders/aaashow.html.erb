@@ -1,4 +1,3 @@
-
 <p id="notice"><%= notice %></p>
 
 <style>
@@ -16,25 +15,20 @@
 }
 </style>
 
-<h2>Your Order Info</h2>
-
+<h2>Order info</h2>
 <p>
   <strong>Order date:</strong>
-  <%= @order.order_date.localtime.to_s(:long) %>
+  <%= @order.order_date.localtime.to_s(:short) %>
 </p>
 <p>
 	<strong>User name:</strong>
   <%= userfullname(@user) %>
 </p>
-
+<p>
 <p>
   <strong>Shipping cost:</strong>
   <%= number_to_currency(@order.shipping_cost) %>
 </p>
-
-<% if @order.ordereditems.length == 0 %>
-<h3>Empty orders should not be displayed</h3>
-<% else %>
 
 
 <table id="order-table" border="0">
@@ -61,6 +55,6 @@
     <tr><td colspan="4"></td></tr>
   </tbody>
 </table>
-<% end %>
 
 <%= link_to 'My Orders', orders_path %>
+
