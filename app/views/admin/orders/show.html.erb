@@ -54,7 +54,6 @@
 				</td>
         <td class="order-price-col"><%= number_to_currency(item.price) %></td>
         <td class="order-quantity-col"><%= item.quantity %></td>
-        <td class="order-delete-col"><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     <tr><td colspan="4"></td></tr>

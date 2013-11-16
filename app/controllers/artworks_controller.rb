@@ -5,7 +5,8 @@ class ArtworksController < ApplicationController
   # GET /artworks
   # GET /artworks.json
   def index
-    @artworks = Artwork.paginate(:page => params[:page], :per_page => 50)
+    # don't show artworks whose quantity is 0, scope in artwork model
+    @artworks = Artwork.available.paginate(:page => params[:page], :per_page => 10)
   end
 #----------------------------------------------------------------------------
   # GET /artworks/1
@@ -13,7 +14,7 @@ class ArtworksController < ApplicationController
   def show
     #@artwork = Artwork.find(params[:id]) #@artwork variable is set up above
     @my_arttags = @artwork.arttags
-  end
+  end  
   
 #----------------------------------------------------------------------------
   # POST /artworks

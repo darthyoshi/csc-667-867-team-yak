@@ -61,7 +61,7 @@ class Admin::ShoppingcartitemsController < ApplicationController
   def destroy
     @shoppingcartitem.destroy
     respond_to do |format|
-      format.html { redirect_to shoppingcartitems_url }
+      format.html { redirect_to admin_shoppingcartitems_url }
       format.json { head :no_content }
     end
   end

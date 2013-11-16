@@ -4,6 +4,10 @@
 #cart-table td {
 	border-top: 1px solid #DDD;
 }
+#not-available {
+	color:blue;
+}
+
 #cart-table th {
 	font-size:11px;
 }
@@ -21,6 +25,7 @@
       <th class="cart-item-col">Item</th>
       <th class="cart-price-col">Price</th>
       <th class="cart-quantity-col">Quantity</th>
+			<th class="cart-availability-col">Availability</th>
       <th class="cart-delete-col"></th>
     </tr>
   </thead>
@@ -33,7 +38,14 @@
 				<%= image_tag(item.artwork.imagepath, border:'0', height:'100', width:'100') %>
 				</td>
         <td class="cart-price-col"><%= number_to_currency(item.artwork.price) %></td>
-        <td class="cart-quantity-col"><%= item.quantity %></td>
+        <td class="cart-quantity-col"><%= item.quantity %></td>			
+				
+				<% if @unavailableitems.include?(item.artwork)  %></td>
+				<td class="not-available">Out of stock</td>
+				<% else %>
+				<td class="cart-availability-col">Available</td>
+				<% end %>
+				
         <td class="cart-delete-col"><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

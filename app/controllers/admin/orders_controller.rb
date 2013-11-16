@@ -23,12 +23,6 @@ class Admin::OrdersController < ApplicationController
   end
 
 #----------------------------------------------------------------------------
-  # GET /orders/1/edit
-  def edit
-    @order = Order.find(params[:id])
-  end
-
-#----------------------------------------------------------------------------
   # POST /orders
   # POST /orders.json
   def create
@@ -44,12 +38,21 @@ class Admin::OrdersController < ApplicationController
       end
     end
   end
+  
+#----------------------------------------------------------------------------
+  # GET /orders/1/edit
+  def edit
+    @order = Order.find(params[:id])
+    @useraddress = @order.user.shipping_address
+  end
 
 #----------------------------------------------------------------------------
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
-    @username = @order.user.firstname
+    user = User.find_by(id: @order.user_id)
+# how do I get shipping address back from the edit form?
+    user.update(shipping_address: "test")
     
     respond_to do |format|
       if @order.update(order_params)

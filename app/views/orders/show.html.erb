@@ -32,6 +32,11 @@
   <%= number_to_currency(@order.shipping_cost) %>
 </p>
 
+<p>
+	<strong>Shipping address:</strong>
+	<%= @order.shipping_address %>
+</p>			
+
 <% if @order.ordereditems.length == 0 %>
 <h3>Empty orders should not be displayed</h3>
 <% else %>

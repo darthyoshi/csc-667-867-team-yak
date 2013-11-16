@@ -17,13 +17,14 @@
 
   <div class="field">
     <%= f.label :order_date %>
-		<%= text_field_tag 'date', @order.order_date.localtime.to_s(:short), disabled: true %>
+		<%= text_field_tag 'date', @order.order_date.localtime.to_s(:long), disabled: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :shipping_address %>
-    <%= f.text_field :shipping_address %>
-  </div>
+<div>
+<p>shipping address</p>
+<%= text_field_tag 'shipping address', @useraddress %>
+</div>
+
   <div class="field">
     <%= f.label :shipping_cost %>
     <%= f.text_field :shipping_cost %>

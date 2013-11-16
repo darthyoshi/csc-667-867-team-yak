@@ -69,7 +69,7 @@ class Admin::SellersController < ApplicationController
   def destroy
     @seller.destroy
     respond_to do |format|
-      format.html { redirect_to sellers_url }
+      format.html { redirect_to admin_sellers_url }
       format.json { head :no_content }
     end
   end

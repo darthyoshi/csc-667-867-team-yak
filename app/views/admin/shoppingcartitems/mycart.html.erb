@@ -34,8 +34,8 @@
 				</td>
         <td class="cart-price-col"><%= number_to_currency(item.artwork.price) %></td>
         <td class="cart-quantity-col"><%= item.quantity %></td>
-        <td class="cart-delete-col"><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <td class="cart-delete-col"><%= link_to 'Delete', admin_shoppingcartitem_path(item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
     <% end %>
     <tr><td colspan="4"></td></tr>
   </tbody>

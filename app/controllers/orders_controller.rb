@@ -29,24 +29,37 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.user_id = current_user.id
     @order.order_date = Time.now
-    @shipping_address = current_user.shipping_address #just for display
-    
-    @order.save
-    items = Shoppingcartitem.where(user_id: current_user.id)
+    @order.shipping_address = current_user.shipping_address
+    # Verify that all items in shopping cart are available
+    items = Shoppingcartitem.users_items(current_user.id)
     items.each do |item|
-      orditem = Ordereditem.new
-      aw = item.artwork
-      orditem.order_id = @order.id
-      orditem.sold_artwork_id = item.artwork_id
-      orditem.quantity = item.quantity
-      orditem.price = aw.price
-      orditem.category = aw.category
-      orditem.title = aw.title
-      orditem.imagepath = aw.imagepath
-      orditem.description = aw.description
-      orditem.seller_name = aw.seller.displayed_name
-      orditem.seller_email = aw.seller.seller_email
-      orditem.save
+      artwork = Artwork.find(item.artwork_id)
+      if artwork.quantity < 1
+        # return to the shopping cart
+        redirect_to '/yourcart', notice: 'Item out of stock' and return
+      end
+    end
+    
+    if @order.save
+      items.each do |item|
+        orditem = Ordereditem.new
+        aw = item.artwork
+        orditem.order_id = @order.id
+        orditem.sold_artwork_id = item.artwork_id
+        orditem.price = aw.price
+        orditem.category = aw.category
+        orditem.title = aw.title
+        orditem.imagepath = aw.imagepath
+        orditem.description = aw.description
+        orditem.seller_name = aw.seller.displayed_name
+        orditem.seller_email = aw.seller.seller_email
+        aw.decrement(:quantity).save # decrement the quantity
+        orditem.quantity = item.quantity
+        orditem.save
+      end
+      items.each do |item|
+        item.destroy
+      end
     end
     
     respond_to do |format|
@@ -64,7 +77,6 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
-    #@username = @order.user.firstname
 
     respond_to do |format|
       if @order.update(order_params)

@@ -5,14 +5,26 @@ class ShoppingcartitemsController < ApplicationController
   # GET /yourcart
   # GET /yourcart.json
   def yourcart
-    @myitems = Shoppingcartitem.where(user_id: current_user.id)
+    #@myitems = Shoppingcartitem.where(user_id: current_user.id)
+    @myitems = Shoppingcartitem.users_items(current_user.id)
+    # find arworks in myitems that have quantity 0
+    # SELECT "artworks".* FROM "artworks" WHERE "artworks"."id" IN 
+    # (SELECT artwork_id FROM "shoppingcartitems" WHERE "shoppingcartitems"."user_id" = 1) AND
+    # "artworks"."quantity" = 0    
+    @unavailableitems = Artwork.where(id: Shoppingcartitem.select('artwork_id').where(user_id: current_user.id)).where(quantity: 0)
   end
 
 #----------------------------------------------------------------------------
   # POST /shoppingcartitems
   # POST /shoppingcartitems.json
-  def create
-    @shoppingcartitem = Shoppingcartitem.new(shoppingcartitem_params)
+  def create 
+    # check if the item is already in the shopping cart   
+    @shoppingcartitem = Shoppingcartitem.where(user_id: current_user).where(artwork_id: params[:shoppingcartitem][:artwork_id]).first
+    if !@shoppingcartitem.nil?
+      @shoppingcartitem.increment(:quantity)
+    else  
+      @shoppingcartitem = Shoppingcartitem.new(shoppingcartitem_params)
+    end 
 
     respond_to do |format|
       if @shoppingcartitem.save

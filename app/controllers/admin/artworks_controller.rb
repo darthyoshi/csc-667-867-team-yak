@@ -88,7 +88,7 @@ class Admin::ArtworksController < ApplicationController
   def destroy
     @artwork.destroy
     respond_to do |format|
-      format.html { redirect_to artworks_url }
+      format.html { redirect_to admin_artworks_url }
       format.json { head :no_content }
     end
   end

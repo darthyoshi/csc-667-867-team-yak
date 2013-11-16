@@ -1,29 +1,32 @@
-<h2>Your orders</h2>
+<h2>Your completed orders</h2>
+<% if !@myorders.nil? and @myorders.length != 0 %>
 
-<table>
-  <thead>
-    <tr>
-			<th>Order id</th>
-      <th>Order date</th>
-      <th>Shipping cost</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+	<table>
+	  <thead>
+	    <tr>
+				<th>Order id</th>
+	      <th>Order date</th>
+	      <th>Shipping cost</th>
+	      <th></th>
+	      <th></th>
+	      <th></th>
+	    </tr>
+	  </thead>
 
-  <tbody>
-    <% @myorders.each do |order| %>
-      <tr>
-	      <td><%= order.id %></td>
-        <td> | <%= order.order_date.localtime.to_s(:short) %></td>
-        <td> | <%= number_to_currency(order.shipping_cost) %></td>
-        <td><%= link_to 'See details', order_path(order) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<%= link_to 'Your Account', account_path %><br>
-<%= link_to 'Browse Artworks', artworks_path %>
-
+	  <tbody>
+	    <% @myorders.each do |order| %>
+	      <tr>
+		      <td><%= order.id %></td>
+	        <td> | <%= order.order_date.localtime.to_s(:short) %></td>
+	        <td> | <%= number_to_currency(order.shipping_cost) %></td>
+	        <td><%= link_to 'View', order_path(order) %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+	<br>
+	<%= link_to 'Your Account', account_path %><br>
+	<%= link_to 'Browse Artworks', artworks_path %>
+<% else %>
+<h4>(You have no orders)</h4>
+<% end %>

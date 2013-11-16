@@ -1,5 +1,4 @@
 class OrdereditemsController < ApplicationController
-  #before_filter :get_order #probably don't need this
   before_action :set_ordereditem, only: [:create, :destroy]    
 
   # POST /ordereditems
@@ -17,7 +16,7 @@ class OrdereditemsController < ApplicationController
     end
   end
 
-
+#----------------------------------------------------------------------------------
   # DELETE /ordereditems/1
   # DELETE /ordereditems/1.json
   def destroy
