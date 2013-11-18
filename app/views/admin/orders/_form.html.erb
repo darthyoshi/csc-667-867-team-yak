@@ -1,6 +1,5 @@
-<h2>Admin. Edit order</h2>
 
-<%= form_for([:admin, @order]) do |f| %>
+<%= form_for polymorphic_path([:admin, @order, @ordereditems]) do |f| %>
 
   <% if @order.errors.any? %>
     <div id="error_explanation">
@@ -13,25 +12,33 @@
       </ul>
     </div>
   <% end %>
- 
+
   <div class="field">
-    <%= f.label :order_date %>
+    <%= f.label :order_date, "Date" %>
 		<%= text_field_tag 'date', @order.order_date.localtime.to_s(:long), disabled: true %>
   </div>
 
-<div>
-<p>shipping address</p>
-<%= text_field_tag 'shipping address', @useraddress %>
-</div>
+	<div class="field">
+		<%= f.label :shipping_address %>
+		<%= f.text_field :shipping_address %>
+	</div>
 
   <div class="field">
     <%= f.label :shipping_cost %>
     <%= f.text_field :shipping_cost %>
   </div>
+
+	<% f.fields_for :ordereditems do |item| %>
+	
+	<div class="field">
+	<%= item.label :category %>
+	<%= item.text_field :category %>
+	</div>
+
+
+	<% end %>
+	
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
-
-<%= link_to 'View', admin_order_path(@order) %> |
-<%= link_to 'Orders', admin_orders_path %>

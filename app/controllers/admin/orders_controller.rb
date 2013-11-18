@@ -43,7 +43,7 @@ class Admin::OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
     @order = Order.find(params[:id])
-    @useraddress = @order.user.shipping_address
+    @useraddress = @order.shipping_address
   end
 
 #----------------------------------------------------------------------------
@@ -85,6 +85,8 @@ class Admin::OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:user_id, :order_date, :shipping_cost)
+      #params.require(:order).permit(:user_id, :order_date, :shipping_cost)
+      params.require(:order).permit(:user_id, :order_date, :shipping_cost, ordereditems_attributes: [:order_id, :sold_artwork_id, :quantity, :price, :category, :title, :imagepath, :description, :seller_name, :seller_email])
+      
     end
 end

@@ -26,15 +26,22 @@ class ShoppingcartitemsController < ApplicationController
       @shoppingcartitem = Shoppingcartitem.new(shoppingcartitem_params)
     end 
 
-    respond_to do |format|
-      if @shoppingcartitem.save
-        format.html { redirect_to '/yourcart' }
-        format.json { render action: 'show', status: :created, location: @shoppingcartitem }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @shoppingcartitem.errors, status: :unprocessable_entity }
-      end
+    if @shoppingcartitem.save
+      redirect_to '/yourcart'
+    else
+      #render :action => 'new'
+      render action: 'new' #can use new Hash syntax introduced in 1.9
     end
+    
+    #respond_to do |format|
+    #  if @shoppingcartitem.save
+    #   format.html { redirect_to '/yourcart' }
+    #   format.json { render action: 'show', status: :created, location: @shoppingcartitem }
+    # else
+    #  format.html { render action: 'new' }
+    #   format.json { render json: @shoppingcartitem.errors, status: :unprocessable_entity }
+    # end
+    # end
   end
 
 #----------------------------------------------------------------------------
@@ -42,10 +49,12 @@ class ShoppingcartitemsController < ApplicationController
   # DELETE /shoppingcartitems/1.json
   def destroy
     @shoppingcartitem.destroy
-    respond_to do |format|
-      format.html { redirect_to '/yourcart' }
-      format.json { head :no_content }
-    end
+    redirect_to '/yourcart'
+    
+    #respond_to do |format|
+    #  format.html { redirect_to '/yourcart' }
+    #  format.json { head :no_content }
+    #end
   end
 
 #----------------------------------------------------------------------------

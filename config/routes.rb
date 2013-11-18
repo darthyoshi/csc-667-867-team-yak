@@ -19,7 +19,7 @@ Csc667867TeamYak::Application.routes.draw do
   resources :artworks
   resources :arttags
   resources :shoppingcartitems
-  resources :ordereditems # remove when done?
+  #resources :ordereditems
   
   # nested resources
   resources :orders do
@@ -28,7 +28,9 @@ Csc667867TeamYak::Application.routes.draw do
   
   # namespaced resources
   namespace :admin do
-    resources :orders
+    resources :orders do
+      resources :ordereditems
+    end
     resources :artworks
     resources :shoppingcartitems
     resources :sellers
