@@ -1,0 +1,73 @@
+<%= form_for @artwork do |f| %>
+  <% if @artwork.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@artwork.errors.count, "error") %> prohibited this artwork from being saved:</h2>
+
+      <ul>
+      <% @artwork.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :category %>		
+		<%= select("artwork", "category", artwork_categories) %>
+  </div>
+	
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :imagepath %>
+    <%= f.text_field :imagepath %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+	<div class="field">
+		
+		<p><label for="artwork_arttag">List of tags:</label><br>
+			
+			<%= f.fields_for(:arttags) do |arttag| %>
+			<%= check_box_tag('arttag_list[]', arttag.id, @artwork.arttags.collect { |obj| obj.id}.include?(arttag.id)) %><%= arttag.tagname %><br>
+		<% end %>
+		</p>
+	</div>
+
+  <div class="actions">
+    <%= f.submit %><br/>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

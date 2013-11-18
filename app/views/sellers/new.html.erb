@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<h2>Open Your Shop</h2>
+
+<%= form_for @seller do |f| %>
+
+  <% if @seller.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@seller.errors.count, "error") %> prohibited this seller from being saved:</h2>
+
+      <ul>
+      <% @seller.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<div class="field">
+		<%= f.label :displayed_name, "Choose displayed name:" %>
+    <%= f.text_field :displayed_name %>
+  </div>
+	<div class="field">
+	  <%= f.label :seller_email, "Type in your seller email:" %>
+    <%= f.text_field :seller_email %>
+  </div>
+	<div class="field">
+	  <%= f.label :seller_description, "Type in your description:" %>
+    <%= f.text_area :seller_description %>
+  </div>
+	<div class="actions">
+	   <%= f.submit %>
+	</div>
+<% end %>
+
+
+

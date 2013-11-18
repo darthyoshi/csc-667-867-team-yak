@@ -1,0 +1,79 @@
+<h2>Seller. Edit artwork</h2>
+
+<style type="text/css">
+#threeColumnTable {
+	width:100%;
+}
+#threeColumnTable td {
+	vertical-align:top;
+}
+#lcol, #rcol {
+	width: 40%;
+}
+#mcol {
+	width: 20%;
+}
+</style>
+
+
+
+<%= form_for [:seller, @artwork], :url => seller_artwork_path do |f| %>
+
+<table id="threeColumnTable" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+           <td id="lcol">
+                 <div class="field">
+             <%= f.label :category %>                
+                <%= select("artwork", "category", artwork_categories) %>
+           </div>
+           <div class="field">
+             <%= f.label :title %>
+             <%= f.text_field :title %>
+           </div>
+           <div class="field">
+             <%= f.label :price %>
+             <%= f.text_field :price %>
+           </div>
+           <div class="field">
+             <%= f.label :quantity %>
+             <%= f.number_field :quantity %>
+           </div>
+         </td>
+
+         <td id="mcol">
+            <div class="field">
+               <p><label for="artwork_arttag">List of tags:</label><br>                
+               <% @all_arttags.each do |arttag| %>
+                <%= check_box_tag('arttag_list[]', arttag.id, @artwork.arttags.collect { |obj| obj.id}.include?(arttag.id)) %>
+								<%= arttag.tagname %><br>
+               <% end %>
+               </p>
+            </div>
+         </td>
+
+        <td id="rcol">
+          <%= image_tag(@artwork.imagepath, :border=>0) %>
+          <div class="field">
+            <%= f.label :imagepath %>
+            <%= f.text_field :imagepath %>
+          </div>
+          <div class="field">
+            <%= f.label :description %>
+            <%= f.text_area :description %>
+          </div>
+        </td>
+    </tr>
+
+    <tr>
+            <td colspan="3">
+              <div class="actions">
+                <%= f.submit %><br/>
+              </div>
+            </td>
+    </tr>
+</table>
+
+<%= link_to 'Preview', seller_artwork_path(@artwork) %> |
+<%= link_to 'Your Artworks', seller_artworks_path %>
+
+<% end %>

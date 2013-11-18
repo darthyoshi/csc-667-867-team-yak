@@ -1,12 +1,12 @@
 class SellersController < ApplicationController
-  before_action :set_seller, only: [:update, :destroy]
+  before_action :set_seller, only: [:show, :update, :destroy]
 
 #----------------------------------------------------------------------------
  def yourshop
    @seller = Seller.where(["user_id = ?", current_user.id]).first
    @user = @seller.user
    @artworks = @seller.artworks
-   #@reviews = @seller.reviews
+   # @reviews = @seller.reviews
  end
 
 #----------------------------------------------------------------------------
@@ -17,8 +17,8 @@ class SellersController < ApplicationController
   end
 
 #----------------------------------------------------------------------------
-  def openshop
-    #this will call create seller 
+  def new
+    @seller = Seller.new
   end
 
 #----------------------------------------------------------------------------
@@ -26,30 +26,27 @@ class SellersController < ApplicationController
   # POST /sellers.json
   def create
     @seller = Seller.new(seller_params)
-
-    respond_to do |format|
-      if @seller.save
-        format.html { redirect_to @seller, notice: 'Seller was successfully created.' }
-        format.json { render action: 'myselleraccount', status: :created, location: @seller }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @seller.errors, status: :unprocessable_entity }
-      end
+    @seller.user_id = current_user.id
+    @seller.seller_date = Time.now #uses the server time
+    
+    # need to check if this seller already exists
+    
+    if @seller.save
+    redirect_to @seller, notice: 'Your seller account was successfully created.'
+    else
+      render action: 'new'
     end
+    
   end
 
 #----------------------------------------------------------------------------
   # PATCH/PUT /sellers/1
   # PATCH/PUT /sellers/1.json
   def update
-    respond_to do |format|
-      if @seller.update(seller_params)
-        format.html { redirect_to @seller, notice: 'Seller was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @seller.errors, status: :unprocessable_entity }
-      end
+    if @seller.update(seller_params)
+      redirect_to @seller, notice: 'Seller was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
@@ -58,10 +55,7 @@ class SellersController < ApplicationController
   # DELETE /sellers/1.json
   def destroy
     @seller.destroy
-    respond_to do |format|
-      format.html { redirect_to sellers_url }
-      format.json { head :no_content }
-    end
+    redirect_to sellers_url
   end
 
 #----------------------------------------------------------------------------

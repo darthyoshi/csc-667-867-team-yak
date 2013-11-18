@@ -16,7 +16,7 @@ class Admin::SellersController < ApplicationController
     @myartworks = Artwork.where(["seller_id = ?", @seller.id])
     @myreviews = Review.where(artwork_id: Artwork.where(seller: @seller))
   end
-
+  
 #----------------------------------------------------------------------------
   # GET /sellers/new
   def new

@@ -3,8 +3,9 @@ class Admin::ReviewsController < ApplicationController
 
   # GET /reviews
   # GET /reviews.json
-  def index
-    @reviews = Review.all
+  def index (seller)
+    #@reviews = Review.all
+    @reviews = Review.review_for(artwork_ids)
   end
 
 #----------------------------------------------------------------------------
@@ -13,7 +14,16 @@ class Admin::ReviewsController < ApplicationController
   def show
     #we can get all information about review here
   end
-
+  
+#----------------------------------------------------------------------------
+  def showreviews
+    #@user = @seller.user
+    #@myartworks = Artwork.where(["seller_id = ?", @seller.id])
+    seller = params[:seller_id]
+    #@myreviews = Review.where(artwork_id: Artwork.where(seller: seller))
+    @myreviews = Review.reviews_for(artwork_id: Artwork.by_seller(seller))
+  end
+  
 #----------------------------------------------------------------------------
   # GET /reviews/1/edit
   def edit

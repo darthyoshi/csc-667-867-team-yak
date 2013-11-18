@@ -1,5 +1,8 @@
 Csc667867TeamYak::Application.routes.draw do
 
+  get "artworks/new"
+  get "artworks/show"
+  get "artworks/edit"
   root to: 'welcome#index', :as => 'welcome'
   get "/yourcart" => "shoppingcartitems#yourcart"
   get "/account" => 'account#index'
@@ -10,12 +13,14 @@ Csc667867TeamYak::Application.routes.draw do
   get "/faq" => "welcome#faq"
   get "/admin" => "admin#index"
   get "/yourshop" => "sellers#yourshop"
-  get "/openshop" => "sellers#openshop"
+  get "/openshop" => "sellers#new"
   get "/edityourshop" => "sellers#edityourshop"
   get "/admin/users" => "admin#listusers"
+  get "admin/reviews/showreviews" => "admin/reviews#showreviews"
 
 # 7 resources: index, show, new, create, edit, update, destroy
   devise_for :users  
+  resources :sellers
   resources :artworks
   resources :arttags
   resources :shoppingcartitems
@@ -36,6 +41,12 @@ Csc667867TeamYak::Application.routes.draw do
     resources :sellers
     resources :reviews
   end
+  
+  namespace :seller do
+    resources :artworks
+  end
+  
+  
   
   
  

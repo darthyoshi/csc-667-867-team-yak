@@ -1,0 +1,13 @@
+
+<h3>All seller's reviews (under construction)</h3>
+<% @myreviews.each do |review| %>
+	Stars: 
+	<%= showstars(review.stars) %><br>
+	On: 
+	<%= review.review_date.localtime.to_s(:short) %><br>
+	Reviewed by: 
+	<%= userfullnamebyid(review.user_id) %><br>
+	Review: 
+	<%= review.review_text %>
+	<br>
+<% end %>

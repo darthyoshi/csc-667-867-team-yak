@@ -22,6 +22,10 @@ class Artwork < ActiveRecord::Base
   def self.created_before(time)
       where("created_at < ?", time)
   end
+  
+  def self.by_seller(seller_id)
+    Artwork.where("seller_id = ?", seller_id)
+  end
 
   
   #validates :title, :description, :imagepath, :quantity, :price, :category, :seller_id, :presence => true

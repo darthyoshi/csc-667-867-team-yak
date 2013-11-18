@@ -8,11 +8,15 @@ class ArtworksController < ApplicationController
     # don't show artworks whose quantity is 0, scope in artwork model
     @artworks = Artwork.available.paginate(:page => params[:page], :per_page => 10)
   end
+  
+#----------------------------------------------------------------------------
+  def new
+    @artwork = Artwork.new
+  end  
 #----------------------------------------------------------------------------
   # GET /artworks/1
   # GET /artworks/1.json
   def show
-    #@artwork = Artwork.find(params[:id]) #@artwork variable is set up above
     @my_arttags = @artwork.arttags
   end  
   
@@ -21,10 +25,14 @@ class ArtworksController < ApplicationController
   # POST /artworks.json
   def create
     @artwork = Artwork.new(artwork_params)
-    params[:arttag_list].each do |tag|
-      arttag = Arttag.find(tag)
-      unless @artwork.arttags.include?(arttag)
-        @artwork.arttags << arttag
+    arttaglist = params[:arttag_list]
+    
+    if !arttaglist.nil?
+      params[:arttag_list].each do |tag|
+        arttag = Arttag.find(tag)
+        unless @artwork.arttags.include?(arttag)
+          @artwork.arttags << arttag
+        end
       end
     end
 

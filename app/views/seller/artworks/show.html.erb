@@ -33,10 +33,10 @@
 <% end %>
 
 <div style='clear:both'>
-<%= link_to 'Back to Artworks', artworks_path %>
+	
+<%= link_to 'Edit', edit_seller_artwork_path(@artwork) %> |	
+<%= link_to 'Back to Your Artworks', seller_artworks_path %>
 </div>
-<% if !current_user.nil? %>
-	<%= button_to 'Add to Cart', shoppingcartitems_path(:shoppingcartitem => {:user_id => current_user.id, :artwork_id => @artwork.id, :quantity => 1}) %>
-<% end %>
+
 
 

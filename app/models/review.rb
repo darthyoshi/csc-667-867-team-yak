@@ -5,4 +5,8 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :artwork
   
+  def self.review_for(artwork_ids)
+      where("artwork_id = ?", artwork_ids)
+  end
+  
 end

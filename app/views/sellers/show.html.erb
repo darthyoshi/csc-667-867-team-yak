@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Your displayed name:</strong>
+  <%= @seller.displayed_name %>
+</p>
+
+<p>
+  <strong>Your seller email:</strong>
+  <%= @seller.seller_email %>
+</p>
+
+<p>
+  <strong>Your seller description:</strong>
+  <%= @seller.seller_description %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @seller.seller_date.localtime.to_s(:long) %>
+</p>
+
+<%= link_to 'Sell artwork', new_seller_artwork_path %>
+<br>
+<%= link_to 'Edit', "/edityourshop" %>
+
