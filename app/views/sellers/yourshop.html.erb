@@ -60,6 +60,7 @@
 				</td>
         <td class="cart-price-col"><%= number_to_currency(item.price) %></td>
         <td class="cart-quantity-col"><%= item.quantity %></td>
+				<td> <%= link_to 'Edit', edit_seller_artwork_path(item) %>  </td>
       </tr>
     <% end %>
     <tr><td colspan="4"></td></tr>

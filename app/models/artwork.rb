@@ -26,6 +26,10 @@ class Artwork < ActiveRecord::Base
   def self.by_seller(seller_id)
     Artwork.where("seller_id = ?", seller_id)
   end
+  
+  def self.sold_out(seller_id)
+    Artwork.by_seller(seller_id).where("quantity < 1")
+  end
 
   
   #validates :title, :description, :imagepath, :quantity, :price, :category, :seller_id, :presence => true
