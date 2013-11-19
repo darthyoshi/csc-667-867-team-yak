@@ -1,3 +1,3 @@
 $(document).on('mouseenter', '#account', ( ->
-    $('.dropdown-menu').dropdown('toggle')
+    $('.dropdown-menu').toggle('drop', {direction: 'down'})
 ));
