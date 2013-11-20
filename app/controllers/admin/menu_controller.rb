@@ -5,7 +5,7 @@ class Admin::MenuController < Admin::BaseController
   end
   
   def listusers
-    @users = User.all
+    @users = User.all.order("id DESC")
   end
   
 end

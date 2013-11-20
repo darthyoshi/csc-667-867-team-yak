@@ -7,7 +7,7 @@ Csc667867TeamYak::Application.routes.draw do
   get "/yourcart" => "shoppingcartitems#yourcart"
   get "/account" => 'account#index'
   get "/search/(:page)" => 'results#search'
-  get "/artworks/:cat/(:page)" => 'results#category'
+  #get "/artworks/:cat/(:page)" => 'results#category'
   get "/about" => "welcome#about"
   get "/contact" => "welcome#contact"
   get "/faq" => "welcome#faq"

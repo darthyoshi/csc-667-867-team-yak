@@ -6,9 +6,8 @@
 <table>
   <thead>
     <tr>
-			<th>User id</th>
-			<th>First name</th>
-			<th>Last name</th>
+			<th>id</th>
+			<th>Name</th>
 			<th>Email</th>						
       <th>Shipping address</th>
       <th></th>
@@ -21,8 +20,7 @@
     <% @users.each do |user| %>
       <tr>
 	      <td><%= user.id %></td>
-				<td> | <%= user.firstname %></td>
-				<td> | <%= user.lastname %></td>	
+				<td> | <%= userfullname(user) %></td>
 				<td> | <%= user.email %></td>		
 				<% if user.shipping_address.nil? %>					
         <td> | N/A </td> 
