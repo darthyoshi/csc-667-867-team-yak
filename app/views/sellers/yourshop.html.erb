@@ -27,7 +27,7 @@
 </p>
 <p>
   <strong>Opened your shop at:</strong>
-  <%= @seller.seller_date.localtime.to_s(:short) %>
+  <%= @seller.seller_date.localtime.to_s(:long) %>
 </p>
 <p>
 <p>
@@ -39,7 +39,10 @@
   <%= @seller.seller_email %>
 </p>
 
+<%= link_to 'Sell New Artwork', new_seller_artwork_path %> | 
+<%= link_to 'Edit your shop', "/edityourshop" %> | 
 
+<%= link_to 'Close your shop', seller_path(@seller), method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <table id="cart-table" border="0">
   <thead>
@@ -67,7 +70,4 @@
   </tbody>
 </table>
 <br>
-
-<%= link_to 'Sell New Artwork', new_seller_artwork_path %> | 
-<%= link_to 'Edit your shop', "/edityourshop" %>
 

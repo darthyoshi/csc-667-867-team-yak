@@ -1,22 +1,20 @@
 Csc667867TeamYak::Application.routes.draw do
 
-  get "artworks/new"
-  get "artworks/show"
-  get "artworks/edit"
+  authenticated :user do
+    root :to => 'artworks#index'
+  end
   root to: 'welcome#index', :as => 'welcome'
   get "/yourcart" => "shoppingcartitems#yourcart"
   get "/account" => 'account#index'
-  get "/search/(:page)" => 'results#search'
-  get "/category/:cat/(:page)" => 'results#category'
   get "/about" => "welcome#about"
   get "/contact" => "welcome#contact"
   get "/faq" => "welcome#faq"
-  get "/admin" => "admin#index"
+  get "/search/(:page)" => 'results#search'
+  get "/category/:cat/(:page)" => 'results#category'
   get "/yourshop" => "sellers#yourshop"
   get "/openshop" => "sellers#new"
   get "/edityourshop" => "sellers#edityourshop"
-  get "/admin/users" => "admin#listusers"
-  get "admin/reviews/showreviews" => "admin/reviews#showreviews"
+
 
 # 7 resources: index, show, new, create, edit, update, destroy
   devise_for :users  
@@ -33,18 +31,22 @@ Csc667867TeamYak::Application.routes.draw do
   
   # namespaced resources
   namespace :admin do
-    resources :orders do
-      resources :ordereditems
+    resources :menu, only: :index do
+      get 'listusers', on: :collection
     end
-    resources :artworks
-    resources :shoppingcartitems
-    resources :sellers
-    resources :reviews
+    resources :artworks, except: :new
+    resources :shoppingcartitems, except: :new
+    resources :sellers, except: :new
+    resources :reviews, except: :new
+    resources :orders, except: :new do
+      resources :ordereditems, except: :new
+    end
   end
   
   namespace :seller do
     resources :artworks
   end
+
   
   
   

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LampTest < ActiveSupport::TestCase
+class Admin::BaseControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

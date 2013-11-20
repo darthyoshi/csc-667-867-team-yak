@@ -1,6 +1,11 @@
 <h2>Admin. All artworks</h2>
 
-<div style='float:left'><%= link_to 'Back to Admin', admin_path %></div>
+<div style='float:left'>
+<%= link_to 'Back to Admin', admin_menu_index_path %></div>
+<br>
+<p> Canceled sales: 
+<%= @artworks.seller_closed.count %>
+</p>
 
 <table class='table'>
   <thead>
@@ -34,6 +39,6 @@
 </table>
 <br>            
 <div style='float:left'>
-<%= link_to 'Back to Admin', admin_path %>
+<%= link_to 'Back to Admin', admin_menu_index_path %>
 </div>
 <%= will_paginate @artworks %>

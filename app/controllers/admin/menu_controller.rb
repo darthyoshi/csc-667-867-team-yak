@@ -1,4 +1,4 @@
-class AdminController < ApplicationController
+class Admin::MenuController < Admin::BaseController
   
   def index
     # we need this controller because we have admin menu

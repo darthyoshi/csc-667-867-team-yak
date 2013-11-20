@@ -4,17 +4,23 @@ ruby '1.9.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-gem "bootstrap-sass", "~> 2.3.2.2"
-
 # Use postgresql as the database for Active Record
 gem 'pg'
-
 gem 'devise'
-
 gem 'seed_dump'
+gem 'haml-rails'
+
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'hpricot'
+  gem 'ruby_parser'
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
+gem "bootstrap-sass", "~> 2.3.2.2"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -41,6 +47,8 @@ gem 'jbuilder', '~> 1.2'
 
 # Gemfile for Rails 3+, Sinatra, or Merb
 gem 'bootstrap-will_paginate'
+
+gem 'thin'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

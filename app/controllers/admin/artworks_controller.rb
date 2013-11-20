@@ -1,4 +1,4 @@
-class Admin::ArtworksController < ApplicationController
+class Admin::ArtworksController < Admin::BaseController
   before_action :set_artwork, only: [:show, :edit, :update, :destroy]
 
   # GET /artworks

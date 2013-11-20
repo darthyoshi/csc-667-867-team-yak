@@ -1,5 +1,5 @@
 <% if current_user.admin? %>
-    <%= link_to "Manage Accounts", "/admin" %>
+    <%= link_to "Manage Accounts", admin_menu_index_path %>
 
 <% else %>
     <div class='dropdown'>

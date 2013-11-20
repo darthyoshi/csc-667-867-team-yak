@@ -35,7 +35,7 @@
   </div>
   <div class="field">
 		<%= label_tag "Posted at:" %>
-		<%= text_field_tag 'date', @review.review_date.localtime.to_s(:short), disabled: true %>
+		<%= text_field_tag 'date', @review.review_date.localtime.to_s(:long), disabled: true %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -2,9 +2,9 @@ class WelcomeController < ApplicationController
   
   def index
     if user_signed_in?
-      @text = 'User is signed in.'
+      @msg = 'User is signed in.'
     else
-      @text = 'User is not signed in.'
+      @msg = 'User is not signed in.'
     end
     
     @artworks = Artwork.paginate(:page => params[:page], :per_page => 8)

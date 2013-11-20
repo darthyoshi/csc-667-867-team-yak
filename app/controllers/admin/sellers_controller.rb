@@ -1,4 +1,4 @@
-class Admin::SellersController < ApplicationController
+class Admin::SellersController < Admin::BaseController
   before_action :set_seller, only: [:show, :showreviews, :edit, :update, :destroy]
 
   # GET /sellers

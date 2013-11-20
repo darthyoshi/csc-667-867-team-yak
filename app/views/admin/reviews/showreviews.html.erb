@@ -4,7 +4,7 @@
 	Stars: 
 	<%= showstars(review.stars) %><br>
 	On: 
-	<%= review.review_date.localtime.to_s(:short) %><br>
+	<%= review.review_date.localtime.to_s(:long) %><br>
 	Reviewed by: 
 	<%= userfullnamebyid(review.user_id) %><br>
 	Review: 

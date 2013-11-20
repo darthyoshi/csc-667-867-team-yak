@@ -18,6 +18,8 @@ class Artwork < ActiveRecord::Base
   # to make this work: Artwork.available.count
   scope :available, -> { where("quantity > 0") }
   
+  scope :seller_closed, -> { where("seller_id IS NULL") }
+  
   # to make this work: Artwork.created_before(Time.zone.now)
   def self.created_before(time)
       where("created_at < ?", time)

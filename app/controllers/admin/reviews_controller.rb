@@ -1,11 +1,10 @@
-class Admin::ReviewsController < ApplicationController
+class Admin::ReviewsController < Admin::BaseController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   # GET /reviews
   # GET /reviews.json
-  def index (seller)
-    #@reviews = Review.all
-    @reviews = Review.review_for(artwork_ids)
+  def index
+    @reviews = Review.all
   end
 
 #----------------------------------------------------------------------------

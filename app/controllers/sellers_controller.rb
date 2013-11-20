@@ -19,6 +19,7 @@ class SellersController < ApplicationController
 #----------------------------------------------------------------------------
   def new
     @seller = Seller.new
+    @seller = Seller.
   end
 
 #----------------------------------------------------------------------------
@@ -54,10 +55,10 @@ class SellersController < ApplicationController
   # DELETE /sellers/1
   # DELETE /sellers/1.json
   def destroy
+    # seller_ids of artworks must be nullified
     @seller.destroy
-    redirect_to sellers_url
+    redirect_to welcome_url
   end
-
 #----------------------------------------------------------------------------
   private
     # Use callbacks to share common setup or constraints between actions.

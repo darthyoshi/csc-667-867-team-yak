@@ -1,4 +1,7 @@
 <h2>Admin. All reviews</h2>
+<br>
+<%= link_to 'Back to Admin', admin_menu_index_path %>
+<br>
 
 <table>
   <thead>
@@ -21,7 +24,7 @@
         <td><%= review.user_id %></td>
         <td><%= review.artwork_id %></td>
         <td><%= review.review_text %></td>
-        <td><%= review.review_date.localtime.to_s(:short) %></td>
+        <td><%= review.review_date.localtime.to_s(:long) %></td>
         <td><%= link_to 'View', admin_review_path(review) %> | </td>
         <td><%= link_to 'Edit', edit_admin_review_path(review) %> | </td>
         <td><%= link_to 'Delete', admin_review_path(review), method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -30,4 +33,4 @@
   </tbody>
 </table>
 <br>
-<%= link_to 'Back to Admin', admin_path %>
+<%= link_to 'Back to Admin', admin_menu_index_path %>

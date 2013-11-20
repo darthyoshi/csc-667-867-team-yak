@@ -1,4 +1,4 @@
-class Admin::ShoppingcartitemsController < ApplicationController
+class Admin::ShoppingcartitemsController < Admin::BaseController
   
   before_action :set_shoppingcartitem, only: [:show, :edit, :update, :destroy]
 

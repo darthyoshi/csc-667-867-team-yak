@@ -17,7 +17,7 @@
 	    <% @myorders.each do |order| %>
 	      <tr>
 		      <td><%= order.id %></td>
-	        <td> | <%= order.order_date.localtime.to_s(:short) %></td>
+	        <td> | <%= order.order_date.localtime.to_s(:long) %></td>
 	        <td> | <%= number_to_currency(order.shipping_cost) %></td>
 	        <td><%= link_to 'View', order_path(order) %></td>
 	      </tr>

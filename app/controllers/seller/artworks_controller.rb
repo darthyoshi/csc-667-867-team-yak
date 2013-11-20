@@ -31,7 +31,7 @@ class Seller::ArtworksController < ApplicationController
   def create
     @artwork = Artwork.new(artwork_params)
     arttaglist = params[:arttag_list]
-    @artwork.seller_id = current_user
+    @artwork.seller_id = current_user.id
     @artwork.imagepath = "Paintings/Abstract/new.jpg"
     
     if !arttaglist.nil?

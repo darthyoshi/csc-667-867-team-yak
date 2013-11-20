@@ -1,4 +1,7 @@
 <h2>Admin. All orders</h2>
+<br>
+<%= link_to 'Back to Admin', admin_menu_index_path %>
+<br>
 
 <table>
   <thead>
@@ -16,7 +19,7 @@
     <% @orders.each do |order| %>
       <tr>
 	      <td><%= order.id %></td>
-        <td> | <%= order.order_date.localtime.to_s(:short) %></td>
+        <td> | <%= order.order_date.localtime.to_s(:long) %></td>
         <td> | <%= number_to_currency(order.shipping_cost) %></td>
         <td><%= link_to 'View', admin_order_path(order) %> | </td>
         <td><%= link_to 'Edit', edit_admin_order_path(order) %> | </td>
@@ -27,5 +30,5 @@
 </table>
 <br>
 
-<%= link_to 'Back to Admin', admin_path %>
+<%= link_to 'Back to Admin', admin_menu_index_path %>
 
