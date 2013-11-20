@@ -1,9 +1,9 @@
 Photos:
-  url: "/category/photography"
+  url: "/artworks/photography"
   description: "Photographs"
 Sculptures:
-  url: "/category/sculpture"
+  url: "/artworks/sculpture"
   description: "Sculptures"
 Paintings:
-  url: "/category/painting"
+  url: "/artworks/painting"
   description: "Paintings"
