@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%
 title = ""
-desc = ""
+crumbs = Array.new
 found = false
 
 if request.fullpath == "/"
@@ -12,8 +12,9 @@ end
 unless found
   CATEGORIES.each do |cat,details|
     if request.fullpath.include? details['url']
-      desc = details['description']
-      title = "Browse by category: " + desc
+      crumbs.push ["Artworks", "/artworks"]
+      crumbs.push details['description']
+      title = "Artworks by category: " + details['description']
       found = true
       break
     end
@@ -24,7 +25,7 @@ unless found
   FOOTER.each do |cat,details|
     if request.fullpath.include? details['url']
       title = details['description']
-      desc = title
+      crumbs.push title
       found = true
       break
     end
@@ -35,7 +36,7 @@ unless found
   BREADCRUMBS.each do |cat,details|
     if request.fullpath.include? details['url']
       title = details['description']
-      desc = title
+      crumbs.push title
       found = true
       break
     end
@@ -51,6 +52,17 @@ end
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<!--registration modal window-->
+<div id='dialogue1' title='Register'>
+    <%= render 'session/registerform' %>
+</div>
+
+<!--login modal window-->
+<div id='dialogue2' title='Sign in'>
+    <%= render 'session/loginform' %>
+</div>
+
     <header class='navbar'>
         <div class='container-fluid'>
             <div style='float: left'>
@@ -70,16 +82,6 @@ end
                     <a class='register' href=''>
                         Sign up
                     </a>
-
-<!--registration modal window-->
-<div id='dialogue1' title='Register'>
-    <%= render 'session/registerform' %>
-</div>
-
-<!--login modal window-->
-<div id='dialogue2' title='Sign in'>
-    <%= render 'session/loginform' %>
-</div>
                 <% end %>
             </div>
 
@@ -96,7 +98,7 @@ end
         <div class="sidebar panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    Categories
+                    Artworks
                 </h4>
             </div>
 
@@ -120,10 +122,18 @@ end
                     <li>
                         <a href='/'>Home</a>
                     </li>
+                    <% crumbs.each_with_index do |desc, index| %>
                     <span class='divide'>></span>
-                    <li class='active'>
-                        <%= desc %>
-                    </li>
+                        <% if index < crumbs.count-1 %>
+                        <li>
+                            <%= link_to desc[0], desc[1] %>
+                        </li>
+                        <% else %>
+                        <li class='active'>
+                            <%= desc %>
+                        </li>
+                        <% end %>
+                    <% end %>
                 <% end %>
                 </ol>
 	            </div>

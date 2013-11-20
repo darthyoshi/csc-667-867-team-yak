@@ -6,11 +6,11 @@ Csc667867TeamYak::Application.routes.draw do
   root to: 'welcome#index', :as => 'welcome'
   get "/yourcart" => "shoppingcartitems#yourcart"
   get "/account" => 'account#index'
+  get "/search/(:page)" => 'results#search'
+  get "/artworks/:cat/(:page)" => 'results#category'
   get "/about" => "welcome#about"
   get "/contact" => "welcome#contact"
   get "/faq" => "welcome#faq"
-  get "/search/(:page)" => 'results#search'
-  get "/category/:cat/(:page)" => 'results#category'
   get "/yourshop" => "sellers#yourshop"
   get "/openshop" => "sellers#new"
   get "/edityourshop" => "sellers#edityourshop"

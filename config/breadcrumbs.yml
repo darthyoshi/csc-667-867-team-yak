@@ -10,3 +10,18 @@ artworks:
 cart:
   url: "/yourcart"
   description: "Your Cart"
+account:
+  url: "/account"
+  description: "Account"
+openshop:
+  url: "/openshop"
+  description: "Open a Shop"
+shop:
+  url: "/yourshop"
+  description: "Your Shop"
+orders:
+  url: "/orders"
+  description: "Your Orders"
+settings:
+  url: "/users/edit"
+  description: "User Settings"
