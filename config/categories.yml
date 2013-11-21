@@ -1,9 +1,12 @@
+All:
+  url: "/browse/all"
+  description: "All"
 Photos:
-  url: "/artworks/photography"
+  url: "/browse/photography"
   description: "Photographs"
 Sculptures:
-  url: "/artworks/sculpture"
+  url: "/browse/sculpture"
   description: "Sculptures"
 Paintings:
-  url: "/artworks/painting"
+  url: "/browse/painting"
   description: "Paintings"

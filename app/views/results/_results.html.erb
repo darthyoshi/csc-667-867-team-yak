@@ -3,6 +3,15 @@
 <hr>
 
 <% @artworks.each do |artwork| %>
+    <%
+        tag_ids = Tagging.where("artwork_id = ?", artwork.id)
+        tags = Array.new
+        tag_ids.each do |id|
+            tag = Arttag.where("id = ?", id.arttag_id)
+            tags.push(tag[0].tagname)
+        end
+    %>
+
 <div class='listing'>
     <%= link_to image_tag(artwork.imagepath), {:controller => 'artworks', :action => 'show', :id => artwork.id} %>
 
@@ -16,7 +25,17 @@
     </p>
     <p><%= artwork.description %></p>
 
-    <span style='font-size: 0.5em'>Tags: add tags here with links to tag search</span>
+    <div style='font-size: 0.5em'>
+        Tags:
+        <% if tags.count == 0 %>
+            None
+        <% else %>
+            <% tags.each_with_index do |tagname, index| %>
+                <% name = if index < (tags.count - 1) then tagname + ',' else tagname end %>
+                <%= name %>
+            <% end %>
+        <% end %>
+    </div>
 </div>
 
 <hr>

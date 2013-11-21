@@ -4,9 +4,6 @@ search:
 show:
   url: "/show"
   description: "Viewing Item"
-artworks:
-  url: "/artworks"
-  description: "Browse Artworks"
 cart:
   url: "/yourcart"
   description: "Your Cart"
@@ -25,3 +22,6 @@ orders:
 settings:
   url: "/users/edit"
   description: "User Settings"
+viewing:
+  url: "/artworks"
+  description: "Viewing Item"
