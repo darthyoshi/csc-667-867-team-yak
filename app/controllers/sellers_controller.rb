@@ -70,4 +70,5 @@ class SellersController < ApplicationController
     def seller_params
       params.require(:seller).permit(:user_id, :seller_date, :displayed_name, :seller_description, :seller_email)
     end
+  end
 end
