@@ -49,6 +49,7 @@ test:
   database: artsaletest
   pool: 5
   username: yak
+  host: localhost
   password:
 
 production:
