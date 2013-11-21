@@ -87,13 +87,23 @@ end
 
             <div style='text-align: center'>
                 <form id='searchform' action='/search' method='get'>
-                    <input type='text' class='blank' id='search' name='search' style='width: 50%' value='Search: item name, item description, item tag, seller name'>
+                    <%
+                        query_search = ""
+                        query_class = ""
+                        if params[:search].nil?
+                            query_search = "item name, item description, item tag, seller name"
+                            query_class = "blank"
+                        else
+                            query_search = params[:search]
+                        end
+                    %>
+                    <input type='text' class='<%= query_class %>' id='search' name='search' style='width: 50%' value='<%= query_search %>'>
+
                     <input type='submit'>
                 </form>
             </div>
-        </div>
     </header>
-		
+
     <div class='container-fluid'>
         <div class="sidebar panel panel-default">
             <div class="panel-heading">
@@ -136,7 +146,7 @@ end
                     <% end %>
                 <% end %>
                 </ol>
-	            </div>
+                </div>
 
             <div class='hero-unit'>
 

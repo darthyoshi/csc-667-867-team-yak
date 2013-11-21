@@ -1,14 +1,7 @@
 <h3 style='text-align:center'>Artworks</h3>
 
-<%
-=begin %>
-<%= render 'results/results' %>
-<% 
-=end %>
-
-
 <% @artworks.each do |artwork| %>
-   <h4><%= artwork.title %></h4>        
+   <h4><%= artwork.title %></h4>
    <%= link_to image_tag(artwork.imagepath), artwork_path(artwork.id) %>
 <br><br>
 <% end %>

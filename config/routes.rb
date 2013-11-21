@@ -7,7 +7,7 @@ Csc667867TeamYak::Application.routes.draw do
   get "/yourcart" => "shoppingcartitems#yourcart"
   get "/account" => 'account#index'
   get "/search/(:page)" => 'results#search'
-  #get "/artworks/:cat/(:page)" => 'results#category'
+  get "/browse/:cat/(:page)" => 'results#category'
   get "/about" => "welcome#about"
   get "/contact" => "welcome#contact"
   get "/faq" => "welcome#faq"
@@ -17,18 +17,18 @@ Csc667867TeamYak::Application.routes.draw do
 
 
 # 7 resources: index, show, new, create, edit, update, destroy
-  devise_for :users  
+  devise_for :users
   resources :sellers
   resources :artworks
   resources :arttags
   resources :shoppingcartitems
   #resources :ordereditems
-  
+
   # nested resources
   resources :orders do
-    resources :ordereditems 
+    resources :ordereditems
   end
-  
+
   # namespaced resources
   namespace :admin do
     resources :menu, only: :index do
@@ -42,17 +42,17 @@ Csc667867TeamYak::Application.routes.draw do
       resources :ordereditems, except: :new
     end
   end
-  
+
   namespace :seller do
     resources :artworks
   end
 
-  
-  
-  
-  
- 
- 
+
+
+
+
+
+
 
 
 

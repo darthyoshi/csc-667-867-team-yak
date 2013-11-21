@@ -7,8 +7,26 @@ class ResultsController < ApplicationController
 
   def search
     page = if params[:page].nil? then 1 else params[:page] end
-    @query = params[:search].split(/[\s.]/)
-    @artworks = Artwork.where("title = ?", @query[0]).paginate(:page => page, :per_page => 10)
+    terms = params[:search].split(':')
+=begin
+    tag_search = Array.new
+    title_search = Array.new
+    seller_search = Array.new
+    desc_search = Array.new
+
+    terms.each_with_index do |term, index|
+        if term == "title"
+            title_search.push (index + 1)
+        elsif term == "tag"
+            tag_search.push (index + 1)
+        elsif term == "seller"
+            seller_search.push (index + 1)
+        elsif term == "desc"
+            desc_search.push (index + 1)
+        end
+    end
+=end
+    @artworks = Artwork.where("id > ?", @query[0]).paginate(:page => page, :per_page => 10)
     @title = "Search Results"
 
     render'show'
@@ -17,10 +35,14 @@ class ResultsController < ApplicationController
   #GET /category/:cat
   def category
     page = if params[:page].nil? then 1 else params[:page] end
-    @artworks = Artwork.where("category = ?", params[:cat]).paginate(:page => page, :per_page => 10)
+    if params[:cat] != "all"
+        @artworks = Artwork.where("category = ?", params[:cat]).paginate(:page => page, :per_page => 10)
+    else
+        @artworks = Artwork.available.paginate(:page => params[:page], :per_page => 10)
+    end
     CATEGORIES.each do |cat,details|
       if request.fullpath.include? details['url']
-        @title = details['description']
+        @title = "Artworks by category: " + details['description']
         break
       end
     end
