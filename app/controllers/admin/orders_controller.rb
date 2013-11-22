@@ -3,16 +3,14 @@ class Admin::OrdersController < Admin::BaseController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
-  # GET /orders.json
   def index
     @orders = Order.all
   end
 
 #----------------------------------------------------------------------------
   # GET /orders/1
-  # GET /orders/1.json
   def show
-    @order = Order.find(params[:id])
+    #@order = Order.find(params[:id])
     @user = @order.user
   end
 
@@ -24,7 +22,6 @@ class Admin::OrdersController < Admin::BaseController
 
 #----------------------------------------------------------------------------
   # POST /orders
-  # POST /orders.json
   def create
     @order = Order.new(order_params)
 
@@ -42,38 +39,29 @@ class Admin::OrdersController < Admin::BaseController
 #----------------------------------------------------------------------------
   # GET /orders/1/edit
   def edit
-    @order = Order.find(params[:id])
+    #@order = Order.find(params[:id])
     @useraddress = @order.shipping_address
   end
 
 #----------------------------------------------------------------------------
   # PATCH/PUT /orders/1
-  # PATCH/PUT /orders/1.json
   def update
     user = User.find_by(id: @order.user_id)
 # how do I get shipping address back from the edit form?
     user.update(shipping_address: "test")
     
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to admin_order_url, notice: 'Order was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
+    if @order.update(order_params)
+      redirect_to admin_order_url, notice: 'Order was successfully updated.'
+    else
+      format.html { render action: 'edit' }
+    end    
   end
 
 #----------------------------------------------------------------------------
   # DELETE /orders/1
-  # DELETE /orders/1.json
   def destroy
     @order.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_orders_url }
-      format.json { head :no_content }
-    end
+    redirect_to admin_orders_url
   end
 
 #----------------------------------------------------------------------------

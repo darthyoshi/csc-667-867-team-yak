@@ -3,7 +3,6 @@ class ShoppingcartitemsController < ApplicationController
   
 #----------------------------------------------------------------------------
   # GET /yourcart
-  # GET /yourcart.json
   def yourcart
     #@myitems = Shoppingcartitem.where(user_id: current_user.id)
     @myitems = Shoppingcartitem.users_items(current_user.id)
@@ -16,7 +15,6 @@ class ShoppingcartitemsController < ApplicationController
 
 #----------------------------------------------------------------------------
   # POST /shoppingcartitems
-  # POST /shoppingcartitems.json
   def create 
     # check if the item is already in the shopping cart   
     @shoppingcartitem = Shoppingcartitem.where(user_id: current_user).where(artwork_id: params[:shoppingcartitem][:artwork_id]).first
@@ -30,31 +28,16 @@ class ShoppingcartitemsController < ApplicationController
       redirect_to '/yourcart'
     else
       #render :action => 'new'
-      render action: 'new' #can use new Hash syntax introduced in 1.9
+      # works by we can use new Hash syntax introduced in 1.9
+      render action: 'new' 
     end
-    
-    #respond_to do |format|
-    #  if @shoppingcartitem.save
-    #   format.html { redirect_to '/yourcart' }
-    #   format.json { render action: 'show', status: :created, location: @shoppingcartitem }
-    # else
-    #  format.html { render action: 'new' }
-    #   format.json { render json: @shoppingcartitem.errors, status: :unprocessable_entity }
-    # end
-    # end
   end
 
 #----------------------------------------------------------------------------
   # DELETE /shoppingcartitems/1
-  # DELETE /shoppingcartitems/1.json
   def destroy
     @shoppingcartitem.destroy
     redirect_to '/yourcart'
-    
-    #respond_to do |format|
-    #  format.html { redirect_to '/yourcart' }
-    #  format.json { head :no_content }
-    #end
   end
 
 #----------------------------------------------------------------------------

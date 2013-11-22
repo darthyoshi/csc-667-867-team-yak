@@ -3,14 +3,12 @@ class Admin::ShoppingcartitemsController < Admin::BaseController
   before_action :set_shoppingcartitem, only: [:show, :edit, :update, :destroy]
 
   # GET /shoppingcartitems
-  # GET /shoppingcartitems.json
   def index
     @shoppingcartitems = Shoppingcartitem.all
   end
 
 #----------------------------------------------------------------------------
   # GET /shoppingcartitems/1
-  # GET /shoppingcartitems/1.json
   def show
     #@shoppingcartitem = Shoppingcartitem.find(params[:id])
     @user = User.find(@shoppingcartitem.user_id)
@@ -25,45 +23,29 @@ class Admin::ShoppingcartitemsController < Admin::BaseController
 
 #----------------------------------------------------------------------------
   # POST /shoppingcartitems
-  # POST /shoppingcartitems.json
   def create
     @shoppingcartitem = Shoppingcartitem.new(shoppingcartitem_params)
-
-    respond_to do |format|
-      if @shoppingcartitem.save
-        format.html { redirect_to @shoppingcartitem, notice: 'Shoppingcartitem was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @shoppingcartitem }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @shoppingcartitem.errors, status: :unprocessable_entity }
-      end
+    if @shoppingcartitem.save
+      redirect_to @shoppingcartitem, notice: 'Shoppingcartitem was successfully created.'
+    else
+      render action: 'new'
     end
   end
   #----------------------------------------------------------------------------
     # PATCH/PUT /shoppingcartitems/1
-    # PATCH/PUT /shoppingcartitems/1.json
     def update
       #@shoppingcartitem = Shoppingcartitem.find(params[:id])
-      
-      respond_to do |format|
-        if @shoppingcartitem.update(shoppingcartitem_params)
-          format.html { redirect_to @shoppingcartitem, notice: 'Shoppingcartitem was successfully updated.' }
-          format.json { head :no_content }
-        else
-          format.html { render action: 'edit' }
-          format.json { render json: @shoppingcartitem.errors, status: :unprocessable_entity }
-        end
+      if @shoppingcartitem.update(shoppingcartitem_params)
+        redirect_to @shoppingcartitem, notice: 'Shoppingcartitem was successfully updated.'
+      else
+        render action: 'edit'
       end
     end
 #----------------------------------------------------------------------------
   # DELETE /shoppingcartitems/1
-  # DELETE /shoppingcartitems/1.json
   def destroy
     @shoppingcartitem.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_shoppingcartitems_url }
-      format.json { head :no_content }
-    end
+    redirect_to admin_shoppingcartitems_url
   end
 
 #----------------------------------------------------------------------------

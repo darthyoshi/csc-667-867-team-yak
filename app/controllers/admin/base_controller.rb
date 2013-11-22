@@ -10,11 +10,11 @@ class Admin::BaseController < ApplicationController
     unless current_user.try(:admin?)
       flash[:error] = "Admin login required"
       
-      # ONE OF THESE SHOULD WORK:
+      # ONE OF THESE 3 SHOULD WORK:
       
       #redirect_to new_login_url
       raise ActionController::RoutingError.new('Not Found')
-      render :text => 'Not Found', :status => '404'
+      #render :text => 'Not Found', :status => '404'
     end
   end
   

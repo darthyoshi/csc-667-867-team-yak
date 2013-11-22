@@ -2,6 +2,7 @@ class SellersController < ApplicationController
   before_action :set_seller, only: [:show, :update, :destroy]
 
 #----------------------------------------------------------------------------
+  # GET /yourshop
  def yourshop
    @seller = Seller.where(["user_id = ?", current_user.id]).first
    @user = @seller.user
@@ -10,6 +11,7 @@ class SellersController < ApplicationController
  end
 
 #----------------------------------------------------------------------------
+  # GET /edityourshop
   def edityourshop
     @seller = Seller.where(["user_id = ?", current_user.id]).first
     @user = @seller.user
@@ -17,14 +19,13 @@ class SellersController < ApplicationController
   end
 
 #----------------------------------------------------------------------------
+  # GET /sellers/new
   def new
     @seller = Seller.new
-    @seller = Seller.
   end
 
 #----------------------------------------------------------------------------
   # POST /sellers
-  # POST /sellers.json
   def create
     @seller = Seller.new(seller_params)
     @seller.user_id = current_user.id
@@ -42,7 +43,6 @@ class SellersController < ApplicationController
 
 #----------------------------------------------------------------------------
   # PATCH/PUT /sellers/1
-  # PATCH/PUT /sellers/1.json
   def update
     if @seller.update(seller_params)
       redirect_to @seller, notice: 'Seller was successfully updated.'
@@ -53,7 +53,6 @@ class SellersController < ApplicationController
 
 #----------------------------------------------------------------------------
   # DELETE /sellers/1
-  # DELETE /sellers/1.json
   def destroy
     # seller_ids of artworks must be nullified
     @seller.destroy
@@ -70,5 +69,4 @@ class SellersController < ApplicationController
     def seller_params
       params.require(:seller).permit(:user_id, :seller_date, :displayed_name, :seller_description, :seller_email)
     end
-  end
 end

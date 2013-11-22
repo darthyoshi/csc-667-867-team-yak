@@ -2,15 +2,13 @@ class Admin::ArtworksController < Admin::BaseController
   before_action :set_artwork, only: [:show, :edit, :update, :destroy]
 
   # GET /artworks
-  # GET /artworks.json
   def index
     @artworks = Artwork.paginate(:page => params[:page], :per_page => 50)
   end
 #----------------------------------------------------------------------------
   # GET /artworks/1
-  # GET /artworks/1.json
   def show
-    @artwork = Artwork.find(params[:id])
+    #@artwork = Artwork.find(params[:id])
     @my_arttags = @artwork.arttags
     # do I need that?
     @myreviews = @artwork.reviews
@@ -24,12 +22,11 @@ class Admin::ArtworksController < Admin::BaseController
 #----------------------------------------------------------------------------
   # GET /artworks/1/edit
   def edit
-    @artwork = Artwork.find(params[:id])
+    #@artwork = Artwork.find(params[:id])
     @all_arttags = Arttag.all
   end
 #----------------------------------------------------------------------------
   # POST /artworks
-  # POST /artworks.json
   def create
     @artwork = Artwork.new(artwork_params)
     params[:arttag_list].each do |tag|
@@ -38,22 +35,18 @@ class Admin::ArtworksController < Admin::BaseController
         @artwork.arttags << arttag
       end
     end
-
-    respond_to do |format|
-      if @artwork.save
-        format.html { redirect_to @artwork, notice: 'Artwork was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @artwork }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @artwork.errors, status: :unprocessable_entity }
-      end
+    
+    if @artwork.save
+      redirect_to @artwork, notice: 'Artwork was successfully created.'
+    else  
+      render action: 'edit'
     end
+
   end
 #----------------------------------------------------------------------------
   # PATCH/PUT /artworks/1
-  # PATCH/PUT /artworks/1.json
   def update
-    @artwork = Artwork.find(params[:id])
+    #@artwork = Artwork.find(params[:id])
     @all_arttags = Arttag.all
     checked_arttags = []
     
@@ -72,25 +65,18 @@ class Admin::ArtworksController < Admin::BaseController
       end
     end
     
-    respond_to do |format|
-      if @artwork.update(artwork_params)
-        format.html { redirect_to admin_artwork_url, notice: 'Artwork was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @artwork.errors, status: :unprocessable_entity }
-      end
-    end
+    if @artwork.update(artwork_params)
+      redirect_to admin_artwork_path, notice: 'Artwork was successfully updated.'
+    else  
+      render action: 'edit'
+    end    
+    
   end
 #----------------------------------------------------------------------------
   # DELETE /artworks/1
-  # DELETE /artworks/1.json
   def destroy
-    @artwork.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_artworks_url }
-      format.json { head :no_content }
-    end
+    #@artwork.destroy
+    redirect_to admin_artworks_url
   end
 
 #----------------------------------------------------------------------------

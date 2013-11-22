@@ -1,0 +1,26 @@
+<h2>Admin. All tags</h2>
+<br>
+<%= link_to 'Back to Admin', admin_menu_index_path %>
+<br>
+
+<table>
+  <thead>
+    <tr>
+			<th>id</th>
+      <th>Tag names</th>
+	  </tr>
+	</thead>
+<tbody>
+	<% @arttags.each do |tag| %>
+    <tr>
+      <td><%= tag.id %></td>
+      <td><%= tag.tagname %></td>
+        <td><%= link_to 'Edit', edit_admin_arttag_path(tag) %> | </td>
+        <td><%= link_to 'Delete', admin_arttag_path(tag), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New Arttag', new_admin_arttag_path %> <br>
+<%= link_to 'Back to Admin', admin_menu_index_path %>

@@ -1,15 +1,6 @@
-<%= form_for(@ordereditem) do |f| %>
-  <% if @ordereditem.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ordereditem.errors.count, "error") %> prohibited this ordereditem from being saved:</h2>
+<%= form_for @ordereditem do |f| %>
 
-      <ul>
-      <% @ordereditem.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render "shared/error_messages", target: @ordereditem %>
 
   <div class="field">
     <%= f.label :order_id %><br>

@@ -2,14 +2,12 @@ class Admin::SellersController < Admin::BaseController
   before_action :set_seller, only: [:show, :showreviews, :edit, :update, :destroy]
 
   # GET /sellers
-  # GET /sellers.json
   def index
     @sellers = Seller.all
   end
 
 #----------------------------------------------------------------------------
   # GET /sellers/1
-  # GET /sellers/1.json
   def show
     #@seller = Seller.find(params[:id]) #already set
     @user = @seller.user
@@ -33,45 +31,30 @@ class Admin::SellersController < Admin::BaseController
 
 #----------------------------------------------------------------------------
   # POST /sellers
-  # POST /sellers.json
   def create
     @seller = Seller.new(seller_params)
-
-    respond_to do |format|
-      if @seller.save
-        format.html { redirect_to @seller, notice: 'Seller was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @seller }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @seller.errors, status: :unprocessable_entity }
-      end
+    if @seller.save
+      redirect_to @seller, notice: 'Seller was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
 #----------------------------------------------------------------------------
   # PATCH/PUT /sellers/1
-  # PATCH/PUT /sellers/1.json
   def update
-    respond_to do |format|
-      if @seller.update(seller_params)
-        format.html { redirect_to admin_seller_url, notice: 'Seller was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @seller.errors, status: :unprocessable_entity }
-      end
+    if @seller.update(seller_params)
+      redirect_to admin_seller_url, notice: 'Seller was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
 #----------------------------------------------------------------------------
   # DELETE /sellers/1
-  # DELETE /sellers/1.json
   def destroy
     @seller.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_sellers_url }
-      format.json { head :no_content }
-    end
+    redirect_to admin_sellers_url
   end
 
 #----------------------------------------------------------------------------

@@ -2,17 +2,7 @@
 
 <%= form_for([:admin, @shoppingcartitem]) do |f| %>
 
-  <% if @shoppingcartitem.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@shoppingcartitem.errors.count, "error") %> prohibited this shoppingcartitem from being saved:</h2>
-
-      <ul>
-      <% @shoppingcartitem.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render "shared/error_messages", target: @shoppingcartitem %>
 
 <div class="field">
 	<%= label_tag 'User info: ' %>

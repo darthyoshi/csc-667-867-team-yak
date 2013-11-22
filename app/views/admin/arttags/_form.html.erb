@@ -1,0 +1,19 @@
+<%= form_for [:admin, @arttag] do |f| %>
+
+<%= render "shared/error_messages", target: @arttag %>
+
+<div class="field">
+  <%= f.label :id %>
+	<%= text_field_tag 'date', @arttag.id, disabled: true %>
+</div>
+
+<div class="field">
+  <%= f.label :tagname %>
+  <%= f.text_field :tagname %>
+</div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+
+<% end %>

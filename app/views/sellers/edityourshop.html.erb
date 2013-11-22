@@ -1,17 +1,8 @@
 <h2>Edit your shop</h2>
 
-<%= form_for(@seller) do |f| %>
-  <% if @seller.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@seller.errors.count, "error") %> prohibited this seller from being saved:</h2>
+<%= form_for @seller do |f| %>
 
-      <ul>
-      <% @seller.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= render "shared/error_messages", target: @seller %>
 
 	<div class="field">
 

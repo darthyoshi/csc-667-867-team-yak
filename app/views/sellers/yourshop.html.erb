@@ -44,14 +44,18 @@
 
 <%= link_to 'Close your shop', seller_path(@seller), method: :delete, data: { confirm: 'Are you sure?' } %>
 
-<table id="cart-table" border="0">
-  <thead>
-    <tr>
-      <th class="cart-item-col">Item</th>
-      <th class="cart-price-col">Price</th>
-      <th class="cart-quantity-col">Quantity</th>
-      <th class="cart-delete-col"></th>
-    </tr>
+
+
+<% if (!@artworks.nil? and @artworks.length > 0) then %>
+
+	<table id="cart-table" border="0">
+  	<thead>
+	    <tr>
+	      <th class="cart-item-col">Item</th>
+	      <th class="cart-price-col">Price</th>
+	      <th class="cart-quantity-col">Quantity</th>
+	      <th class="cart-delete-col"></th>
+	    </tr>
   </thead>
 
   <tbody>
@@ -70,4 +74,5 @@
   </tbody>
 </table>
 <br>
+<% end %>
 

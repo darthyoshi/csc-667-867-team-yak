@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>id:</strong>
+  <%= @arttag.id %>
+</p>
+
+<p>
+  <strong>name:</strong>
+  <%= @arttag.tagname %>
+</p>
+
+<%= link_to 'Edit', edit_admin_arttag_path(@arttag) %> |
+<%= link_to 'Arttags', admin_arttags_path %>

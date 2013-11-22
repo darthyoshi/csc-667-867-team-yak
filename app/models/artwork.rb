@@ -1,5 +1,7 @@
 class Artwork < ActiveRecord::Base
   
+  validates :price, numericality: {greater_than_or_equal_to: 0.01}
+  
   has_many :taggings
   has_many :arttags, :through => :taggings
   

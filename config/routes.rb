@@ -15,12 +15,11 @@ Csc667867TeamYak::Application.routes.draw do
   get "/openshop" => "sellers#new"
   get "/edityourshop" => "sellers#edityourshop"
 
-
-# 7 resources: index, show, new, create, edit, update, destroy
+# 7 resources: index, show, [new, create], [edit, update], destroy
   devise_for :users
+  
   resources :sellers
   resources :artworks
-  resources :arttags
   resources :shoppingcartitems
   #resources :ordereditems
 
@@ -34,11 +33,15 @@ Csc667867TeamYak::Application.routes.draw do
     resources :menu, only: :index do
       get 'listusers', on: :collection
     end
-    resources :artworks, except: :new
-    resources :shoppingcartitems, except: :new
-    resources :sellers, except: :new
-    resources :reviews, except: :new
-    resources :orders, except: :new do
+    resources :artworks, except: [:new, :create]
+    resources :arttags
+    resources :shoppingcartitems, except: [:new, :create, :destroy] do
+    end
+    resources :sellers, except: [:new, :create, :destroy]
+    resources :reviews, except: [:new, :create, :destroy] do
+      get 'showreviews', on: :collection
+    end
+    resources :orders, except: [:new, :create, :destroy]  do
       resources :ordereditems, except: :new
     end
   end
