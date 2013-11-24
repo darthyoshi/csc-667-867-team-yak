@@ -14,7 +14,7 @@ unless found
     if request.fullpath.include? details['url']
       crumbs.push ["Artworks", "/browse/all"]
       crumbs.push details['description']
-      title = "Artworks by category: " + details['description']
+      title = "Artworks: " + details['description']
       found = true
       break
     end
