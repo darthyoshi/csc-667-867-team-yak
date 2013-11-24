@@ -4,38 +4,40 @@
 
 <% @artworks.each do |artwork| %>
     <%
-        tag_ids = Tagging.where("artwork_id = ?", artwork.id)
-        tags = Array.new
-        tag_ids.each do |id|
-            tag = Arttag.where("id = ?", id.arttag_id)
-            tags.push(tag[0].tagname)
-        end
+        tags = Arttag.joins(:taggings).where("artwork_id = ?", artwork.id).select("tagname")
+        seller = Seller.joins(:artworks).where("artworks.id = ?", artwork.id)
     %>
 
 <div class='listing'>
     <%= link_to image_tag(artwork.imagepath), {:controller => 'artworks', :action => 'show', :id => artwork.id} %>
 
+<div class='listing-details' >
     <div>
         <%= link_to artwork.title,{:controller => 'artworks', :action => 'show', :id => artwork.id} %>
     </div>
 
     <p>
-        Quantity available: <%= artwork.quantity %>
+        Seller: <%= link_to seller[0].displayed_name, "/search?search=seller:" + seller[0].displayed_name %>
+    </p>
+
+    <p>
+        Quantity available: <%= artwork.quantity %><br>
         Price: <%= number_to_currency(artwork.price) %>
     </p>
     <p><%= artwork.description %></p>
 
-    <div style='font-size: 0.5em'>
+    <div class='tags'>
         Tags:
         <% if tags.count == 0 %>
             None
         <% else %>
-            <% tags.each_with_index do |tagname, index| %>
-                <% name = if index < (tags.count - 1) then tagname + ',' else tagname end %>
-                <%= name %>
+            <% tags.each_with_index do |tag, index| %>
+                <% name = if index < (tags.count - 1) then tag.tagname + ',' else tag.tagname end %>
+                <%= link_to name, "/search?search=tag:" + tag.tagname %>
             <% end %>
         <% end %>
     </div>
+</div>
 </div>
 
 <hr>

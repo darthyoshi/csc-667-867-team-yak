@@ -12,7 +12,7 @@ end
 unless found
   CATEGORIES.each do |cat,details|
     if request.fullpath.include? details['url']
-      crumbs.push ["Artworks", "/artworks"]
+      crumbs.push ["Artworks", "/browse/all"]
       crumbs.push details['description']
       title = "Artworks by category: " + details['description']
       found = true
@@ -91,7 +91,7 @@ end
                         query_search = ""
                         query_class = ""
                         if params[:search].nil?
-                            query_search = "item name, item description, item tag, seller name"
+                            query_search = "items by title, description, tag, or seller"
                             query_class = "blank"
                         else
                             query_search = params[:search]
@@ -108,16 +108,18 @@ end
         <div class="sidebar panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    Artworks
+                    <%= link_to "Artworks", CATEGORIES[:All]["url"] %>
                 </h4>
             </div>
 
             <div class="panel-body">
                 <list>
-                <% CATEGORIES.each do |cat,details| %>
+                <% CATEGORIES.each_with_index do |cat,index| %>
+                    <% if index>0 %>
                     <li>
-                        <%= link_to cat, details['url'] %>
+                        <%= link_to cat[0], cat[1]['url'] %>
                     </li>
+                    <% end %>
                 <% end %>
                 </list>
             </div>
