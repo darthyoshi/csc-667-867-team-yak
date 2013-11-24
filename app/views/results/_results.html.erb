@@ -5,7 +5,7 @@
 <% @artworks.each do |artwork| %>
     <%
         tags = Arttag.joins(:taggings).where("artwork_id = ?", artwork.id).select("tagname")
-        seller = Seller.joins(:artworks).where("artworks.id = ?", artwork.id).first
+        sellers = Seller.joins(:artworks).where("artworks.id = ?", artwork.id)
     %>
 
 <div class='listing'>
@@ -16,9 +16,11 @@
         <%= link_to artwork.title,{:controller => 'artworks', :action => 'show', :id => artwork.id} %>
     </div>
 
-    <p>
-        Seller: <%= link_to seller.displayed_name, "/search?search=seller:" + seller.displayed_name %>
-    </p>
+    <% sellers.each do |seller| %>
+        <p>
+            Seller: <%= link_to seller[:displayed_name], "/search?search=seller:" + i[:displayed_name] %>
+        </p>
+    <% end %>
 
     <p>
         Quantity available: <%= artwork.quantity %><br>
