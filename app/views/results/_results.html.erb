@@ -18,7 +18,7 @@
 
     <% sellers.each do |seller| %>
         <p>
-            Seller: <%= link_to seller[:displayed_name], "/search?search=seller:" + i[:displayed_name] %>
+            Seller: <%= link_to seller[:displayed_name], "/search?search=seller:" + seller[:displayed_name] %>
         </p>
     <% end %>
 
