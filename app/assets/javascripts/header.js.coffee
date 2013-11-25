@@ -12,7 +12,7 @@ $(document).on('focus', '#search', ( ->
 #restores default message if search bar is blank
 $(document).on('blur', '#search', ( ->
     if $('#search').val() is ''
-        $('#search').val("item name, item description, item tag, seller name")
+        $('#search').val("items by title, description, tag, or seller")
         $('#search').addClass("blank")
 ));
 
