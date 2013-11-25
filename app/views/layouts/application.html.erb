@@ -121,24 +121,19 @@ end
 
             <div class="panel-body">
                 <list>
-<<<<<<< HEAD
-                <% CATEGORIES.each do |cat,details| %>
-									  <li><%= image_tag(asset_path "common/element.jpg") %></li>
-										<li><span class="glyphicon glyphicon-leaf"></span>&nbsp;<%= link_to cat, details['url'] %></li>
-=======
                 <% CATEGORIES.each_with_index do |cat,index| %>
-                    <% if index>0 %>
+                    <% if index > 0 %>
+									  <li><%= image_tag(asset_path "common/element.jpg") %></li>
                     <li>
+	                      <span class="glyphicon glyphicon-leaf"></span>&nbsp;
                         <%= link_to cat[0], cat[1]['url'] %>
                     </li>
                     <% end %>
->>>>>>> ad5d976656de727b5036761ec5e9022acaa48186
                 <% end %>
                 </list>
             </div>
         </div>
         <div class='content'>
-	
 	
                 <ol class='breadcrumb'>
                 <% if title == "ArtSale Home" %>
@@ -163,11 +158,9 @@ end
                     <% end %>
                 <% end %>
                 </ol>
+        </div>
 
-
-                </div>
-
-            <div class='hero-unit'>
+        <div class='hero-unit'>
 
                 <%= yield %>
         </div>
