@@ -1,5 +1,5 @@
-
-<h3>All seller's reviews (under construction)</h3>
+<div class='admin'>
+<h2>All seller's reviews (under construction)</h2>
 <% @myreviews.each do |review| %>
 	Stars: 
 	<%= showstars(review.stars) %><br>
@@ -11,3 +11,4 @@
 	<%= review.review_text %>
 	<br>
 <% end %>
+</div>

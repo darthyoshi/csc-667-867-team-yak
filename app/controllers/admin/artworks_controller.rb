@@ -3,7 +3,7 @@ class Admin::ArtworksController < Admin::BaseController
 
   # GET /artworks
   def index
-    @artworks = Artwork.paginate(:page => params[:page], :per_page => 50)
+    @artworks = Artwork.order_by_id.paginate(:page => params[:page], :per_page => 50)
   end
 #----------------------------------------------------------------------------
   # GET /artworks/1

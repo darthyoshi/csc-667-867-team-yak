@@ -1,5 +1,7 @@
+@import "artsale";
+
 body {
-  background-color: #dddddd;
+  background-color: $artsale-bg;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -24,7 +26,7 @@ a {
     color: #666;
   }
   &:hover {
-    color: red;
+    color: #000;
   }
 }
 

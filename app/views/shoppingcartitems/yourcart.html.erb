@@ -1,24 +1,5 @@
 <h2>Your Cart</h2>
 
-<style>
-#cart-table td {
-	border-top: 1px solid #DDD;
-}
-#not-available {
-	color:blue;
-}
-
-#cart-table th {
-	font-size:11px;
-}
-#cart-table {
-	width:100%;
-}
-.cart-item-col {
-	width:70%;
-}
-</style>
-
 <table id="cart-table" border="0">
   <thead>
     <tr>
@@ -46,7 +27,7 @@
 				<td class="cart-availability-col">Available</td>
 				<% end %>
 				
-        <td class="cart-delete-col"><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="cart-delete-col"><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     <tr><td colspan="4"></td></tr>

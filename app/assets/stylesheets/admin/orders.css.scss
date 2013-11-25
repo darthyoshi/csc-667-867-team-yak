@@ -1,3 +1,16 @@
 // Place all the styles related to the admin/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#cart-table td {
+	border-top: 1px solid #DDD;
+}
+#cart-table th {
+	font-size:11px;
+}
+#cart-table {
+	width:100%;
+}
+.cart-item-col {
+	width:70%;
+}

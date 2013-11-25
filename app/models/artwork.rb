@@ -1,5 +1,6 @@
 class Artwork < ActiveRecord::Base
   
+  validates :quantity, numericality: {greater_than_or_equal_to: 0}
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
   
   has_many :taggings
@@ -12,6 +13,8 @@ class Artwork < ActiveRecord::Base
 
   #the following line allows to using Artwork.find(id).reviewers
   has_many  :reviewers, :through => :reviews, :source => :user
+  
+  scope :order_by_id, -> { Artwork.all.order("id ASC")}
   
   # to make this work: Artwork.paint.count
   scope :paint, -> { where(category: 'painting') }

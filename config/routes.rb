@@ -7,13 +7,16 @@ Csc667867TeamYak::Application.routes.draw do
   get "/yourcart" => "shoppingcartitems#yourcart"
   get "/account" => 'account#index'
   get "/search/(:page)" => 'results#search'
-  get "/browse/:cat/(:page)" => 'results#category'
+  get "/browse/:cat/(:page)" => "results#category"
   get "/about" => "welcome#about"
   get "/contact" => "welcome#contact"
   get "/faq" => "welcome#faq"
   get "/yourshop" => "sellers#yourshop"
   get "/openshop" => "sellers#new"
   get "/edityourshop" => "sellers#edityourshop"
+  
+# this overrites the default path
+  put "/admin/arttags/:id" => "admin/arttags#update", as: "update_admin_arttags"
 
 # 7 resources: index, show, [new, create], [edit, update], destroy
   devise_for :users

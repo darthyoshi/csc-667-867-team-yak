@@ -1,6 +1,6 @@
-All:
+All Artworks:
   url: "/browse/all"
-  description: "All"
+  description: "All artworks"
 Photos:
   url: "/browse/photography"
   description: "Photographs"

@@ -1,21 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<style>
-#cart-table td {
-	border-top: 1px solid #DDD;
-}
-#cart-table th {
-	font-size:11px;
-}
-#cart-table {
-	width:100%;
-}
-.cart-item-col {
-	width:70%;
-}
-</style>
-
+<div class='admin'>
+	
 <h2>Admin. View order info</h2>
+<p id="notice"><%= notice %></p>
 <p>
   <strong>Order date:</strong>
   <%= @order.order_date.localtime.to_s(:long) %>
@@ -63,3 +49,4 @@
 
 <%= link_to 'Edit', edit_admin_order_path(@order) %> |
 <%= link_to 'Orders', admin_orders_path %>
+</div>

@@ -51,7 +51,7 @@ end
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class='<%= controller.controller_name %>'>
 
 <!--registration modal window-->
 <div id='dialogue1' title='Register'>
@@ -86,7 +86,7 @@ end
             </div>
 
             <div style='text-align: center'>
-                <form id='searchform' action='/search' method='get'>
+                <form class="form-inline" role="form" id='searchform' action='/search' method='get'>
                     <%
                         query_search = ""
                         query_class = ""
@@ -97,32 +97,40 @@ end
                             query_search = params[:search]
                         end
                     %>
-                    <input type='text' class='<%= query_class %>' id='search' name='search' style='width: 50%' value='<%= query_search %>'>
-
-                    <input type='submit'>
+										<div id='search-textbox' class="form-group">
+										<label class="sr-only" for="search">Search terms</label>
+                    <input type='text' class='<%= query_class %>' id='search' name='search' value='<%= query_search %>'>
+										</div>
+                    <button type="submit" class="btn btn-default btn-xs">Search</button>
                 </form>
             </div>
     </header>
 
     <div class='container-fluid'>
         <div class="sidebar panel panel-default">
+	
+<%
+=begin %>	
             <div class="panel-heading">
                 <h4 class="panel-title">
                     Artworks
                 </h4>
             </div>
+<% 
+=end %>
 
             <div class="panel-body">
                 <list>
                 <% CATEGORIES.each do |cat,details| %>
-                    <li>
-                        <%= link_to cat, details['url'] %>
-                    </li>
+									  <li><%= image_tag(asset_path "common/element.jpg") %></li>
+										<li><span class="glyphicon glyphicon-leaf"></span>&nbsp;<%= link_to cat, details['url'] %></li>
                 <% end %>
                 </list>
             </div>
         </div>
         <div class='content'>
+	
+	
                 <ol class='breadcrumb'>
                 <% if title == "ArtSale Home" %>
                     <li class='active'>
@@ -146,6 +154,8 @@ end
                     <% end %>
                 <% end %>
                 </ol>
+
+
                 </div>
 
             <div class='hero-unit'>
@@ -155,9 +165,9 @@ end
     </div>
 
     <footer class='footer'>
-        <div style='float: left'>ArtSale</div>
+        <div style='float: left'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArtSale</div>
 
-        <div style='float: right'>&copy; 2013 Team YAK</div>
+        <div style='float: right'>&copy; 2013 Team YAK&nbsp;</div>
 
         <div style='clear: none; text-align: center'>
             |

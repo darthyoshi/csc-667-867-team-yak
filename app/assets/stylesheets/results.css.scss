@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .listing {
-    background: #abcdef;
+    //background: #666666;
+	height: auto;
 }
 
 .listing img {
@@ -16,10 +17,30 @@
 }
 
 html, hr {
-    clear: both;;
+    clear: both;
     border-bottom-color: black;
 }
 
 .pagination {
-    text-align: center;
+	margin: 6px 0;
 }
+
+hr {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+/*
+div.pagination {
+	display:block;
+    width:auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+ul.pagination {
+  width:100%;
+//	margin-left: auto;
+//	margin-right: auto;
+}
+*/

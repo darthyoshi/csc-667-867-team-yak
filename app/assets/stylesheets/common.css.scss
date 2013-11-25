@@ -1,29 +1,61 @@
 
+@import "artsale";
+@import "bootstrap";
+
+.admin {
+ h2 { font-size: 26px;
+      font-family:Candara, sans-serif;
+      color:#727272;
+  }
+
+.body {
+	font-family:Candara, sans-serif;
+}
+
+}
+
 .navbar {
-    background: #d07030;
+	a { color: #ccc; }
+	a:visited { color: #ccc; }
+	color: #ccc;
+    background: $artsale-bg;
     padding-bottom: 9px;
     padding-top: 9px;
     margin: 0px 0 30px;
     border-bottom: 1px solid grey;
 }
 
+.navbar {
+	margin-bottom: 2px;
+}
+
 .navbar #logoText {
     font-size: 40px;
     font-weight: bold;
     font-family: "Comic Sans MS", cursive, sans-serif;
-    color: SaddleBrown;
+    color: white;
 }
 
 .footer {
-    background: #00cc00;
+	a { color: #ccc; }
+	a:hover { color: #fff;}
+	color: #ccc;
+    background: $panel-footer-bg;
     padding-bottom: 9px;
     padding-top: 9px;
-    margin: 30px 0 0px;
-    border-top: 1px solid grey;
+    margin: 10px 0 0px;
 }
 
 .sidebar {
-    border: 1px solid black;
+	a { color: #ccc; }
+	a:visited { color: #ccc; }
+	a:hover { color: #fff;}
+	li {list-style-type: none};
+	span { 
+		color: #ccc;
+		font-size: 20px;}
+	color: #ccc;	
+    border: 1px $artsale-bg;
     border-radius: 5px;
     float: left;
     padding: 0.5em;
@@ -41,16 +73,19 @@
 .hero-unit {
     overflow: auto;
     padding: 5px;
-}
-
-.footer {
-    padding: 1em;
-    background: #00cc00;
+	background-color: #ccc;
 }
 
 #searchform {
     margin-left: auto;
     margin-right: auto;
+}
+
+#search-textbox {
+	width: 40%;
+	input {
+		width: 100%;
+	}
 }
 
 .blank {
@@ -59,5 +94,8 @@
 }
 
 .breadcrumb {
+	a { color: #ccc; }
+	a:visited { color: #ccc; }
     overflow: auto;
+	margin-bottom: 0;
 }

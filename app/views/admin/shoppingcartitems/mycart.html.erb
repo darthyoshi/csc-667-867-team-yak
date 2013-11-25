@@ -1,20 +1,6 @@
+<div class='admin'>
+	
 <h2>Your Cart</h2>
-
-<style>
-#cart-table td {
-	border-top: 1px solid #DDD;
-}
-#cart-table th {
-	font-size:11px;
-}
-#cart-table {
-	width:100%;
-}
-.cart-item-col {
-	width:70%;
-}
-</style>
-
 <table id="cart-table" border="0">
   <thead>
     <tr>
@@ -46,3 +32,4 @@
 <%= link_to 'Continue Shopping', welcome_path %>
 &nbsp;&nbsp;&nbsp;
 <%= button_to 'Checkout', :controller => "orders", :action => "create" %>
+</div>

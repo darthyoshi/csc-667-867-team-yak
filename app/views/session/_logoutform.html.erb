@@ -1,7 +1,10 @@
+<table cellpadding="5"><tr>
 <% if current_user.admin? %>
+<td>
     <%= link_to "Manage ArtSale", admin_menu_index_path %>
-
+</td>
 <% else %>
+<td>
     <div class='dropdown'>
         Hi, <a data-toggle="dropdown" id='account' href=''><%= userfullname(current_user) %></a>
         <ul class='dropdown-menu pull-right' role='menu' id='account-menu'>
@@ -16,7 +19,11 @@
             </li>
         </ul>
     </div>
-
-    <%= link_to "Cart", "/yourcart" %> |
+</td>
+<td>
+<a href="/yourcart"><span class='glyphicon glyphicon-shopping-cart'></span><span class="badge"></span></a>
+</td>
 <% end %>
+<td>
 <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+</td></tr></table>
