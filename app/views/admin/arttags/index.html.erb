@@ -17,20 +17,18 @@
 	
 <% else %>	
 
-	<form class="form-inline" role="form">
-	<%= form_for @arttag, :url => update_admin_arttags_path(@arttag) do |f| %>
-	<table>
-		<tr>
-			<th>update tag id: <%= @arttag.id %> </th>
-			<th></th>
-		</tr>
-		<tr>
-			<td><%= text_field(:arttag, :tagname) %></td>
-			<td><button type="submit" class="btn btn-default"><%= f.submit( 'update' ) %></button></td>
-		</tr>
-	</table>
+	<%= form_for @arttag, :url => update_admin_arttags_path(@arttag), html: { class: "form-inline"} do |f| %>
+		<div class="form-group">
+			<label class="sr-only" for="updateField">Update Tag</label>
+			<%= text_field(:arttag, :tagname, id: "updateField", class: "form-control") %>
+		</div>
+			<%= f.submit( 'update', class: "btn btn-default"  ) %>
 	<% end %>
-	</form>
+
+
+
+
+
 	
 <% end %>
 	

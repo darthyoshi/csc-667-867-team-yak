@@ -145,7 +145,6 @@ end
                         <a href='/'>Home</a>
                     </li>
                     <% crumbs.each_with_index do |desc, index| %>
-                    <span class='divide'>></span>
                         <% if index < crumbs.count-1 %>
                         <li>
                             <%= link_to desc[0], desc[1] %>

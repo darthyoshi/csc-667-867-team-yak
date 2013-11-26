@@ -4,15 +4,56 @@
 
 .admin {
  h2 { font-size: 26px;
-      font-family:Candara, sans-serif;
-      color:#727272;
+      font-family: Candara, sans-serif;
+      color: #727272;
   }
 
-.body {
-	font-family:Candara, sans-serif;
+  .body {
+	  font-family: Candara, sans-serif;
+  }
+
+  .menu {
+	  font-family: Verdana, Geneva, sans-serif;
+	  padding: 10px;
+	  margin: 0px;	
+	  font-size: 20px;
+	  a:visited { color: black; }
+  }
 }
 
+.artwork {
+	margin: 10px;
+	#tagsfooter {
+		clear: both;
+		padding-top:10px;
+		}
+	
+	h2 { font-size: 72px;}
+
+	.artwork-title {
+		font-family: Verdana, Geneva, sans-serif;
+		font-size: 32px;
+		color: $artsale-bg;
+	}
+
+	a {
+		color: $artsale-bg;
+		padding: 10px;
+	}
+
+	li {
+		padding: 3px;
+		list-style-type: none;
+	}
+	
+	.artwork-description {
+		font-family: Verdana, Geneva, sans-serif;
+		font-size: 18px;
+		color: $artsale-bg;
+	}	
+	
 }
+
 
 .navbar {
 	a { color: #ccc; }
@@ -96,6 +137,7 @@
 .breadcrumb {
 	a { color: #ccc; }
 	a:visited { color: #ccc; }
+	color: #ccc;
     overflow: auto;
 	margin-bottom: 0;
 }

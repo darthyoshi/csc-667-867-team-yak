@@ -1,42 +1,40 @@
+<div class='artwork'>
+	
 <p>
-  <strong><%= @artwork.title %></strong>
+  <strong class="artwork-title" >
+    <%= @artwork.title %>
+  </strong>
 </p>
 
-<div style='float: left; margin-right: 20px'>
-<%= image_tag(@artwork.imagepath, :border=>0) %>
+<div style="float: left; margin-right: 20px">
+  <%= image_tag(@artwork.imagepath, :border=>0) %>
 </div>
 
-<p>
-  <strong>
-  <%= @artwork.category %>
-</strong>
+<p class="artwork-description" >
+  <%= @artwork.description %>
 </p>
-
 <p>
   <strong>Price:</strong>
   <%= number_to_currency(@artwork.price) %>
 </p>
-
 <p>
-  <strong>Only <%= @artwork.quantity %> available</strong>
-</p>
-<p>
-  <%= @artwork.description %>
+  <strong>
+    Only <%= @artwork.quantity %> available
+  </strong>
 </p>
 
-<p><strong>Tags</strong></p>
-
-<% unless @my_arttags.nil? %>
-	<% @my_arttags.each do |arttag| %>
-		<%= label_tag 'arttag', arttag.tagname %>
-	<% end %>
-<% end %>
-
-<div style='clear:both'>
-<%= link_to 'Back to Artworks', artworks_path %>
-</div>
 <% if !current_user.nil? %>
-	<%= button_to 'Add to Cart', shoppingcartitems_path(:shoppingcartitem => {:user_id => current_user.id, :artwork_id => @artwork.id, :quantity => 1}) %>
+  <%= button_to 'Add to Cart', shoppingcartitems_path(:shoppingcartitem => {:user_id => current_user.id, :artwork_id => @artwork.id, :quantity => 1}), class: "btn btn-default btn-sm"  %>
 <% end %>
 
+<div id="tagsfooter" >
+<% unless @my_arttags.blank? %>
+  <% @my_arttags.each do |arttag| %>
+    <span class="badge"><%= label_tag 'arttag', arttag.tagname %></span>
+  <% end %>
+<% end %>
+<br><br>
+	<%= link_to 'Back to Artworks', artworks_path %>
+</div>
 
+</div>
