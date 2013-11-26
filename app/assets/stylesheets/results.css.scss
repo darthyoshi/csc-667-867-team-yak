@@ -3,17 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .listing {
-    //background: #666666;
-	height: auto;
+    height: auto;
 }
 
 .listing img {
     border: solid black 1px;
     max-width: 150px;
-    background: white;
-    float: left;
-    margin-right: 1em;
-    margin-bottom: 15px;
 }
 
 html, hr {
@@ -22,34 +17,28 @@ html, hr {
 }
 
 .pagination {
-	margin: 6px 0px 0px 0px;
+    margin: 6px 0;
+    div { display: block; }
+    ul { width: 100%; }
+    li { padding: 0px; }
 }
 
-/*
 hr {
-	margin-top:10px;
-	margin-bottom:10px;
+    margin-top:10px;
+    margin-bottom:10px;
 }
-
-div.pagination {
-	display:block;
-    width:auto;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-ul.pagination {
-  width:100%;
-//	margin-left: auto;
-//	margin-right: auto;
-}
-*/
 
 .tags {
-    font-size: 0.5em;
+    font-size: 0.8em;
 }
 
 .listing-details {
     float: left;
 }
 
+.thumb {
+    width: 150px;
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 15px;
+}

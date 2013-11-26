@@ -1,26 +1,23 @@
-
 @import "artsale";
 @import "bootstrap";
 
-.cart .badge {
-	background-color: #009933;
-}
-
 .admin {
- h2 { font-size: 26px;
-      font-family: Candara, sans-serif;
-      color: #727272;
-  }
+    h2 {
+        font-size: 26px;
+        font-family:Candara, sans-serif;
+        color:#727272;
+    }
 
   .body {
 	  font-family: Candara, sans-serif;
   }
 
   .menu {
-	  font-family: Verdana, Geneva, sans-serif;
+    .body { font-family:Candara, sans-serif; }
 	  padding: 10px;
 	  margin: 0px;	
 	  font-size: 20px;
+	  a:visited { color: black; }
   }
 }
 
@@ -65,7 +62,7 @@
     background: $artsale-bg;
     padding-bottom: 9px;
     padding-top: 9px;
-    margin: 0px 0px 30px;
+    margin: 0px 0 30px;
     border-bottom: 1px solid grey;
 }
 
@@ -140,7 +137,10 @@
 .breadcrumb {
 	a { color: #ccc; }
 	a:visited { color: #ccc; }
-	color: #ccc;
     overflow: auto;
 	margin-bottom: 0;
+}
+
+.divide {
+    color: #dddddd;
 }
