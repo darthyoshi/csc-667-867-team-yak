@@ -4,7 +4,7 @@ title = ""
 crumbs = Array.new
 found = false
 
-if request.fullpath == "/"
+if request.fullpath == "/" || (request.fullpath.include? 'page')
   title = "ArtSale Home"
   found = true
 end
@@ -97,8 +97,8 @@ end
                             query_search = params[:search]
                         end
                     %>
-										<div id='search-textbox' class="form-group">
-										<label class="sr-only" for="search">Search terms</label>
+                    <div id='search-textbox' class="form-group">
+                    <label class="sr-only" for="search">Search terms</label>
                     <input type='text' class='<%= query_class %>' id='search' name='search' value='<%= query_search %>'>
 										</div>
                     <button type="submit" class="btn btn-default btn-xs">Search</button>
@@ -123,9 +123,9 @@ end
                 <list>
                 <% CATEGORIES.each_with_index do |cat,index| %>
                     <% if index > 0 %>
-									  <li><%= image_tag(asset_path "common/element.jpg") %></li>
+                    <li><%= image_tag(asset_path "common/element.jpg") %></li>
                     <li>
-	                      <span class="glyphicon glyphicon-leaf"></span>&nbsp;
+	                    <span class="glyphicon glyphicon-leaf"></span>&nbsp;
                         <%= link_to cat[0], cat[1]['url'] %>
                     </li>
                     <% end %>
@@ -160,12 +160,11 @@ end
         </div>
 
         <div class='hero-unit'>
-
-                <%= yield %>
+            <%= yield %>
         </div>
     </div>
 
-    <footer class='footer'>
+    <footer class='footer' style>
         <div style='float: left'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArtSale</div>
 
         <div style='float: right'>&copy; 2013 Team YAK&nbsp;</div>
