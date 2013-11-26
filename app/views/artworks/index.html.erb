@@ -1,10 +1,10 @@
-<div class='artwork'>
-	
+
+<div class='artwork'>	
 <h3 style='text-align:center'>Artworks</h3>
 
 <% @artworks.each do |artwork| %>
    <h4><%= artwork.title %></h4>
-   <%= link_to image_tag(artwork.imagepath), artwork_path(artwork.id) %>
+   <%= link_to image_tag(artwork.imagepath, { class: "img-responsive" }), artwork_path(artwork.id) %>
 <br><br>
 <% end %>
 <%= will_paginate @artworks %>

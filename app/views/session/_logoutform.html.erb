@@ -1,3 +1,5 @@
+<div class="cart" >
+	
 <table cellpadding="5"><tr>
 <% if current_user.admin? %>
 <td>
@@ -21,9 +23,11 @@
     </div>
 </td>
 <td>
-<a href="/yourcart"><span class='glyphicon glyphicon-shopping-cart'></span><span class="badge"></span></a>
+<a href="/yourcart"><span class='glyphicon glyphicon-shopping-cart'></span>
+	<span class="badge"><%= Shoppingcartitem.cart_count(current_user.id) if (Shoppingcartitem.cart_count(current_user.id) > 0) %></span></a>
 </td>
 <% end %>
 <td>
 <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 </td></tr></table>
+</div>

@@ -2,6 +2,10 @@
 @import "artsale";
 @import "bootstrap";
 
+.cart .badge {
+	background-color: #009933;
+}
+
 .admin {
  h2 { font-size: 26px;
       font-family: Candara, sans-serif;
@@ -17,7 +21,6 @@
 	  padding: 10px;
 	  margin: 0px;	
 	  font-size: 20px;
-	  a:visited { color: black; }
   }
 }
 
@@ -62,7 +65,7 @@
     background: $artsale-bg;
     padding-bottom: 9px;
     padding-top: 9px;
-    margin: 0px 0 30px;
+    margin: 0px 0px 30px;
     border-bottom: 1px solid grey;
 }
 

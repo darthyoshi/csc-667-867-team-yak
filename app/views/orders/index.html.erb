@@ -1,6 +1,12 @@
-<h2>Your completed orders</h2>
+<%
+=begin %>
 <% if !@myorders.nil? and @myorders.length != 0 %>
+<% 
+=end %>
 
+<% if !@myorders.blank? %>
+<h2>Your orders</h2>
+<br><br>
 	<table>
 	  <thead>
 	    <tr>
@@ -28,5 +34,6 @@
 	<%= link_to 'Your Account', account_path %><br>
 	<%= link_to 'Browse Artworks', artworks_path %>
 <% else %>
-<h4>(You have no orders)</h4>
+<h2>You have no orders</h2>
+<br><br><br><br><br>
 <% end %>

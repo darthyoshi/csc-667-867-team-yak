@@ -1,5 +1,7 @@
+<p id="notice"><%= notice %></p>
 <h2>Your Cart</h2>
-
+<br>
+<% if Shoppingcartitem.cart_count(current_user.id) > 0 %>
 <table id="cart-table" border="0">
   <thead>
     <tr>
@@ -33,9 +35,11 @@
     <tr><td colspan="4"></td></tr>
   </tbody>
 </table>
- 
 <br>
-
-<%= link_to 'Continue Shopping', artworks_path %>
-&nbsp;&nbsp;&nbsp;
 <%= button_to 'Checkout', :controller => "orders", :action => "create" %>
+<% else %>
+	<%= image_tag( asset_path("common/cart-empty.png")) %>
+<% end %>
+<br><br><br>
+<%= link_to 'Back to Shopping', artworks_path %>
+
