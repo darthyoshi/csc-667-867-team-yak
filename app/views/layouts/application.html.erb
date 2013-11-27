@@ -73,15 +73,11 @@ end
                 <% if user_signed_in? %>
                     <%= render 'session/logoutform' %>
                 <% else %>
-                    <button class='signin'>
-                        Sign in
-                    </button>
-
+										<div class='signin'>
+										<button class="btn btn-default btn-xs">Sign in</button>
+										</div>
                     <br>
-
-                    <a class='register' href=''>
-                        Sign up
-                    </a>
+                    <a class='register' href=''>Sign up</a>
                 <% end %>
             </div>
 

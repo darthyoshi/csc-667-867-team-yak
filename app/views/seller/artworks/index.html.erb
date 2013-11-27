@@ -1,10 +1,5 @@
 <h2>Your Artworks</h2>
-
-<h3>Some statistics</h3>
-<p>You have posted: <%= @artworks.size %> artworks for sale.</p>
-<p>Available: <%= @artworks.by_seller(current_user.id).available.count %> artworks.</p>
-<p>Sold out: <%= @artworks.sold_out(current_user.id).count %> artworks.</p>
-
+<br>
 <% @artworks.each do |artwork| %>
 	<h4><%= artwork.title %></h4>	
 	<%= link_to image_tag(artwork.imagepath), {:controller => 'seller/artworks', :action => 'show', :id => artwork.id} %>

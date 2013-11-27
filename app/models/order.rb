@@ -4,4 +4,5 @@ class Order < ActiveRecord::Base
   belongs_to :user
   
   accepts_nested_attributes_for :ordereditems, allow_destroy: true
+  
 end

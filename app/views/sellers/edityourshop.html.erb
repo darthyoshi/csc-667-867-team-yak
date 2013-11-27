@@ -1,35 +1,35 @@
+<div class="container">
+	
 <h2>Edit your shop</h2>
 
 <%= form_for @seller do |f| %>
 
 <%= render "shared/error_messages", target: @seller %>
 
-	<div class="field">
-
-		<%= label_tag 'Your user name: ' %>
-		<%= text_field_tag 'name', userfullname(@user), disabled: true %>
-  </div>
-  <div class="field">
-    <%= label_tag "Your displayed seller's name:" %>
-    <%= f.text_field :displayed_name %>
-  </div>
-  <div class="field">
-		<%= label_tag "Opened shop at:" %>
-    <%= @seller.seller_date.localtime.to_s(:long) %>
+  <div class="form-group">
+    <%= label_tag("Your displayed seller's name:") %>
+    <%= f.text_field(:displayed_name, class: "form-control") %>
   </div>
 
-  <div class="field">
-    <%= label_tag "Update your seller's description:" %>
-    <%= f.text_area :seller_description %>
+  <div class="form-group">
+		<%= label_tag("Opened shop at:") %>
+    <%= @seller.seller_date.localtime.to_date %>
   </div>
-  <div class="field">
-    <%= label_tag "Update your seller's email:" %>
-    <%= f.text_field :seller_email %>
+
+  <div class="form-group">
+    <%= label_tag("Update your seller's description:") %>
+    <%= f.text_area(:seller_description, class: "form-control") %>
   </div>
-  <div class="actions">
-    <%= f.submit "Save all changes" %>
+
+  <div class="form-group">
+    <%= label_tag("Update your seller's email:") %>
+    <%= f.text_field(:seller_email, class: "form-control") %>
   </div>
+
+    <%= f.submit("Save all changes", class: "btn btn-default") %>
+<br><br>
 <% end %>
 
-<%= link_to 'View your shop', '/yourshop' %>
-
+<%= link_to 'Your shop', '/yourshop' %>
+<br><br>
+</div>

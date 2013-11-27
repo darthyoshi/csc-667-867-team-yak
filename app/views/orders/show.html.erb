@@ -1,71 +1,59 @@
 
 <p id="notice"><%= notice %></p>
 
-<style>
-#cart-table td {
-	border-top: 1px solid #DDD;
-}
-#cart-table th {
-	font-size:11px;
-}
-#cart-table {
-	width:100%;
-}
-.cart-item-col {
-	width:70%;
-}
-</style>
-
-<h2>Your Order Info</h2>
-
+<h2>Order Details</h2>
 <p>
   <strong>Order date:</strong>
-  <%= @order.order_date.localtime.to_s(:long) %>
+	<%= @order.order_date.localtime.to_date %>
 </p>
 <p>
 	<strong>User name:</strong>
   <%= userfullname(@user) %>
 </p>
-
-<p>
-  <strong>Shipping cost:</strong>
-  <%= number_to_currency(@order.shipping_cost) %>
-</p>
-
 <p>
 	<strong>Shipping address:</strong>
 	<%= @order.shipping_address %>
 </p>			
-
+<br>
 <% if @order.ordereditems.length == 0 %>
 <h3>Empty orders should not be displayed</h3>
 <% else %>
 
-
-<table id="order-table" border="0">
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th class="order-item-col">Item</th>
-      <th class="order-price-col">Price</th>
-      <th class="order-quantity-col">Quantity</th>
-      <th class="order-delete-col"></th>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Quantity</th>
     </tr>
   </thead>
 
   <tbody>
+		<% rtotal = 0 %>
     <% @order.ordereditems.each do |item| %>
       <tr>
-        <td class="order-item-col">
+        <td>
 				<%= item.title %><br>
 				<%= image_tag(item.imagepath, border:'0', height:'100', width:'100') %>
 				</td>
-        <td class="order-price-col"><%= number_to_currency(item.price) %></td>
-        <td class="order-quantity-col"><%= item.quantity %></td>
+				<% temp = item.price %>
+        <td><%= number_to_currency(item.price) %></td>
+				<% q = item.quantity %>
+        <td><%= q.to_s %></td>
       </tr>
+			<% rtotal = rtotal + q * temp %>
     <% end %>
-    <tr><td colspan="4"></td></tr>
   </tbody>
+<tr>
+	<td colspan="3">
+		<strong>Subtotal: </strong><%= number_to_currency(rtotal) %><br>
+		<% sc = @order.shipping_cost %>
+		<strong>Shipping: </strong><%= number_to_currency(sc) %><br><br>
+		<% total = rtotal + sc %>		
+		<strong>Total: </strong><%= number_to_currency(total) %>
+	</dt></tr>
 </table>
 <% end %>
 
-<%= link_to 'My Orders', orders_path %>
+<%= link_to 'Back to Your Orders', orders_path %>
+<br><br>

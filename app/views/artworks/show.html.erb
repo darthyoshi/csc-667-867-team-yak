@@ -1,10 +1,11 @@
 <div class='artwork'>
 	
-<p>
-  <strong class="artwork-title" >
+  <p>
+		<strong class="artwork-title">
     <%= @artwork.title %>
-  </strong>
-</p>
+		</strong>
+	</p>
+<br>
 
 <div style="float: left; margin-right: 20px">
   <%= image_tag(@artwork.imagepath, { class: "img-responsive" }) %>
@@ -33,7 +34,7 @@
     <span class="badge"><%= label_tag 'arttag', arttag.tagname %></span>
   <% end %>
 <% end %>
-
+<br><br><br>
 <%
 =begin %>
 <br><br>

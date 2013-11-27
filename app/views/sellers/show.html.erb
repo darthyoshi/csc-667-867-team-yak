@@ -1,27 +1,27 @@
 <p id="notice"><%= notice %></p>
 
+<h2>Your Shop</h2>
+<br>
+<p>
+  <strong>Selling since:</strong>
+  <%= @seller.seller_date.localtime.to_date %>
+</p>
 <p>
   <strong>Your displayed name:</strong>
   <%= @seller.displayed_name %>
 </p>
-
 <p>
   <strong>Your seller email:</strong>
   <%= @seller.seller_email %>
 </p>
-
 <p>
-  <strong>Your seller description:</strong>
+  <strong>Description:</strong>
   <%= @seller.seller_description %>
 </p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @seller.seller_date.localtime.to_s(:long) %>
-</p>
-
-<%= link_to 'Edit', "/edityourshop" %> | 
-<%= link_to 'Sell Your Artwork', new_seller_artwork_path %>
-
-
-
+<br>
+<div class="shop">
+<%= link_to('Edit', "/edityourshop", class: "btn btn-default btn-xs", id: "your-shop") %>
+<br><br>
+<%= link_to('Sell Your Artwork', new_seller_artwork_path, class: "btn btn-default btn-xs", id: "your-shop") %>
+<br><br>
+</div>

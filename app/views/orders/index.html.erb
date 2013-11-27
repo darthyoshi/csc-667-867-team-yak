@@ -3,19 +3,16 @@
 <% if !@myorders.nil? and @myorders.length != 0 %>
 <% 
 =end %>
-
+<div class="container">
 <% if !@myorders.blank? %>
-<h2>Your orders</h2>
+<h2>Your Orders</h2>
 <br><br>
-	<table>
+	<table class="table table-bordered">
 	  <thead>
 	    <tr>
-				<th>Order id</th>
+				<th>Order number</th>
 	      <th>Order date</th>
-	      <th>Shipping cost</th>
-	      <th></th>
-	      <th></th>
-	      <th></th>
+				<th></th>
 	    </tr>
 	  </thead>
 
@@ -23,17 +20,20 @@
 	    <% @myorders.each do |order| %>
 	      <tr>
 		      <td><%= order.id %></td>
-	        <td> | <%= order.order_date.localtime.to_s(:long) %></td>
-	        <td> | <%= number_to_currency(order.shipping_cost) %></td>
+	        <td><%= order.order_date.localtime.to_date %></td>
 	        <td><%= link_to 'View', order_path(order) %></td>
 	      </tr>
 	    <% end %>
 	  </tbody>
 	</table>
 	<br>
-	<%= link_to 'Your Account', account_path %><br>
+	<%= link_to 'Back to Your Account', account_path %><br><br>
 	<%= link_to 'Browse Artworks', artworks_path %>
 <% else %>
-<h2>You have no orders</h2>
-<br><br><br><br><br>
+	<h2>You have no orders</h2>
+	<br><br>
+	<%= link_to 'Back to Your Account', account_path %><br><br>
+	<%= link_to 'Browse Artworks', artworks_path %>
+	<br><br>
 <% end %>
+</div>

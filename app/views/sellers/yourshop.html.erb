@@ -1,20 +1,4 @@
-<style>
-#cart-table td {
-	border-top: 1px solid #DDD;
-}
-#cart-table th {
-	font-size:11px;
-}
-#cart-table {
-	width:100%;
-}
-.cart-item-col {
-	width:70%;
-}
-</style>
 
-
-<p id="notice"><%= notice %></p>
 <h2>Your shop</h2>
 
 <p>
@@ -39,38 +23,48 @@
   <%= @seller.seller_email %>
 </p>
 
-<%= link_to 'Sell New Artwork', new_seller_artwork_path %> | 
-<%= link_to 'Edit your shop', "/edityourshop" %> | 
+<p>
+	<strong>You have: </strong>
+	<%= @artworks.size %> artworks for sale.
+</p>
+<p>
+	<strong>Sold out: </strong>
+	<%= @artworks.sold_out(current_user.id).count %> artworks.
+</p>
+<br>
 
-<%= link_to 'Close your shop', seller_path(@seller), method: :delete, data: { confirm: 'Are you sure?' } %>
-
-
-
+<div class="shop">
+<%= link_to('Sell New Artwork', new_seller_artwork_path, class: "btn btn-default btn-xs", id: "your-shop") %><br><br>
+<%= link_to('Edit Your Shop', "/edityourshop", class: "btn btn-default btn-xs", id: "your-shop") %><br><br>
+</div>
 <% if (!@artworks.nil? and @artworks.length > 0) then %>
 
-	<table id="cart-table" border="0">
+	<table class="table table-bordered">
   	<thead>
 	    <tr>
-	      <th class="cart-item-col">Item</th>
-	      <th class="cart-price-col">Price</th>
-	      <th class="cart-quantity-col">Quantity</th>
-	      <th class="cart-delete-col"></th>
+	      <th></th>
+	      <th>Price</th>
+	      <th>Quantity</th>
+	      <th>Changing anything?</th>
 	    </tr>
   </thead>
 
   <tbody>
     <% @artworks.each do |item| %>
       <tr>
-        <td class="cart-item-col">
+        <td>
 				<%= item.title %><br>
 				<%= image_tag(item.imagepath, border:'0', height:'100', width:'100') %>
 				</td>
-        <td class="cart-price-col"><%= number_to_currency(item.price) %></td>
-        <td class="cart-quantity-col"><%= item.quantity %></td>
+        <td><%= number_to_currency(item.price) %></td>
+        <td><%= item.quantity %></td>
 				<td> <%= link_to 'Edit', edit_seller_artwork_path(item) %>  </td>
       </tr>
     <% end %>
-    <tr><td colspan="4"></td></tr>
+    <tr><td colspan="4">
+	<br>
+    	<%= link_to 'Want to close your shop?', seller_path(@seller), method: :delete, data: { confirm: 'Are you sure?' } %><br>
+    </td></tr>
   </tbody>
 </table>
 <br>

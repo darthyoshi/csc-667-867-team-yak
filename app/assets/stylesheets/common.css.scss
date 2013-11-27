@@ -1,6 +1,13 @@
 @import "artsale";
 @import "bootstrap";
 
+.cart {
+	a { text-decoration: none }
+	.badge { 
+	background-color: #009933;
+ 	}
+}
+
 .admin {
     h2 {
         font-size: 26px;
@@ -25,14 +32,15 @@
 	margin: 10px;
 	#tagsfooter {
 		clear: both;
-		padding-top:10px;
+		padding-top:20px;
 		}
 	
 	h2 { font-size: 72px;}
 
 	.artwork-title {
-		font-family: Verdana, Geneva, sans-serif;
 		font-size: 32px;
+	    font-weight: bold;
+	    font-family: "Comic Sans MS", cursive, sans-serif;	
 		color: $artsale-bg;
 	}
 
@@ -47,11 +55,10 @@
 	}
 	
 	.artwork-description {
-		font-family: Verdana, Geneva, sans-serif;
-		font-size: 18px;
+		font-family:Candara, sans-serif;
+		font-size: 22px;
 		color: $artsale-bg;
 	}	
-	
 }
 
 
@@ -143,4 +150,8 @@
 
 .divide {
     color: #dddddd;
+}
+
+.signin {
+	margin-right: 10px;
 }

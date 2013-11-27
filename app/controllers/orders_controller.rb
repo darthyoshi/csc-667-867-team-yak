@@ -2,14 +2,12 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
-  # GET /orders.json
   def index
     @myorders = Order.where(user_id: current_user.id)
   end
 
 #----------------------------------------------------------------------------
   # GET /orders/1
-  # GET /orders/1.json
   def show
     #@order = Order.find(params[:id]) #@order is already set up above
     @user = @order.user
@@ -24,7 +22,6 @@ class OrdersController < ApplicationController
 
 #----------------------------------------------------------------------------
   # POST /orders
-  # POST /orders.json
   def create
     @order = Order.new
     @order.user_id = current_user.id
@@ -75,7 +72,6 @@ class OrdersController < ApplicationController
  
   #----------------------------------------------------------------------------
   # PATCH/PUT /orders/1
-  # PATCH/PUT /orders/1.json
   def update
 
     respond_to do |format|
@@ -90,7 +86,6 @@ class OrdersController < ApplicationController
   end  
 #----------------------------------------------------------------------------
   # DELETE /orders/1
-  # DELETE /orders/1.json
   def destroy
     @order.destroy
     respond_to do |format|
