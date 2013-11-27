@@ -18,6 +18,7 @@ class ShoppingcartitemsController < ApplicationController
   def create 
     # check if the item is already in the shopping cart   
     @shoppingcartitem = Shoppingcartitem.where(user_id: current_user).where(artwork_id: params[:shoppingcartitem][:artwork_id]).first
+    
     if !@shoppingcartitem.nil?
       @shoppingcartitem.increment(:quantity)
     else  
@@ -27,8 +28,6 @@ class ShoppingcartitemsController < ApplicationController
     if @shoppingcartitem.save
       redirect_to '/yourcart'
     else
-      #render :action => 'new'
-      # works by we can use new Hash syntax introduced in 1.9
       render action: 'new' 
     end
   end

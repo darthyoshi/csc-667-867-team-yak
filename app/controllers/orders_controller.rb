@@ -26,9 +26,12 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.user_id = current_user.id
     @order.order_date = Time.now
+    @order.shipping_cost = 12.00
     @order.shipping_address = current_user.shipping_address
-    # Verify that all items in shopping cart are available
+    
+    # Verify that all items in the shopping cart are available
     items = Shoppingcartitem.users_items(current_user.id)
+    
     items.each do |item|
       artwork = Artwork.find(item.artwork_id)
       if artwork.quantity < 1

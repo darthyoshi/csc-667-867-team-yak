@@ -73,7 +73,7 @@ class Seller::ArtworksController < ApplicationController
     end
 
     if @artwork.update(artwork_params)
-      redirect_to seller_artwork_url, notice: 'Your artwork was successfully updated.'
+      redirect_to seller_artwork_url, notice: 'Artwork was successfully updated.'
     else
       render action: 'edit'
     end  

@@ -25,11 +25,12 @@ Csc667867TeamYak::Application.routes.draw do
   resources :artworks
   resources :shoppingcartitems
   #resources :ordereditems
+  #resources :orders
 
   # nested resources
-  resources :orders do
-    resources :ordereditems
-  end
+   resources :orders do
+     resources :ordereditems
+   end
 
   # namespaced resources
   namespace :admin do

@@ -3,6 +3,7 @@
 <% if !@myorders.nil? and @myorders.length != 0 %>
 <% 
 =end %>
+<% content_for :title, "Title for specific page" %>
 <div class="container">
 <% if !@myorders.blank? %>
 <h2>Your Orders</h2>
@@ -21,7 +22,7 @@
 	      <tr>
 		      <td><%= order.id %></td>
 	        <td><%= order.order_date.localtime.to_date %></td>
-	        <td><%= link_to 'View', order_path(order) %></td>
+	        <td><%= link_to 'View order details', order_path(order) %></td>
 	      </tr>
 	    <% end %>
 	  </tbody>

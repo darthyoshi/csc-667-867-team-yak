@@ -1,5 +1,8 @@
 class Artwork < ActiveRecord::Base
   
+  validates_presence_of :title
+  validates_presence_of :description
+  
   validates :quantity, numericality: {greater_than_or_equal_to: 0}
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
   
@@ -38,11 +41,7 @@ class Artwork < ActiveRecord::Base
     Artwork.by_seller(seller_id).where("quantity < 1")
   end
 
+  def self.by_arttags(artwork)
+  end
   
-  #validates :title, :description, :imagepath, :quantity, :price, :category, :seller_id, :presence => true
-  #validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
-  #validates :imagepath, :format => {
-  #  :with => %r{\.(git|jpg|png)$}i,
-  #  :message => 'must be a URL for gif, jpg or png image.'
-  #}
 end

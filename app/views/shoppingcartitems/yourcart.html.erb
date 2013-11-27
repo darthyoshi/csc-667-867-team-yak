@@ -4,19 +4,25 @@
 <h2>Your Cart</h2>
 <br>
 <% if Shoppingcartitem.cart_count(current_user.id) > 0 %>
+<p><strong>Warning: <br></strong>
+	Adding artworks to your cart doesn't guaranty their availability at the moment of purchase.
+</p>
+
+<% grandtotal = 0 %>
 <table class="table table-bordered">
   <thead>
     <tr>
       <th></th>
       <th>Price</th>
       <th>Quantity</th>
-			<th>Availability</th>
+			<th>Item's Availability</th>
       <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @myitems.each do |item| %>
+      <% grandtotal += item.artwork.price %>
       <tr>
         <td>
 				<%= item.artwork.title %><br>
@@ -25,8 +31,10 @@
         <td><%= number_to_currency(item.artwork.price) %></td>
         <td><%= item.quantity %></td>			
 				
-				<% if @unavailableitems.include?(item.artwork)  %></td>
-				<td>Out of stock</td>
+				<% if @unavailableitems.blank? %>
+				<td>to be verified</td>
+				<% elsif @unavailableitems.include?(item.artwork)  %>
+				<td style="color: red;">Out of stock</td>
 				<% else %>
 				<td>Available</td>
 				<% end %>
@@ -38,6 +46,8 @@
   </tbody>
 </table>
 <br>
+<strong>Cart subtotal <%= number_to_currency(grandtotal) %></strong>
+<br><br>
 <%= button_to 'Checkout', {controller: "orders", action: "create"}, class: "btn btn-default" %>
 <% else %>
 	<%= image_tag( asset_path("common/cart-empty.png")) %>

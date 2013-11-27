@@ -8,9 +8,9 @@ class ArtworksController < ApplicationController
     if current_user.try(:admin?)
     	redirect_to admin_menu_index_url
     end
-    
-    # don't show artworks whose quantity is 0, scope in artwork model
-    @artworks = Artwork.available.paginate(:page => params[:page], :per_page => 10)
+
+      # don't show artworks whose quantity is 0, scope in artwork model
+      @artworks = Artwork.available.paginate(:page => params[:page], :per_page => 10)
   end
 
 #----------------------------------------------------------------------------
