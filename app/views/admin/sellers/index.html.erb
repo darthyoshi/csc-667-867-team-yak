@@ -1,13 +1,12 @@
 <div class='admin'>
 <h2>Admin. All sellers</h2>
 <br>
-<%= link_to 'Back to Admin', admin_menu_index_path %>
-<br>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th>Seller date</th>
+      <th>Seller since</th>
+      <th>Seller id</th>
       <th>Displayed name</th>
       <th>Seller description</th>
       <th>Seller email</th>
@@ -20,13 +19,13 @@
   <tbody>
     <% @sellers.each do |seller| %>
       <tr>
-        <td><%= seller.seller_date.localtime.to_s(:long) %></td>
-
+        <td><%= seller.seller_date.localtime.to_date %></td>
+        <td><%= seller.id %></td>
         <td><%= seller.displayed_name %></td>
         <td><%= seller.seller_description %></td>
         <td><%= seller.seller_email %></td>
-        <td><%= link_to 'View', admin_seller_path(seller) %> | </td>
-        <td><%= link_to 'Edit', edit_admin_seller_path(seller) %> | </td>
+        <td><%= link_to 'View', admin_seller_path(seller) %></td>
+        <td><%= link_to 'Edit', edit_admin_seller_path(seller) %></td>
         <td><%= link_to 'Delete', admin_seller_path(seller), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -35,4 +34,5 @@
 
 <br>
 <%= link_to 'Back to Admin', admin_menu_index_path %>
+<br><br>
 </div>

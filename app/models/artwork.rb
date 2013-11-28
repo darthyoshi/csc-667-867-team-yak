@@ -26,22 +26,31 @@ class Artwork < ActiveRecord::Base
   # to make this work: Artwork.available.count
   scope :available, -> { where("quantity > 0") }
   
-  scope :seller_closed, -> { where("seller_id IS NULL") }
+  def self.closed_sales
+    where("seller_id IS NULL").count
+  end
   
-  # to make this work: Artwork.created_before(Time.zone.now)
+  # return the number of artworks whose quantity is curently 0
+  def self.sold
+    where("quantity = 0").count
+  end
+  
+  # to make this work use: Artwork.created_before(Time.zone.now)
   def self.created_before(time)
       where("created_at < ?", time)
   end
   
+  # returns all artworks for a given seller
   def self.by_seller(seller_id)
     Artwork.where("seller_id = ?", seller_id)
   end
   
+  # returns all artworks whose quantity is zero
   def self.sold_out(seller_id)
     Artwork.by_seller(seller_id).where("quantity < 1")
   end
 
-  def self.by_arttags(artwork)
+  def self.by_arttags(artwork_id)
   end
   
 end

@@ -39,7 +39,7 @@ Csc667867TeamYak::Application.routes.draw do
     end
     resources :artworks, except: [:new, :create]
     resources :arttags
-    resources :shoppingcartitems, except: [:new, :create, :destroy] do
+    resources :shoppingcartitems, except: [:new, :create] do
     end
     resources :sellers, except: [:new, :create, :destroy]
     resources :reviews, except: [:new, :create, :destroy] do

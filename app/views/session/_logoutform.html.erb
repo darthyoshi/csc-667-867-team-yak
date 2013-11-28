@@ -3,7 +3,7 @@
 <table cellpadding="5"><tr>
 <% if current_user.admin? %>
 <td>
-    <%= link_to "Manage ArtSale", admin_menu_index_path %>
+    <%= link_to("Manage ArtSale", admin_menu_index_path, class: "btn btn-warning btn-xs ") %>
 </td>
 <% else %>
 <td>

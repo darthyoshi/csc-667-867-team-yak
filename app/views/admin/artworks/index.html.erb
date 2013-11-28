@@ -1,14 +1,14 @@
 <div class='admin'>
 <h2>Admin. All artworks</h2>
 
-<div style='float:left'>
-<%= link_to 'Back to Admin', admin_menu_index_path %></div>
-<br>
-<p> Canceled sales: 
-<%= @artworks.seller_closed.count %>
+<p><strong>Canceled sales: </strong>
+	<%= Artwork.closed_sales %>
+</p>
+<p><strong>Sold out items: </strong>
+	<%= Artwork.sold %>
 </p>
 
-<table class='list-of-artwork'>
+<table class="table table-bordered">
   <thead>
     <tr>
 			<th>ID</th>
@@ -17,7 +17,6 @@
       <th>Price</th>
       <th>Quantity</th>
       <th>Description</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -32,15 +31,15 @@
         <td><%= number_to_currency(artwork.price) %></td>
         <td><%= artwork.quantity %></td>
         <td><%= artwork.description %></td>
-        <td><%= link_to 'Preview', admin_artwork_path(artwork) %></td>
+        <td><%= link_to 'View', admin_artwork_path(artwork) %></td>
         <td><%= link_to 'Edit', edit_admin_artwork_path(artwork) %></td>		
       </tr>
     <% end %>
   </tbody>
 </table>
-<br>            
-<div style='float:left'>
-<%= link_to 'Back to Admin', admin_menu_index_path %>
-</div>
+
 <%= will_paginate @artworks %>
+<br>            
+<%= link_to 'Back to Admin', admin_menu_index_path %>
+<br><br>
 </div>

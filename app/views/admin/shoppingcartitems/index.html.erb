@@ -1,16 +1,16 @@
 <div class='admin'>
-<h2>Admin. All shoppingcartitems</h2>
+<h2>Shopping Cart Items</h2>
 <br>
-<%= link_to 'Back to Admin', admin_menu_index_path %>
-<br>
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>Artwork id</th>
+      <th>Quant avail</th>
+      <th>Price</th>
       <th>User id</th>
-      <th>Quant</th>
-      <th></th>
-      <th></th>
+      <th>Quant ordered</th>
+      <th>Seller id</th>
+      <th>Seller's email</th>
       <th></th>
     </tr>
   </thead>
@@ -18,13 +18,17 @@
   <tbody>
     <% @shoppingcartitems.each do |item| %>
       <tr>
-        <td><%= item.artwork_id %></td>
+	<% artid = item.artwork_id %>
+        <td><%= link_to(artid, admin_artwork_path(artid), id: "admin_link") %></td>
+					  <% artwork = Artwork.find(item.artwork_id) %>
+        <td><%= artwork.quantity %></td>
+        <td><%= number_to_currency(artwork.price) %></td>
         <td><%= item.user_id %></td>
         <td><%= item.quantity %></td>
-
-        <td><%= link_to 'View', admin_shoppingcartitem_path(item) %> | </td>
-        <td><%= link_to 'Edit', edit_admin_shoppingcartitem_path(item) %> | </td>
-        <td><%= link_to 'Delete', admin_shoppingcartitem_path(item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<% sellerid = artwork.seller_id %>
+      	<td><%= link_to(sellerid, admin_seller_path(sellerid), id: "admin_link") %></td>
+      	<td><%= Seller.find(artwork.seller_id).seller_email %></td>
+        <td><%= link_to 'Delete item', admin_shoppingcartitem_path(item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,5 +36,5 @@
 
 <br>
 
-<%= link_to 'Back to Admin', admin_menu_index_path %>
+<%= link_to 'Back to Admin', admin_menu_index_path %><br><br>
 </div>

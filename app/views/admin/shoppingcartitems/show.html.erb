@@ -2,10 +2,10 @@
 <div class='admin'>
 	
 <p id="notice"><%= notice %></p>
-<h2>Admin. hoppingcartitem info</h2>
+<h2>Shopping cart item info</h2>
 
 <%= image_tag(@artwork.imagepath, :border=>0) %>
-<p>
+<p><br>
   <strong>Artwork id:</strong>
   <%= @shoppingcartitem.artwork_id %>
 </p>
@@ -13,7 +13,6 @@
 <strong>Artwork title:</strong>
 	<%= @artwork.title %>
 </p>
-
 <p>
   <strong>User id:</strong>
   <%= @shoppingcartitem.user_id %>
@@ -22,13 +21,24 @@
 	<strong>User name:</strong>
 	<%= userfullname(@user) %>
 </p>
+<p>
+  <strong>Seller id:</strong>
+<% sellerid = Artwork.find(@shoppingcartitem.artwork_id).seller_id %>
+  <%= sellerid %>
+</p>
+<p>
+	<strong>Seller name:</strong>
+	<%= Seller.find(sellerid).displayed_name %>
+</p>
+
 
 <p>
-  <strong>Quantity:</strong>
+  <strong>Quant ordered:</strong>
   <%= @shoppingcartitem.quantity %>
 </p>
 
-<%= link_to 'Edit', edit_admin_shoppingcartitem_path(@shoppingcartitem) %> |
-<%= link_to 'Shoppingcartitems', admin_shoppingcartitems_path %>
-
+<%= link_to('Edit Item', edit_admin_shoppingcartitem_path(@shoppingcartitem), class: "btn btn-default btn-sm") %>
+<br><br>
+<%= link_to 'Back to Shopping Cart Items', admin_shoppingcartitems_path %>
+<br><br>
 </div>

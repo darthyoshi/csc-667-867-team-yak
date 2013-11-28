@@ -1,37 +1,41 @@
 <div class='admin'>
+<div class="container">
 <h2>Admin. Edit seller</h2>
 
 <%= form_for [:admin, @seller] do |f| %>
 
 <%= render "shared/error_messages", target: @seller %>
 
-	<div class="field">
+<div class="form-group">
+	<%= label_tag("User's full name: ") %>
+	<%= text_field_tag('name', userfullname(@seller.user), disabled: true, class: "form-control") %>
+</div>
 
-		<%= label_tag 'User name: ' %>
-		<%= text_field_tag 'name', userfullname(@seller.user), disabled: true %>
-  </div>
-  <div class="field">
-    <%= label_tag "Displayed seller's name:" %>
-    <%= f.text_field :displayed_name %>
-  </div>
-  <div class="field">
-		<%= label_tag "Opened shop at:" %>
-		<%= text_field_tag 'date', @seller.seller_date.localtime.to_s(:long), disabled: true %>
-  </div>
-  <div class="field">
-    <%= label_tag "Description:" %>
-    <%= f.text_area :seller_description %>
-  </div>
-  <div class="field">
-    <%= label_tag "Seller's email:" %>
-    <%= f.text_field :seller_email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="form-group">
+  <%= label_tag("Displayed seller's name:") %>
+  <%= f.text_field(:displayed_name, class: "form-control") %>
+</div>
+
+<div class="form-group">
+<%= label_tag("Opened shop at:") %>
+<%= text_field_tag('date', @seller.seller_date.localtime.to_s(:long), disabled: true, class: "form-control") %><br>
+</div>
+
+<div class="form-group">
+  <%= label_tag("Description:") %>
+  <%= f.text_area(:seller_description, class: "form-control") %>
+</div>
+
+<div class="form-group">
+  <%= label_tag("Seller's email:") %>
+  <%= f.text_field(:seller_email, class: "form-control") %>
+</div>
+
+  <%= f.submit("Update Seller", class: "btn btn-danger") %>
+
 <% end %>
-
-
-<%= link_to 'Preview', admin_seller_path(@seller) %> |
-<%= link_to 'Sellers', admin_sellers_path %>
+<br>
+<%= link_to 'Back to Sellers', admin_sellers_path %>
+<br><br>
+</div>
 </div>

@@ -1,21 +1,23 @@
 <div class='admin'>
-<p id="notice"><%= notice %></p>
-<h2>Admin. Show artwork</h2>
-
+<h2>Show artwork Info</h2>
+<br>
+<p>
+	<strong class="artwork-title">
+  <%= @artwork.title %>
+	</strong>
+</p>
+<br>
 <div style='float: left; margin-right: 20px'>
 <%= image_tag(@artwork.imagepath, :border=>0) %>
 </div>
 
+<p class="artwork-description" >
+  <%= @artwork.description %>
+</p>
 <p>
   <strong>Category:</strong>
   <%= @artwork.category %>
 </p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @artwork.title %>
-</p>
-
 <p>
   <strong>Price:</strong>
   <%= number_to_currency(@artwork.price) %>
@@ -26,33 +28,15 @@
   <%= @artwork.quantity %>
 </p>
 
-<p>
-  <%= @artwork.description %>
-</p>
-
-<p><strong>Tags</strong></p>
-
-<% unless @my_arttags.nil? %>
-	<% @my_arttags.each do |arttag| %>
-		<%= label_tag 'arttag', arttag.tagname %>
-	<% end %>
+<div id="tagsfooter" >
+<% unless @my_arttags.blank? %>
+  <% @my_arttags.each do |arttag| %>
+    <span class="badge"><%= label_tag 'arttag', arttag.tagname %></span>
+  <% end %>
 <% end %>
-
-<div style='clear:both'>  
+<br><br><br>
 	
-	<% @myreviews.each do |review| %>
-		Stars: 
-		<%= showstars(review.stars) %><br>
-		On: 
-		<%= review.review_date.localtime.to_s(:long) %><br>
-		Reviewed by: 
-		<%= userfullnamebyid(review.user_id) %><br>
-		Review: 
-		<%= review.review_text %>
-	<% end %>
-	<br>
-	
-<%= link_to 'Edit', edit_admin_artwork_path(@artwork) %> |
-<%= link_to 'Artworks', admin_artworks_path %>
+<%= link_to('Edit', edit_admin_artwork_path(@artwork), class: "btn btn-default") %><br><br>
+<%= link_to 'Back to Artworks', admin_artworks_path %><br><br>
 </div>
 </div>

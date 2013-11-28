@@ -1,46 +1,35 @@
 <div class='admin'>
-<h2>Admin. Edit artwork</h2>
-
-<style type="text/css">
-#threeColumnTable {
-	width:100%;
-}
-#threeColumnTable td {
-	vertical-align:top;
-}
-#lcol, #rcol {
-	width: 40%;
-}
-#mcol {
-	width: 20%;
-}
-</style>
-
+<h2>Edit artwork</h2>
 
 <%= form_for [:admin, @artwork] do |f| %>
 
 <%= render "shared/error_messages", target: @artwork %>
 
-<table id="threeColumnTable" border="0" cellpadding="0" cellspacing="0">
-        <tr>
-           <td id="lcol">
-                 <div class="field">
-             <%= f.label :category %>                
-                <%= select("artwork", "category", artwork_categories) %>
-           </div>
-           <div class="field">
-             <%= f.label :title %>
-             <%= f.text_field :title %>
-           </div>
-           <div class="field">
-             <%= f.label :price %>
-             <%= f.text_field :price %>
-           </div>
-           <div class="field">
-             <%= f.label :quantity %>
-             <%= f.number_field :quantity %>
-           </div>
-         </td>
+<table class="table table-bordered" id="edit-artwork">
+  <tr>
+    <td id="lcol">
+      <div class="form-group">
+      <%= f.label(:category) %>                
+      <%= select("artwork", "category", artwork_categories, class: "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label(:title) %>
+      <%= f.text_field(:title, class: "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label(:price) %>
+    	<%= f.text_field(:price, class: "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label(:quantity) %>
+			<%= f.number_field(:quantity, in: 1..10, class: "form-control", id: "quantity") %>
+    </div>
+  </td>
+
+<td>&nbsp;&nbsp;&nbsp;</td>
 
          <td id="mcol">
             <div class="field">
@@ -53,31 +42,31 @@
             </div>
          </td>
 
+<td>&nbsp;&nbsp;&nbsp;</td>
+
         <td id="rcol">
           <%= image_tag(@artwork.imagepath, :border=>0) %>
-          <div class="field">
-            <%= f.label :imagepath %>
-            <%= f.text_field :imagepath %>
+					<div class="form-group">
+            <%= f.label(:imagepath) %>
+            <%= f.text_field(:imagepath, class: "form-control") %>
           </div>
-          <div class="field">
-            <%= f.label :description %>
-            <%= f.text_area :description %>
+          <div class="form-group">
+            <%= f.label(:description) %>
+            <%= f.text_area(:description, class: "form-control") %>
           </div>
         </td>
     </tr>
 
     <tr>
-       <td colspan="3">
+       <td colspan="5">
          <div class="actions">
-           <%= f.submit %><br/>
+           <%= f.submit(class: "btn btn-default") %><br/>
          </div>
        </td>
     </tr>
 </table>
-
-<%= link_to 'Preview', admin_artwork_path(@artwork) %> |
-<%= link_to 'Artworks', admin_artworks_path %>
-
+<%= link_to 'Back to Artworks', admin_artworks_path %>
+<br><br>
 <% end %>
 </div>
 	

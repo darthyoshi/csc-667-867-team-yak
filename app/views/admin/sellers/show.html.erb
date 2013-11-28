@@ -1,10 +1,8 @@
 <div class='admin'>
-	
-<p id="notice"><%= notice %></p>
-<h2>Admin. View seller info</h2>
 
+<h2>View Seller Info</h2>
 <p>
-  <strong>Opened at:</strong>
+  <strong>Opened shop at:</strong>
   <%= @seller.seller_date.localtime.to_s(:long) %>
 </p>
 <p>
@@ -26,56 +24,32 @@
 <p>
   <strong>Seller's email:</strong>
   <%= @seller.seller_email %>
-</p>
-
-
-
-
-<%= link_to 'See all Reviews for this seller', admin_reviews_showreviews_path(@seller) %>
-
-
-
-
-<h3>All seller's artworks</h3>
-<table id="seller-table" border="0">
+</p><br>
+<%= link_to('Edit Seller Info', edit_admin_seller_path(@seller), class: "btn btn-default") %><br><br>
+<%= link_to 'Back to Sellers', admin_sellers_path %><br><br>
+<br>
+<h3>Seller's artworks</h3>
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th class="seller-item-col">Item</th>
-      <th class="seller-price-col">Price</th>
-      <th class="seller-quantity-col">Quantity</th>
-      <th class="seller-delete-col"></th>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Quantity</th>
     </tr>
   </thead>
 
   <tbody>
     <% @myartworks.each do |item| %>
       <tr>
-        <td class="seller-item-col">
+        <td>
 				<%= item.title %><br>
 				<%= image_tag(item.imagepath, border:'0', height:'100', width:'100') %>
 				</td>
-        <td class="seller-price-col"><%= number_to_currency(item.price) %></td>
-        <td class="seller-quantity-col"><%= item.quantity %></td>
+        <td><%= number_to_currency(item.price) %></td>
+        <td><%= item.quantity %></td>
       </tr>
     <% end %>
-    <tr><td colspan="4"></td></tr>
   </tbody>
 </table>
 <br>
-<h3>All seller's reviews</h3>
-<% @myreviews.each do |review| %>
-	Stars: 
-	<%= showstars(review.stars) %><br>
-	On: 
-	<%= review.review_date.localtime.to_s(:long) %><br>
-	Reviewed by: 
-	<%= userfullnamebyid(review.user_id) %><br>
-	Review: 
-	<%= review.review_text %>
-	<br>
-<% end %>
-<br>
-
-<%= link_to 'Edit', edit_admin_seller_path(@seller) %> |
-<%= link_to 'Sellers', admin_sellers_path %>
 </div>

@@ -10,7 +10,7 @@ class Admin::ShoppingcartitemsController < Admin::BaseController
 #----------------------------------------------------------------------------
   # GET /shoppingcartitems/1
   def show
-    #@shoppingcartitem = Shoppingcartitem.find(params[:id])
+    @shoppingcartitem = Shoppingcartitem.find(params[:id])
     @user = User.find(@shoppingcartitem.user_id)
     @artwork = Artwork.find(@shoppingcartitem.artwork_id)
   end
@@ -23,14 +23,14 @@ class Admin::ShoppingcartitemsController < Admin::BaseController
 
 #----------------------------------------------------------------------------
   # POST /shoppingcartitems
-  def create
-    @shoppingcartitem = Shoppingcartitem.new(shoppingcartitem_params)
-    if @shoppingcartitem.save
-      redirect_to @shoppingcartitem, notice: 'Shoppingcartitem was successfully created.'
-    else
-      render action: 'new'
-    end
-  end
+  #def create
+  #  @shoppingcartitem = Shoppingcartitem.new(shoppingcartitem_params)
+  #  if @shoppingcartitem.save
+  #    redirect_to @shoppingcartitem, notice: 'Shoppingcartitem was successfully created.'
+  #  else
+  #    render action: 'new'
+  #  end
+  #end
   #----------------------------------------------------------------------------
     # PATCH/PUT /shoppingcartitems/1
     def update

@@ -1,18 +1,14 @@
 <div class='admin'>
-<h2>Admin. All orders</h2>
-<br>
-<%= link_to 'Back to Admin', admin_menu_index_path %>
+<h2>All orders</h2>
 <br>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
 			<th>Order id</th>
       <th>Order date</th>
       <th>Shipping cost</th>
-      <th></th>
-      <th></th>
-      <th></th>
+			<th></th>
     </tr>
   </thead>
 
@@ -20,16 +16,14 @@
     <% @orders.each do |order| %>
       <tr>
 	      <td><%= order.id %></td>
-        <td> | <%= order.order_date.localtime.to_s(:long) %></td>
-        <td> | <%= number_to_currency(order.shipping_cost) %></td>
-        <td><%= link_to 'View', admin_order_path(order) %> | </td>
-        <td><%= link_to 'Edit', edit_admin_order_path(order) %> | </td>
-        <td><%= link_to 'Delete', admin_order_path(order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= order.order_date.localtime.to_s(:long) %></td>
+        <td><%= number_to_currency(order.shipping_cost) %></td>
+        <td><%= link_to 'View', admin_order_path(order) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
 
-<%= link_to 'Back to Admin', admin_menu_index_path %>
+<%= link_to 'Back to Admin', admin_menu_index_path %><br><br>
 </div>

@@ -1,7 +1,7 @@
 <div class='admin'>
 	
-<h2>Admin. View order info</h2>
-<p id="notice"><%= notice %></p>
+<h2>Order info</h2>
+<br>
 <p>
   <strong>Order date:</strong>
   <%= @order.order_date.localtime.to_s(:long) %>
@@ -10,10 +10,13 @@
 	<strong>User name:</strong>
   <%= userfullname(@user) %>
 </p>
-
 <p>
   <strong>Shipping cost:</strong>
   <%= number_to_currency(@order.shipping_cost) %>
+</p>
+<p>
+  <strong>Shipping address:</strong>
+  <%= Order.find(@order.id).shipping_address %>
 </p>
 
 <% if @order.ordereditems.length == 0 %>
@@ -21,13 +24,12 @@
 <% else %>
 
 
-<table id="order-table" border="0">
+<table id="order-table" class="table table-bordered">
   <thead>
     <tr>
       <th class="order-item-col">Item</th>
       <th class="order-price-col">Price</th>
       <th class="order-quantity-col">Quantity</th>
-      <th class="order-delete-col"></th>
     </tr>
   </thead>
 
@@ -42,11 +44,9 @@
         <td class="order-quantity-col"><%= item.quantity %></td>
       </tr>
     <% end %>
-    <tr><td colspan="4"></td></tr>
   </tbody>
 </table>
 <% end %>
 
-<%= link_to 'Edit', edit_admin_order_path(@order) %> |
-<%= link_to 'Orders', admin_orders_path %>
+<%= link_to 'Back to Orders', admin_orders_path %><br><br>
 </div>

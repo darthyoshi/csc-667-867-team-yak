@@ -1,19 +1,14 @@
 <div class='admin'>
-<h2>Admin. All users</h2>
-<br>
-<%= link_to 'Back to Admin', admin_menu_index_path %>
+<h2>Users</h2>
 <br>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
 			<th>id</th>
 			<th>Name</th>
 			<th>Email</th>						
       <th>Shipping address</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -21,12 +16,12 @@
     <% @users.each do |user| %>
       <tr>
 	      <td><%= user.id %></td>
-				<td> | <%= userfullname(user) %></td>
-				<td> | <%= user.email %></td>		
+				<td><%= userfullname(user) %></td>
+				<td><%= user.email %></td>		
 				<% if user.shipping_address.nil? %>					
-        <td> | N/A </td> 
+        <td> N/A </td> 
 				<% else %>
-				<td> | <%= user.shipping_address %></td>
+				<td><%= user.shipping_address %></td>
 				<% end %>
 			</tr>
     <% end %>
@@ -34,4 +29,5 @@
 </table>
 <br>
 <%= link_to 'Back to Admin', admin_menu_index_path %>
+<br><br>
 </div>

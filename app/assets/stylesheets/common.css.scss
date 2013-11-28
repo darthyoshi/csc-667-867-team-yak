@@ -9,8 +9,16 @@
 }
 
 .admin {
+	#admin_link {
+		color: #FF6600;
+	}	
     h2 {
         font-size: 26px;
+        font-family:Candara, sans-serif;
+        color:#727272;
+    }
+    h3 {
+        font-size: 20px;
         font-family:Candara, sans-serif;
         color:#727272;
     }
@@ -26,6 +34,21 @@
 	  font-size: 20px;
 	  a:visited { color: black; }
   }
+	#tagsfooter {
+		clear: both;
+		padding-top:20px;
+		}
+	.artwork-title {
+	font-size: 32px;
+    font-weight: bold;
+    font-family: "Comic Sans MS", cursive, sans-serif;	
+	color: $artsale-bg;
+	}
+	.artwork-description {
+		font-family:Candara, sans-serif;
+		font-size: 22px;
+		color: $artsale-bg;
+	}	
 }
 
 .artwork {
