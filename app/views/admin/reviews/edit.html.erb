@@ -1,39 +1,33 @@
 <div class='admin'>
-<h2>Admin. Editing review NOT IMPLEMENTED</h2>
+	<div class="container">
+<h2>Editing review. NOT IMPLEMENTED</h2>
 
 <%= form_for [:admin, @review] do |f| %>
 
 <%= render "shared/error_messages", target: @review %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :stars %>
-		<%= text_field_tag 'stars', @review.stars, disabled: true %>
+		<%= text_field_tag('stars', @review.stars, disabled: true, class: "form-control", id: "review") %>
   </div>
-  <div class="field">
-		<%= label_tag 'User info: ' %>
-		<%= text_field_tag 'userid', @review.user.id, disabled: true %>
-		<%= text_field_tag 'username', userfullname(@review.user), disabled: true %>
+  <div class="form-group">
+		<%= label_tag 'User id: ' %>
+		<%= text_field_tag('userid', @review.user.id, disabled: true, class: "form-control", id: "review") %>
+		<%= label_tag 'User name: ' %>
+		<%= text_field_tag('username', userfullname(@review.user), disabled: true, class: "form-control") %>
   </div>
-  <div class="field">
-		<%= label_tag 'Artwork info: ' %>
-		<%= text_field_tag 'artworkid', @review.artwork.id, disabled: true %>
-		<%= text_field_tag 'artworkcategory', @review.artwork.category, disabled: true %>
-		<%= text_field_tag 'artworktitle', @review.artwork.title, disabled: true %>
-		<%= text_field_tag 'artworkprice', number_to_currency(@review.artwork.price), disabled: true %>
-  </div>
-  <div class="field">
-    <%= f.label :review_text %>
-    <%= f.text_area :review_text %>
-  </div>
-  <div class="field">
-		<%= label_tag "Posted at:" %>
-		<%= text_field_tag 'date', @review.review_date.localtime.to_s(:long), disabled: true %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
 
-<%= link_to 'View', admin_review_path(@review) %> |
-<%= link_to 'Reviews', admin_reviews_path %>
+  <div class="form-group">
+    <%= f.label :review_text %>
+    <%= f.text_area(:review_text, class: "form-control") %>
+  </div>
+  <div class="form-group">
+		<%= label_tag "Posted at:" %>
+		<%= text_field_tag('date', @review.review_date.localtime.to_date, disabled: true, class: "form-control", id: "review-date") %>
+  </div>
+    <%= f.submit("Update", class: "btn btn-danger") %>
+<% end %>
+<br><br>
+<%= link_to 'Back to Reviews', admin_reviews_path %><br><br>
+</div>
 </div>

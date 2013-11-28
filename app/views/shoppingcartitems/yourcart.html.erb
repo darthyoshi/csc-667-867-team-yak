@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <div class="container" >
 <h2>Your Cart</h2>
@@ -15,7 +14,7 @@
       <th></th>
       <th>Price</th>
       <th>Quantity</th>
-			<th>Item's Availability</th>
+			<th>Availability</th>
       <th></th>
     </tr>
   </thead>
@@ -39,7 +38,7 @@
 				<td>Available</td>
 				<% end %>
 				
-        <td><%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to('Remove', item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-xs") %></td>
       </tr>
     <% end %>
 

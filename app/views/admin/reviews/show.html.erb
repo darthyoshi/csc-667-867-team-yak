@@ -1,6 +1,6 @@
 <div class='admin'>
-<p id="notice"><%= notice %></p>
-<h2>NOT IMPLEMENTED</h2>
+
+<h2>Review details. NOT IMPLEMENTED</h2>
 <p>
   <strong>Stars:</strong>
   <%= @review.stars %>
@@ -23,9 +23,9 @@
 
 <p>
   <strong>Review date:</strong>
-  <%= @review.review_date %>
+  <%= @review.review_date.localtime.to_date %>
 </p>
 
-<%= link_to 'Edit', edit_admin_review_path(@review) %> |
-<%= link_to 'Reviews', admin_reviews_path %>
+<%= link_to('Edit', edit_admin_review_path(@review), class: "btn btn-default") %><br><br>
+<%= link_to 'Back to Reviews', admin_reviews_path %><br><br>
 </div>

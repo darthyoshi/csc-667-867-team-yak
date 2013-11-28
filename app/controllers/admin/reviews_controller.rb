@@ -2,16 +2,13 @@ class Admin::ReviewsController < Admin::BaseController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   # GET /reviews
-  # GET /reviews.json
   def index
     @reviews = Review.all
   end
 
 #----------------------------------------------------------------------------
   # GET /reviews/1
-  # GET /reviews/1.json
   def show
-    #we can get all information about review here
   end
   
 #----------------------------------------------------------------------------
@@ -30,28 +27,19 @@ class Admin::ReviewsController < Admin::BaseController
 
 #----------------------------------------------------------------------------
   # PATCH/PUT /reviews/1
-  # PATCH/PUT /reviews/1.json
   def update
-    respond_to do |format|
-      if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
+    if @review.update(review_params)
+      redirect_to admin_review_url, notice: 'Review was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
 #----------------------------------------------------------------------------
   # DELETE /reviews/1
-  # DELETE /reviews/1.json
   def destroy
     @review.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_reviews_url }
-      format.json { head :no_content }
-    end
+    redirect_to admin_reviews_url
   end
 
 #----------------------------------------------------------------------------
