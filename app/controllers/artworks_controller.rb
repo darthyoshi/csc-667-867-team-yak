@@ -8,9 +8,30 @@ class ArtworksController < ApplicationController
     if current_user.try(:admin?)
     	redirect_to admin_menu_index_url
     end
-
+    
       # don't show artworks whose quantity is 0, scope in artwork model
-      @artworks = Artwork.available.paginate(:page => params[:page], :per_page => 10)
+      #@artworks = Artwork.available.paginate(:page => params[:page], :per_page => 10)
+      page = params[:page].to_i
+      if page.blank? or page == 0
+        page = 1
+      end
+      
+      @artworks = WillPaginate::Collection.create(page, 10) do |pager|
+        if (! params[:tag].blank?)
+          result = Arttag.find(params[:tag]).artworks
+        elsif (! params[:morelike].blank?)
+          result = Artwork.more_like(params[:morelike]).to_a
+        else
+          result = Artwork.available.all(:limit => pager.per_page, :offset => ((page - 1) * pager.per_page))
+        end
+        # inject the result array into the paginated collection:
+        pager.replace(result)
+
+        unless pager.total_entries
+          # the pager didn't manage to guess the total count, do it manually
+          pager.total_entries = Artwork.count
+        end
+      end
   end
 
 #----------------------------------------------------------------------------

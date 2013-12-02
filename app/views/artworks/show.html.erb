@@ -28,10 +28,14 @@
   <%= button_to 'Add to Cart', shoppingcartitems_path(:shoppingcartitem => {:user_id => current_user.id, :artwork_id => @artwork.id, :quantity => 1}), class: "btn btn-default btn-sm"  %>
 <% end %>
 
+<br>
+<%= link_to 'Find more like this item', artworks_path(:morelike => @artwork.id) %>
+
 <div id="tagsfooter" >
 <% unless @my_arttags.blank? %>
   <% @my_arttags.each do |arttag| %>
-    <span class="badge"><%= label_tag 'arttag', arttag.tagname %></span>
+	<% t = "/?tag=" + arttag.id.to_s %>
+    <a href=<%=t%>><span class="badge"><%= label_tag 'arttag', arttag.tagname %></span></a>
   <% end %>
 <% end %>
 <br><br><br>

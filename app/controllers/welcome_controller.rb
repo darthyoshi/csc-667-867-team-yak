@@ -7,7 +7,7 @@ class WelcomeController < ApplicationController
       @msg = 'User is not signed in.'
     end
     
-    @artworks = Artwork.paginate(:page => params[:page], :per_page => 8)
+    @artworks = Artwork.paginate(:page => params[:page], :per_page => 10)
   end
   
   def about
