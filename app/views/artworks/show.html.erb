@@ -27,9 +27,10 @@
 <% if !current_user.nil? %>
   <%= button_to 'Add to Cart', shoppingcartitems_path(:shoppingcartitem => {:user_id => current_user.id, :artwork_id => @artwork.id, :quantity => 1}), class: "btn btn-default btn-sm"  %>
 <% end %>
-
 <br>
-<%= link_to 'Find more like this item', artworks_path(:morelike => @artwork.id) %>
+<% unless @my_arttags.blank? %>
+	<%= link_to 'Find more like this item', artworks_path(:morelike => @artwork.id) %>
+<% end %>
 
 <div id="tagsfooter" >
 <% unless @my_arttags.blank? %>
