@@ -15,15 +15,20 @@ class ResultsController < ApplicationController
     if terms[0] == "name"
       @artworks = Artwork.where("lower(title) like lower(?)", '%'+terms[1]+'%').order("created_at desc, title asc").paginate(:page => page, :per_page => 10)
     elsif terms[0] == "tag"
-      @artworks = Artwork.joins(:taggings).joins(:arttags).distinct.where("lower(tagname) like lower(?)", '%'+terms[1]+'%').order("created_at desc, title asc").paginate(:page => page, :per_page => 10)
+      @artworks = Artwork.joins(:taggings, :arttags).distinct.where("lower(tagname) like lower(?)", '%'+terms[1]+'%').order("created_at desc, title asc").paginate(:page => page, :per_page => 10)
     elsif terms[0] == "desc"
       @artworks = Artwork.where("lower(description) like lower(?)", '%'+terms[1]+'%').order("created_at desc, title asc").paginate(:page => page, :per_page => 10)
     elsif terms[0] == "seller"
       @artworks = Artwork.joins(:seller).distinct.where("lower(displayed_name) like lower(?)", '%'+terms[1]+'%').order("created_at desc, title asc").paginate(:page => page, :per_page => 10)
     else
-      @artworks = Artwork.where("lower(title) like lower(?)", '%'+params[:search]+'%').order("created_at desc, title asc").paginate(:page => page, :per_page => 10)
+      by_name = Artwork.where("lower(title) like lower(?)", '%'+params[:search]+'%').to_sql
+      by_tag = Artwork.joins(:taggings, :arttags).distinct.where("lower(tagname) like lower(?)", '%'+params[:search]+'%').to_sql
+      by_desc = Artwork.where("lower(description) like lower(?)", '%'+params[:search]+'%').to_sql
+      by_seller = Artwork.joins(:seller).distinct.where("lower(displayed_name) like lower(?)", '%'+params[:search]+'%').to_sql
+      
+      @artworks = Artwork.find_by_sql(by_name + " UNION " + by_tag + " UNION " + by_desc + " UNION " + by_seller + "ORDER BY created_at desc, title asc").paginate(:page => page, :per_page => 10)
     end
-    
+
     @title = "Search Results"
 
     render'show'
