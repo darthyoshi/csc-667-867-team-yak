@@ -50,6 +50,8 @@ class Artwork < ActiveRecord::Base
     Artwork.by_seller(seller_id).where("quantity < 1")
   end
 
+  # return all artworks that have at least the same arttags as
+  # the given artwork
   def self.more_like(artwork_id)    
     sql = "SELECT * FROM artworks WHERE id IN (
     SELECT artwork_id FROM taggings AS tagmap1
@@ -62,7 +64,6 @@ class Artwork < ActiveRecord::Base
     AND (tagmap2.arttag_id = sub1.arttag_id)))
     GROUP BY artwork_id)" % artwork_id
     Artwork.find_by_sql( sql )
-    # ActiveRecord::Base.connection.execute(sql)
   end
   
 end

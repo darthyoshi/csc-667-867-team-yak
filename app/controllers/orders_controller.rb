@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
         orditem.title = aw.title
         orditem.imagepath = aw.imagepath
         orditem.description = aw.description
-        orditem.seller_name = aw.seller.displayed_name
+        orditem.seller_name = aw.seller.displayed_name   # PROBLEM HERE!
         orditem.seller_email = aw.seller.seller_email
         aw.decrement(:quantity).save # decrement the quantity
         orditem.quantity = item.quantity
